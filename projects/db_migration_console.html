@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read-Only Database Extraction & Migration Suite | Case Study</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0b0f19; color: #f1f5f9; }
+        .tab-btn.active { border-color: #3b82f6; color: #60a5fa; background-color: rgba(59, 130, 246, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- Top Header -->
+        <header class="bg-[#111827] border border-slate-800 rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-xl flex items-center justify-center font-bold text-2xl text-white shadow-lg shadow-blue-900/40">
+                    DB
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">Read-Only Database Extraction &amp; Migration Engine</h1>
+                    <p class="text-xs text-slate-400">Enterprise High-Throughput Migration Tool for SQL Server &amp; Oracle Databases</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    ● Mode: STRICT READ-ONLY (Zero Lock Risk)
+                </span>
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 font-mono">Build: Windows CLI / GUI v2.4</span>
+            </div>
+        </header>
+
+        <!-- Safety Architecture Pillars -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-[#111827] border border-slate-800 p-5 rounded-xl space-y-2">
+                <div class="text-xs font-bold uppercase tracking-wider text-blue-400">Pillar 1: Driver-Level Read-Only</div>
+                <div class="text-sm font-bold text-white">ApplicationIntent &amp; Snapshot Isolation</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    SQL Server connections enforce <code>ApplicationIntent=ReadOnly</code> and snapshot isolation / <code>WITH (NOLOCK)</code>. Oracle sessions execute <code>SET TRANSACTION READ ONLY</code> immediately upon handshake.
+                </p>
+            </div>
+
+            <div class="bg-[#111827] border border-slate-800 p-5 rounded-xl space-y-2">
+                <div class="text-xs font-bold uppercase tracking-wider text-indigo-400">Pillar 2: Client AST AST Parser</div>
+                <div class="text-sm font-bold text-white">Query Whitelisting &amp; Static Analysis</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Client-side query gate disallows DDL and DML statements (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>ALTER</code>) before sending packets down the wire.
+                </p>
+            </div>
+
+            <div class="bg-[#111827] border border-slate-800 p-5 rounded-xl space-y-2">
+                <div class="text-xs font-bold uppercase tracking-wider text-emerald-400">Pillar 3: Memory-Efficient Streaming</div>
+                <div class="text-sm font-bold text-white">Server-Side Cursors &amp; Parquet</div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Streams tables in 25,000-row chunks directly into compressed Apache Parquet or Gzipped CSV files, preventing high memory usage on multi-gigabyte databases.
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive Migration Simulation Console -->
+        <section class="bg-[#111827] border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <h2 class="text-base font-bold text-white">Live Extraction &amp; Migration CLI Runner</h2>
+                    <p class="text-xs text-slate-400">Simulate running an automated read-only extraction against SQL Server or Oracle Database.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="runExtraction('mssql')" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow">
+                        ▶ Extract from SQL Server
+                    </button>
+                    <button onclick="runExtraction('oracle')" class="bg-red-600 hover:bg-red-500 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow">
+                        ▶ Extract from Oracle DB
+                    </button>
+                </div>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="bg-black rounded-lg border border-slate-800 p-4 font-mono text-xs text-slate-300 space-y-1.5 h-64 overflow-y-auto" id="terminalOutput">
+                <div class="text-slate-500">// Read-Only Database Extraction CLI Utility initialized.</div>
+                <div><span class="text-blue-400">PS C:\DBMigration&gt;</span> db-extract.exe --engine mssql --host "PROD-SQL01" --database "ERP_Production" --format parquet --readonly</div>
+                <div class="text-slate-400">[INFO] Enforcing multi-layer read-only guard: ApplicationIntent=ReadOnly, Transaction Snapshot ON</div>
+                <div class="text-emerald-400">[SUCCESS] Connected to SQL Server 2022 (16.0.4125.3). Session verified as NON-BLOCKING READ-ONLY.</div>
+                <div class="text-slate-400">[INFO] Reading metadata catalog: Found 24 user tables, 142 indexes, 38 foreign key constraints.</div>
+                <div class="text-slate-400">[INFO] Streaming table [dbo].[Transactions] (1,480,200 rows) in 50k chunks...</div>
+                <div class="text-emerald-400">[SUCCESS] Exported: ./output/Transactions.parquet (64.2 MB compressed, SHA-256: 8f2b109c...)</div>
+                <div class="text-emerald-400">[SUCCESS] Migration manifest generated: 24/24 tables verified. Zero write operations attempted. Exit: 0</div>
+            </div>
+        </section>
+
+        <!-- Extracted Table Sample Schema & Progress Table -->
+        <section class="bg-[#111827] border border-slate-800 rounded-xl overflow-hidden text-xs">
+            <div class="p-4 bg-slate-900/80 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="text-sm font-bold text-white">Extracted Table Inventory &amp; Row Count Verification</h3>
+                <span class="text-xs text-slate-400">Integrity: 100% Match (Manifest Verified)</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-950 text-slate-400 uppercase font-semibold">
+                        <tr>
+                            <th class="p-3">Source Engine</th>
+                            <th class="p-3">Table Name</th>
+                            <th class="p-3 text-right">Source Row Count</th>
+                            <th class="p-3 text-right">Extracted Rows</th>
+                            <th class="p-3">Export Format</th>
+                            <th class="p-3 text-right">File Size</th>
+                            <th class="p-3 text-center">Verification Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60">
+                        <tr>
+                            <td class="p-3 font-semibold text-blue-400">Microsoft SQL Server</td>
+                            <td class="p-3 font-mono font-medium">[dbo].[Transactions]</td>
+                            <td class="p-3 text-right font-mono">1,480,200</td>
+                            <td class="p-3 text-right font-mono font-bold text-emerald-400">1,480,200</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 font-semibold">Parquet (Snappy)</span></td>
+                            <td class="p-3 text-right font-mono">64.2 MB</td>
+                            <td class="p-3 text-center"><span class="text-emerald-400 font-bold">✓ PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-blue-400">Microsoft SQL Server</td>
+                            <td class="p-3 font-mono font-medium">[dbo].[Customers]</td>
+                            <td class="p-3 text-right font-mono">245,100</td>
+                            <td class="p-3 text-right font-mono font-bold text-emerald-400">245,100</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-300 font-semibold">Parquet (Snappy)</span></td>
+                            <td class="p-3 text-right font-mono">12.8 MB</td>
+                            <td class="p-3 text-center"><span class="text-emerald-400 font-bold">✓ PASS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-red-400">Oracle Database 19c</td>
+                            <td class="p-3 font-mono font-medium">SCOTT.EMP_LEDGER</td>
+                            <td class="p-3 text-right font-mono">890,450</td>
+                            <td class="p-3 text-right font-mono font-bold text-emerald-400">890,450</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold">CSV.GZ</span></td>
+                            <td class="p-3 text-right font-mono">38.1 MB</td>
+                            <td class="p-3 text-center"><span class="text-emerald-400 font-bold">✓ PASS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function appendTerminal(text, colorClass = "text-slate-300") {
+            const terminal = document.getElementById("terminalOutput");
+            const line = document.createElement("div");
+            line.className = colorClass;
+            line.innerText = text;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function runExtraction(engine) {
+            if (engine === 'oracle') {
+                appendTerminal("PS C:\\DBMigration> db-extract.exe --engine oracle --service ORCLPDB1 --readonly", "text-red-400 mt-2 font-bold");
+                setTimeout(() => appendTerminal("[INFO] Connecting via python-oracledb. Setting session isolation: SET TRANSACTION READ ONLY;", "text-slate-400"), 300);
+                setTimeout(() => appendTerminal("[INFO] Reading Oracle data dictionary ALL_TABLES & ALL_TAB_COLS...", "text-slate-400"), 700);
+                setTimeout(() => appendTerminal("[INFO] Extracting SCOTT.EMP_LEDGER (890,450 rows) in 25k chunks into CSV.GZ...", "text-slate-400"), 1200);
+                setTimeout(() => appendTerminal("[SUCCESS] Oracle extract complete: 890,450 rows verified. Manifest generated.", "text-emerald-400 font-semibold"), 1800);
+            } else {
+                appendTerminal("PS C:\\DBMigration> db-extract.exe --engine mssql --database SalesDB --readonly", "text-blue-400 mt-2 font-bold");
+                setTimeout(() => appendTerminal("[INFO] Connecting with ApplicationIntent=ReadOnly & WITH (NOLOCK)...", "text-slate-400"), 300);
+                setTimeout(() => appendTerminal("[INFO] Streaming table [Sales].[Orders] to Parquet...", "text-slate-400"), 800);
+                setTimeout(() => appendTerminal("[SUCCESS] SQL Server extract complete: Verified against sys.dm_db_partition_stats.", "text-emerald-400 font-semibold"), 1500);
+            }
+        }
+    </script>
+</body>
+</html>

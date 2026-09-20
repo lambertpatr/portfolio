@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lambert | Senior Data Scientist & Database Systems Architect</title>
+    <meta name="description" content="Portfolio of Lambert — Senior Data Scientist, Oracle OCP/OCA Certified Specialist, and Database Architect specializing in Python, SQL Server, high-throughput data engineering, and automated reporting.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937'
+                        },
+                        brand: {
+                            blue: '#3b82f6',
+                            indigo: '#6366f1',
+                            teal: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+        .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card:hover { border-color: rgba(96, 165, 250, 0.4); transform: translateY(-3px); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 text-white font-black text-xl tracking-tight">
+                <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-sm shadow">L</span>
+                <span>Lambert<span class="text-blue-500">.dev</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm text-slate-300 font-medium">
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Projects & Demos</a>
+                <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Tech Stack</a>
+                <a href="#contact" class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition shadow-lg shadow-blue-900/30">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="about" class="relative overflow-hidden pt-20 pb-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/70 text-blue-400 border border-blue-800/60 shadow">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Available for Contract &amp; Remote Projects</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight">
+                Senior Data Scientist &amp; <br class="hidden sm:inline">
+                <span class="gradient-text">Database Systems Architect</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
+                Specialized in <strong>high-throughput data engineering</strong>, enterprise <strong>SQL Server &amp; Oracle database architecture</strong>, authenticated web scraping automation, and institutional <strong>financial controlling suites</strong>.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="#projects" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-blue-900/40">
+                    Explore Interactive Projects
+                </a>
+                <a href="#certifications" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition">
+                    View Certifications (OCP / OCA)
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Banner -->
+    <section class="border-y border-slate-800 bg-[#0f1523]/60 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-white">5+ Years</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Enterprise Experience</div>
+            </div>
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-blue-400">OCP &amp; OCA</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Oracle Certified Specialist</div>
+            </div>
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-emerald-400">100% Zero-Lock</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Safe Migration Architecture</div>
+            </div>
+            <div>
+                <div class="text-3xl sm:text-4xl font-black text-purple-400">Multi-Million</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Records Processed / Hour</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Interactive Projects Showcase -->
+    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+            <div>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Live Case Studies &amp; Demos</h2>
+                <h3 class="text-3xl font-black text-white mt-1">Featured Technical Solutions</h3>
+            </div>
+            <p class="text-xs text-slate-400 max-w-md">
+                Click "Launch Live Demo" on any card to interact with the real deployed dashboards, test consoles, and analytical packs.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Project 1: Financial Close & Controlling Suite -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-blue-950 text-blue-400 border border-blue-800">Finance &amp; Data</span>
+                        <span class="text-xs text-slate-500">IFRS / Dutch GAAP</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Financial Close &amp; Consolidation Engine</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automated multi-entity consolidation normalizer with Master Chart of Accounts (MCoA), mathematical Price-Volume-Mix (PVM) margin decomposition, and balance sheet reconciliation workpapers.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python 3</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Power Query (M)</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Excel OpenPyXL</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PVM Analysis</span>
+                    </div>
+                </div>
+                <a href="projects/financial_close_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Interactive Dashboard</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- Project 2: Read-Only Database Extraction Suite -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">Database Tools</span>
+                        <span class="text-xs text-slate-500">SQL Server &amp; Oracle</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Read-Only Database Extraction &amp; Migration</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Enterprise tool extracting multi-gigabyte databases with zero production lock risk. Features driver-level read-only isolation, AST query whitelisting, and chunked Parquet streaming.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">FastAPI</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Oracle 19c</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SQL Server</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Parquet</span>
+                    </div>
+                </div>
+                <a href="projects/db_migration_console.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Migration Console</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- Project 3: CS2 Authenticated Scraper & Telemetry -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-orange-950 text-orange-400 border border-orange-800">Scraping &amp; Auth</span>
+                        <span class="text-xs text-slate-500">Esports Data Science</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">CS2 Authenticated Demo Scraper &amp; Telemetry</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        On-demand demo download pipeline operating behind login walls. Handles session persistence, Steam OpenID, Cloudflare clearance, chunked Gzip streaming, and tick-accurate telemetry.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Session Auth</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Gzip Streaming</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Chart.js</span>
+                    </div>
+                </div>
+                <a href="projects/cs2_demo_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Telemetry Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- Project 4: Millicom Telecom CDR Intelligence Suite -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-purple-950 text-purple-400 border border-purple-800">Big Data &amp; Telecom</span>
+                        <span class="text-xs text-slate-500">Tigo Tanzania Network</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Telecom CDR Analytics &amp; QoS Suite</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Enterprise telecommunications mediation and fraud engine. Analyzes millions of CDRs, computes Erlang B traffic congestion, tracks TCRA QoS compliance, and detects interconnect bypass fraud.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Erlang Traffic</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">QoS Metrics</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">RAFM Fraud</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">GIS Mapping</span>
+                    </div>
+                </div>
+                <a href="projects/millicom_telecom_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Telecom Dashboard</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- Project 5: SQL Server & PowerShell Operator Console -->
+            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-800">Database Ops</span>
+                        <span class="text-xs text-slate-500">PowerShell Automation</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">SQL Server Operations &amp; Health Runner</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automated DBA operational console enforcing a 3-gate "reasonable assurance" framework for script execution, backup freshness RPO auditing, and Agent job telemetry.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PowerShell 7</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SQL Server</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Health Auditing</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">dbatools</span>
+                    </div>
+                </div>
+                <a href="projects/sql_powershell_console.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Operations Console</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications & Credentials -->
+    <section id="certifications" class="border-t border-slate-800 bg-[#0f1523]/40 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center space-y-2">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Verified Credentials</h2>
+                <h3 class="text-3xl font-black text-white">Professional Certifications</h3>
+                <p class="text-xs text-slate-400">Industry-recognized credentials in database administration, programming, and analytics.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto bg-red-950/80 border border-red-800 rounded-xl flex items-center justify-center font-bold text-red-400 text-xl shadow">
+                        OCP
+                    </div>
+                    <div class="font-bold text-white text-base">Oracle Certified Professional</div>
+                    <div class="text-xs text-slate-400">Database Administration (OCP)</div>
+                </div>
+
+                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto bg-red-950/80 border border-red-800 rounded-xl flex items-center justify-center font-bold text-red-400 text-xl shadow">
+                        OCA
+                    </div>
+                    <div class="font-bold text-white text-base">Oracle Certified Associate</div>
+                    <div class="text-xs text-slate-400">Database Administration (OCA)</div>
+                </div>
+
+                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto bg-amber-950/80 border border-amber-800 rounded-xl flex items-center justify-center font-bold text-amber-400 text-xl shadow">
+                        PL/SQL
+                    </div>
+                    <div class="font-bold text-white text-base">Oracle Database PL/SQL</div>
+                    <div class="text-xs text-slate-400">Developer Certified Professional</div>
+                </div>
+
+                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto bg-blue-950/80 border border-blue-800 rounded-xl flex items-center justify-center font-bold text-blue-400 text-xl shadow">
+                        PBI
+                    </div>
+                    <div class="font-bold text-white text-base">Microsoft Power BI</div>
+                    <div class="text-xs text-slate-400">Certified Data Analyst &amp; Modeling</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
+        <div class="text-center space-y-2">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Core Competencies</h2>
+            <h3 class="text-3xl font-black text-white">Technical Arsenal</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
+                <h4 class="text-base font-bold text-blue-400 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                    Databases &amp; Administration
+                </h4>
+                <ul class="text-xs text-slate-300 space-y-2.5">
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Oracle Database:</strong> 19c, 21c, 23ai, PL/SQL, Data Guard</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Microsoft SQL Server:</strong> 2016-2022, T-SQL, Agent Jobs, Replication</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>PostgreSQL:</strong> 16/17, MVCC, Partitioning, Performance Tuning</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Data Warehouses:</strong> ClickHouse, SQLite, DuckDB, Parquet</li>
+                </ul>
+            </div>
+
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
+                <h4 class="text-base font-bold text-indigo-400 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    Data Engineering &amp; Backend
+                </h4>
+                <ul class="text-xs text-slate-300 space-y-2.5">
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Languages &amp; Runtimes:</strong> Python 3, PowerShell 7, Bash/Zsh</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Frameworks:</strong> FastAPI, Pandas, Apache Arrow, OpenPyXL</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Automation &amp; Scraping:</strong> Playwright, Requests, Session Auth, Cloudflare</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>DevOps &amp; Infrastructure:</strong> Docker, Linux (Ubuntu/Debian), Nginx</li>
+                </ul>
+            </div>
+
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
+                <h4 class="text-base font-bold text-purple-400 flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    Financial Controlling &amp; BI
+                </h4>
+                <ul class="text-xs text-slate-300 space-y-2.5">
+                    <li class="flex items-center gap-2"><span>•</span> <strong>BI &amp; Visualization:</strong> Microsoft Power BI, DAX, Chart.js</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Close Automation:</strong> Excel Power Query (M), MCoA Mapping</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Accounting Standards:</strong> IFRS, Dutch GAAP, US GAAP</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Controlling:</strong> Price-Volume-Mix (PVM), BS Reconciliations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="border-t border-slate-800 bg-[#070a11] py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="space-y-1 text-center md:text-left">
+                <div class="text-lg font-bold text-white">Lambert</div>
+                <div class="text-xs text-slate-500">Senior Data Scientist &amp; Database Systems Architect</div>
+            </div>
+            <div class="flex items-center gap-6 text-sm text-slate-400">
+                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+                <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
+                <a href="https://github.com/lambertpatr" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
+            </div>
+            <div class="text-xs text-slate-600 text-center md:text-right">
+                © 2026 Lambert. Built with Tailwind CSS. Hosted on GitHub Pages.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

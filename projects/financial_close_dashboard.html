@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Financial Close & Controlling Dashboard | Case Study</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .tab-active { border-bottom: 3px solid #2563eb; color: #1d4ed8; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl shadow">FC</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">Executive Financial Close & Controlling Architecture</h1>
+                    <p class="text-xs text-slate-400">Multi-Entity Group Consolidation (Dutch GAAP & IFRS) | Automated Reporting Suite</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    ● Close Status: Reconciled & Approved
+                </span>
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded border border-slate-700">Period: Close Aug 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Executive KPI Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Group Revenue (Post-Elim)</div>
+                <div class="text-2xl font-black text-slate-900 mt-2">€735,000</div>
+                <div class="flex items-center gap-2 mt-2 text-xs text-slate-600">
+                    <span class="text-blue-600 font-bold">0.0% MoM</span>
+                    <span>• Strictly Flat MoM Target</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Gross Margin % (Contraction)</div>
+                <div class="text-2xl font-black text-amber-600 mt-2">46.0% <span class="text-sm font-normal text-slate-500">(vs 52.0%)</span></div>
+                <div class="flex items-center gap-2 mt-2 text-xs text-rose-600 font-semibold">
+                    <span>▼ 600 bps</span>
+                    <span class="text-slate-500 font-normal">• Driven by Product Mix</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Intercompany Variance</div>
+                <div class="text-2xl font-black text-emerald-600 mt-2">€0.00</div>
+                <div class="flex items-center gap-2 mt-2 text-xs text-emerald-600 font-medium">
+                    <span>✓ Fully Reconciled</span>
+                    <span class="text-slate-500 font-normal">(€25k IC Mgt Fee)</span>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Balance Sheet Rec (GL #2100)</div>
+                <div class="text-2xl font-black text-blue-600 mt-2">€0.00</div>
+                <div class="flex items-center gap-2 mt-2 text-xs text-slate-600">
+                    <span class="font-bold text-emerald-600">✓ €4,200 Resolved</span>
+                    <span>• Draft Credit Note Located</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabbed Modules Navigation -->
+        <div class="border-b border-slate-200 bg-white rounded-t-xl px-4 pt-2 shadow-sm flex gap-6 text-sm">
+            <button onclick="switchTab('tab-pvm')" id="btn-tab-pvm" class="py-3 px-2 tab-active transition-all cursor-pointer">
+                1. Controlling: Price-Volume-Mix (PVM) Margin Analysis
+            </button>
+            <button onclick="switchTab('tab-rec')" id="btn-tab-rec" class="py-3 px-2 text-slate-500 hover:text-slate-900 transition-all cursor-pointer">
+                2. Balance Sheet Reconciliation: €4,200 Audit Workpaper
+            </button>
+            <button onclick="switchTab('tab-consolidation')" id="btn-tab-consolidation" class="py-3 px-2 text-slate-500 hover:text-slate-900 transition-all cursor-pointer">
+                3. Multi-Entity Consolidation & Data Architecture
+            </button>
+        </div>
+
+        <!-- MODULE 1: PVM MARGIN INVESTIGATION -->
+        <section id="tab-pvm" class="space-y-6">
+            <div class="bg-white p-6 rounded-b-xl border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Gross Margin Contraction Root-Cause Decomposition</h2>
+                        <p class="text-xs text-slate-500">Scenario: Revenue is flat MoM (€500k), but Gross Margin fell from 52.0% to 46.0% (-600 bps / -€30,000 GP).</p>
+                    </div>
+                    <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-md font-semibold border border-blue-200">
+                        Mathematical Decomposition: Price + Cost + Volume + Mix
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <!-- Chart -->
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-3 text-center">Variance Waterfall Breakdown (€ Delta GP)</h3>
+                        <div class="h-64">
+                            <canvas id="pvmChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Commentary Table -->
+                    <div class="space-y-4">
+                        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded text-sm text-amber-900">
+                            <span class="font-bold">Key Controlling Insight:</span> The margin drop was <strong>not</strong> caused by price discounts (Price Variance = €0.00). Rather, <strong>76% of margin erosion</strong> was driven by an adverse <strong>Product Mix shift</strong>.
+                        </div>
+                        
+                        <div class="overflow-x-auto border border-slate-200 rounded-lg">
+                            <table class="w-full text-xs text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-semibold uppercase">
+                                    <tr>
+                                        <th class="p-2.5">Product Line</th>
+                                        <th class="p-2.5">Prior Mix %</th>
+                                        <th class="p-2.5">Current Mix %</th>
+                                        <th class="p-2.5">Margin %</th>
+                                        <th class="p-2.5 text-right">Mix Impact (€)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200">
+                                    <tr>
+                                        <td class="p-2.5 font-medium">Enterprise SaaS Subscription</td>
+                                        <td class="p-2.5">40.0%</td>
+                                        <td class="p-2.5 text-rose-600 font-semibold">26.5% (▼)</td>
+                                        <td class="p-2.5">80.8%</td>
+                                        <td class="p-2.5 text-right text-rose-600 font-semibold">-€48,200</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-medium">Managed IT Cloud Services</td>
+                                        <td class="p-2.5">20.0%</td>
+                                        <td class="p-2.5 text-rose-600 font-semibold">14.7% (▼)</td>
+                                        <td class="p-2.5">47.5%</td>
+                                        <td class="p-2.5 text-right text-rose-600 font-semibold">-€15,480</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2.5 font-medium">Hardware Pass-Through Equipment</td>
+                                        <td class="p-2.5">40.0%</td>
+                                        <td class="p-2.5 text-emerald-600 font-semibold">58.8% (▲)</td>
+                                        <td class="p-2.5">19.4%</td>
+                                        <td class="p-2.5 text-right text-rose-600 font-semibold">-€32,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            <strong>Recommended Action:</strong> Institute a minimum 25% gross margin threshold on pass-through equipment sales to avoid diluting blended margin. Review cloud infrastructure provisioning to counter the +20% unit hosting cost inflation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 2: BALANCE SHEET RECONCILIATION -->
+        <section id="tab-rec" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-b-xl border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Balance Sheet Subledger Reconciliation & Audit Workpaper</h2>
+                        <p class="text-xs text-slate-500">Account: <strong>GL #2100 - Trade Accounts Payable Control</strong> | Period: August Close 2026</p>
+                    </div>
+                    <span class="bg-emerald-50 text-emerald-700 text-xs px-3 py-1.5 rounded-md font-semibold border border-emerald-200">
+                        Status: Fully Explained & AJE Formulated
+                    </span>
+                </div>
+
+                <!-- 3-Box Diagnostic Metrics -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-center">
+                        <div class="text-xs text-slate-500 font-medium">General Ledger Balance</div>
+                        <div class="text-xl font-bold text-slate-800 mt-1">€89,200.00 Cr</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg text-center">
+                        <div class="text-xs text-slate-500 font-medium">AP Subledger Open Schedule</div>
+                        <div class="text-xl font-bold text-slate-800 mt-1">€85,000.00 Cr</div>
+                    </div>
+                    <div class="p-4 bg-rose-50 border border-rose-200 rounded-lg text-center">
+                        <div class="text-xs text-rose-600 font-semibold">Unadjusted Variance Discrepancy</div>
+                        <div class="text-xl font-bold text-rose-700 mt-1">€4,200.00</div>
+                    </div>
+                </div>
+
+                <!-- Diagnostic Heuristic Scan Table -->
+                <h3 class="text-sm font-bold text-slate-900 mb-2">Automated Heuristic Diagnostic Tests</h3>
+                <div class="border border-slate-200 rounded-lg overflow-hidden mb-6 text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="p-3">Test Procedure</th>
+                                <th class="p-3">Calculation</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Audit Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-3 font-medium">Transposition Check</td>
+                                <td class="p-3">€4,200 / 9 = 466.67 (Remainder 3)</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">NEGATIVE</span></td>
+                                <td class="p-3 text-slate-600">Unlikely to be a manual keystroke reversal.</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-medium">Sign Reversal (Dr/Cr Flip)</td>
+                                <td class="p-3">€4,200 / 2 = €2,100</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-semibold">NEGATIVE</span></td>
+                                <td class="p-3 text-slate-600">No €2,100 transaction found with inverted sign.</td>
+                            </tr>
+                            <tr class="bg-emerald-50/50">
+                                <td class="p-3 font-medium text-emerald-900">Unposted / Staging Batch Match</td>
+                                <td class="p-3 font-mono">Exact Match: €4,200.00</td>
+                                <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-semibold">POSITIVE (FOUND)</span></td>
+                                <td class="p-3 font-medium text-emerald-900">Located document CN-2026-088 in staging draft queue.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reconciling Items Schedule -->
+                <h3 class="text-sm font-bold text-slate-900 mb-2">Itemized Reconciling Items & Correcting Journal</h3>
+                <div class="border border-slate-200 rounded-lg overflow-hidden text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="p-3">Doc Ref</th>
+                                <th class="p-3">Counterparty</th>
+                                <th class="p-3">Nature of Difference</th>
+                                <th class="p-3">Amount</th>
+                                <th class="p-3">Root Cause Analysis</th>
+                                <th class="p-3">Proposed AJE</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-3 font-mono font-bold text-blue-600">CN-2026-088</td>
+                                <td class="p-3 font-medium">Equinix Data Centers BV</td>
+                                <td class="p-3">Unposted Vendor Credit Note</td>
+                                <td class="p-3 font-semibold text-rose-600">-€4,200.00</td>
+                                <td class="p-3 text-slate-600">SLA service credit note was keyed into draft procurement queue but not posted to subledger prior to freeze.</td>
+                                <td class="p-3 font-mono bg-slate-50 text-slate-800 font-semibold">Dr 2100 Trade Creditors €4,200<br>Cr 5200 Hosting Cost €4,200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 3: CONSOLIDATION & DATA ARCHITECTURE -->
+        <section id="tab-consolidation" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-b-xl border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Multi-Entity Consolidation & Master CoA Normalization</h2>
+                        <p class="text-xs text-slate-500">Entities: <strong>Entity NL (Exact/AFAS 4-Digit CoA)</strong> & <strong>Entity US (NetSuite 6-Digit CoA)</strong></p>
+                    </div>
+                    <span class="bg-blue-50 text-blue-700 text-xs px-3 py-1.5 rounded-md font-semibold border border-blue-200">
+                        Consolidated under IFRS / Dutch GAAP
+                    </span>
+                </div>
+
+                <!-- Consolidation Matrix Table -->
+                <div class="border border-slate-200 rounded-lg overflow-hidden text-xs mb-6">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold">
+                            <tr>
+                                <th class="p-3">Master Account Code</th>
+                                <th class="p-3">Reporting Line</th>
+                                <th class="p-3 text-right">Entity NL (€)</th>
+                                <th class="p-3 text-right">Entity US (€)</th>
+                                <th class="p-3 text-right text-rose-600">Eliminations (€)</th>
+                                <th class="p-3 text-right font-bold text-slate-900">Consolidated Group (€)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-3 font-mono font-bold text-blue-600">REV-100</td>
+                                <td class="p-3">Gross Product Revenue</td>
+                                <td class="p-3 text-right font-mono">€320,000</td>
+                                <td class="p-3 text-right font-mono">€210,000</td>
+                                <td class="p-3 text-right font-mono text-slate-400">€0</td>
+                                <td class="p-3 text-right font-mono font-bold">€530,000</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono font-bold text-blue-600">REV-200</td>
+                                <td class="p-3">Gross Service & SaaS Revenue</td>
+                                <td class="p-3 text-right font-mono">€110,000</td>
+                                <td class="p-3 text-right font-mono">€95,000</td>
+                                <td class="p-3 text-right font-mono text-slate-400">€0</td>
+                                <td class="p-3 text-right font-mono font-bold">€205,000</td>
+                            </tr>
+                            <tr class="bg-rose-50/40">
+                                <td class="p-3 font-mono font-bold text-purple-600">IC-REV / IC-EXP</td>
+                                <td class="p-3 font-medium">Intercompany Management Fee</td>
+                                <td class="p-3 text-right font-mono">€25,000</td>
+                                <td class="p-3 text-right font-mono">-€25,000</td>
+                                <td class="p-3 text-right font-mono font-bold text-rose-600">€0 (Eliminated)</td>
+                                <td class="p-3 text-right font-mono font-bold text-emerald-600">€0.00</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono font-bold text-slate-600">COGS-100</td>
+                                <td class="p-3">Direct Material & Hosting Costs</td>
+                                <td class="p-3 text-right font-mono">-€168,000</td>
+                                <td class="p-3 text-right font-mono">-€112,000</td>
+                                <td class="p-3 text-right font-mono text-slate-400">€0</td>
+                                <td class="p-3 text-right font-mono font-bold">-€280,000</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-mono font-bold text-slate-600">BS-CASH-100</td>
+                                <td class="p-3">Cash & Cash Equivalents</td>
+                                <td class="p-3 text-right font-mono">€184,500</td>
+                                <td class="p-3 text-right font-mono">€122,000</td>
+                                <td class="p-3 text-right font-mono text-slate-400">€0</td>
+                                <td class="p-3 text-right font-mono font-bold">€306,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Next Month Repeatability Feature Box -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
+                    <h3 class="text-sm font-bold text-blue-950 mb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        How This Model Accelerates Next Month's Close ("Push-Button Close"):
+                    </h3>
+                    <ol class="list-decimal list-inside text-xs text-blue-900 space-y-1.5 ml-2">
+                        <li><strong>Zero Manual Stitching:</strong> The finance analyst simply drops the new monthly trial balance CSVs into the <code>/inbox/</code> folder.</li>
+                        <li><strong>Automated Integrity Gates:</strong> Power Query / Python automatically validates that <code>Debits == Credits</code> and detects if any new unmapped GL codes were added in the ERP.</li>
+                        <li><strong>One-Click Refresh:</strong> Clicking <em>"Data &rarr; Refresh All"</em> updates all consolidated P&L, balance sheets, and intercompany elimination tabs in under 60 seconds.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer / Candidate Signoff -->
+        <footer class="text-center text-xs text-slate-500 py-4 border-t border-slate-200">
+            Automated Finance Controller & Financial Data Engineering Case Study | Prepared for Remote Finance Associate Role
+        </footer>
+    </main>
+
+    <!-- Interactive Tab Script & Chart -->
+    <script>
+        function switchTab(tabId) {
+            ['tab-pvm', 'tab-rec', 'tab-consolidation'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                document.getElementById('btn-' + id).classList.remove('tab-active');
+                document.getElementById('btn-' + id).classList.add('text-slate-500');
+            });
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('tab-active');
+            document.getElementById('btn-' + tabId).classList.remove('text-slate-500');
+        }
+
+        // PVM Waterfall Chart Initialization
+        window.addEventListener('load', () => {
+            const ctx = document.getElementById('pvmChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Prior GP', 'Price Var', 'Cost Infl.', 'Volume Var', 'Mix Shift', 'Current GP'],
+                    datasets: [{
+                        label: 'Gross Profit Bridge (€)',
+                        data: [260000, 0, -42800, 22880, -95680, 230000],
+                        backgroundColor: [
+                            '#3b82f6', // Prior GP
+                            '#94a3b8', // Price
+                            '#f43f5e', // Cost
+                            '#10b981', // Volume
+                            '#e11d48', // Mix
+                            '#2563eb'  // Current GP
+                        ],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => ` €${context.raw.toLocaleString()}`
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: (value) => '€' + (value / 1000) + 'k'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

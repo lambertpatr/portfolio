@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Server & PowerShell Operations Console | Operator Case Study</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; color: #f8fafc; }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- Header -->
+        <header class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center font-bold text-2xl text-white shadow-lg shadow-blue-900/40">
+                    PS
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">SQL Server &amp; PowerShell Operational Dashboard</h1>
+                    <p class="text-xs text-slate-400">Automated Daily Maintenance, Script Verification &amp; Alert Triage</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                    ● Instance Status: ONLINE (100% Verified)
+                </span>
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700">Cluster: SQLDEV01</span>
+            </div>
+        </header>
+
+        <!-- KPI Status Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl">
+                <div class="text-xs font-medium uppercase tracking-wider text-slate-400">Databases Online</div>
+                <div class="text-2xl font-black text-white mt-1">12 / 12</div>
+                <div class="text-xs text-emerald-400 font-semibold mt-1">✓ Zero Recovery / Suspect States</div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl">
+                <div class="text-xs font-medium uppercase tracking-wider text-slate-400">Backup Freshness (RPO)</div>
+                <div class="text-2xl font-black text-emerald-400 mt-1">&lt; 4 Hours</div>
+                <div class="text-xs text-slate-400 mt-1">Full + Diff Backups Validated</div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl">
+                <div class="text-xs font-medium uppercase tracking-wider text-slate-400">Transaction Log Free Space</div>
+                <div class="text-2xl font-black text-blue-400 mt-1">68.4%</div>
+                <div class="text-xs text-slate-400 mt-1">Normal (Threshold: &gt; 20%)</div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl">
+                <div class="text-xs font-medium uppercase tracking-wider text-slate-400">PowerShell Agent Jobs</div>
+                <div class="text-2xl font-black text-white mt-1">18 / 18</div>
+                <div class="text-xs text-emerald-400 font-semibold mt-1">✓ 100% Success in Last 24h</div>
+            </div>
+        </section>
+
+        <!-- Operator Interactive Test & Log Console -->
+        <section class="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-xl space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <h2 class="text-base font-bold text-white flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3 1h10v2H5V6zm10 4H5v2h10v-2zm-10 4h7v2H5v-2z" clip-rule="evenodd"/></svg>
+                        PowerShell Script Runner &amp; Verification Console
+                    </h2>
+                    <p class="text-xs text-slate-400">Simulate routine execution of PowerShell maintenance scripts with automated assurance gates.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="runPowerShellHealthCheck()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2 rounded-lg transition shadow">
+                        ▶ Run Health Diagnostics (Invoke-SqlHealthCheck)
+                    </button>
+                    <button onclick="runPowerShellBackupVerification()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs px-4 py-2 rounded-lg border border-slate-700 transition">
+                        ▶ Verify Backup Integrity
+                    </button>
+                </div>
+            </div>
+
+            <!-- Terminal Window -->
+            <div class="bg-black rounded-lg border border-slate-800 p-4 font-mono text-xs text-slate-300 space-y-1.5 h-64 overflow-y-auto" id="terminalOutput">
+                <div class="text-slate-500">// Operator Terminal initialized. Ready for routine PowerShell instructions.</div>
+                <div><span class="text-blue-400">PS C:\SQLOperations&gt;</span> .\scripts\Invoke-SqlHealthCheck.ps1 -ServerInstance "localhost\SQLDEV01"</div>
+                <div class="text-slate-400">[2026-09-20 17:00:01] [INFO] Starting Routine SQL Server Health Check on instance: localhost\SQLDEV01</div>
+                <div class="text-slate-400">[2026-09-20 17:00:02] [INFO] Executing query: Verifying user database online states...</div>
+                <div class="text-emerald-400">[2026-09-20 17:00:02] [SUCCESS] All user databases (ProductionDB, ReportingDB, StageDB) are ONLINE and accessible.</div>
+                <div class="text-slate-400">[2026-09-20 17:00:03] [INFO] Verifying backup freshness: Ensuring RPO &lt; 24 hours...</div>
+                <div class="text-emerald-400">[2026-09-20 17:00:03] [SUCCESS] Backup Verification: ProductionDB last backup was 4 hours ago. PASS.</div>
+                <div class="text-slate-400">[2026-09-20 17:00:04] [INFO] Checking DBCC SQLPERF(LOGSPACE) and storage volume free thresholds...</div>
+                <div class="text-emerald-400">[2026-09-20 17:00:04] [SUCCESS] Transaction Log utilization is below 35% on all active databases. PASS.</div>
+                <div class="text-emerald-400">[2026-09-20 17:00:05] [SUCCESS] Health check completed successfully with ZERO critical alerts. Exit Code: 0</div>
+            </div>
+        </section>
+
+        <!-- Standard Operational Playbook Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-2">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="text-blue-400 font-mono">01.</span> Reasonable Assurance Gates
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Never assumes a script succeeded just because it finished. Scripts check <code>$LASTEXITCODE</code>, assert affected row counts, inspect error logs, and verify database states post-execution.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-2">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="text-blue-400 font-mono">02.</span> Alert Triage &amp; Escalation
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Structured playbook for handling failed Agent jobs, log growth spikes, blocking queries, or connection drops, documenting root causes and notifying leads immediately with concise diagnostic dumps.
+                </p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 p-5 rounded-xl space-y-2">
+                <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                    <span class="text-blue-400 font-mono">03.</span> Safe Script Execution Protocol
+                </h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Adheres strictly to instructions: executes scripts within explicit transaction blocks (<code>BEGIN TRAN / COMMIT</code>), confirms target database context (<code>USE [DB]</code>), and retains complete audit logs.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function appendLog(text, colorClass = "text-slate-300") {
+            const terminal = document.getElementById("terminalOutput");
+            const line = document.createElement("div");
+            line.className = colorClass;
+            line.innerText = text;
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function runPowerShellHealthCheck() {
+            appendLog("PS C:\\SQLOperations> .\\scripts\\Invoke-SqlHealthCheck.ps1 -FullScan", "text-blue-400 mt-2 font-bold");
+            setTimeout(() => appendLog("[INFO] Connecting to SQL Server Instance via dbatools / SMO...", "text-slate-400"), 300);
+            setTimeout(() => appendLog("[INFO] Checking sys.dm_os_sys_info and CPU utilization: 12% (Healthy)", "text-slate-400"), 700);
+            setTimeout(() => appendLog("[INFO] Verifying TempDB contention: Normal allocation across 8 data files.", "text-slate-400"), 1100);
+            setTimeout(() => appendLog("[SUCCESS] System health verified. All parameters within tolerance.", "text-emerald-400 font-semibold"), 1500);
+        }
+
+        function runPowerShellBackupVerification() {
+            appendLog("PS C:\\SQLOperations> .\\scripts\\Test-SqlBackupIntegrity.ps1 -Database 'ProductionDB'", "text-blue-400 mt-2 font-bold");
+            setTimeout(() => appendLog("[INFO] Inspecting latest .bak header on \\\\BackupShare\\ProductionDB_Full.bak...", "text-slate-400"), 300);
+            setTimeout(() => appendLog("[INFO] Executing RESTORE VERIFYONLY...", "text-slate-400"), 800);
+            setTimeout(() => appendLog("[SUCCESS] Backup file is valid and readable by SQL Server storage engine.", "text-emerald-400 font-semibold"), 1400);
+        }
+    </script>
+</body>
+</html>
