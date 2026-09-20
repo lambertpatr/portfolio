@@ -30,8 +30,9 @@
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0b0f19; color: #f3f4f6; }
         .gradient-text { background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-card:hover { border-color: rgba(96, 165, 250, 0.4); transform: translateY(-3px); }
+        .glass-card { background: rgba(17, 24, 39, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card:hover { border-color: rgba(96, 165, 250, 0.45); transform: translateY(-4px); }
+        .filter-btn.active { background-color: #2563eb; color: #ffffff; border-color: #3b82f6; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased">
@@ -45,7 +46,7 @@
             </a>
             <div class="hidden md:flex items-center gap-8 text-sm text-slate-300 font-medium">
                 <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects & Demos</a>
+                <a href="#projects" class="hover:text-blue-400 transition">All 13 Projects</a>
                 <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
                 <a href="#skills" class="hover:text-blue-400 transition">Tech Stack</a>
                 <a href="#contact" class="px-4 py-2 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition shadow-lg shadow-blue-900/30">Get in Touch</a>
@@ -54,11 +55,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="about" class="relative overflow-hidden pt-20 pb-28">
+    <header id="about" class="relative overflow-hidden pt-20 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-950/70 text-blue-400 border border-blue-800/60 shadow">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Available for Contract &amp; Remote Projects</span>
+                <span>Available for Enterprise, Contract &amp; Remote Projects</span>
             </div>
             
             <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight">
@@ -67,15 +68,15 @@
             </h1>
 
             <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
-                Specialized in <strong>high-throughput data engineering</strong>, enterprise <strong>SQL Server &amp; Oracle database architecture</strong>, authenticated web scraping automation, and institutional <strong>financial controlling suites</strong>.
+                Specialized in <strong>high-throughput data engineering</strong>, enterprise <strong>SQL Server &amp; Oracle database architecture (OCP/OCA)</strong>, automated web scraping pipelines, and institutional <strong>financial controlling suites</strong>.
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 pt-4">
                 <a href="#projects" class="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-blue-900/40">
-                    Explore Interactive Projects
+                    Explore All 13 Live Projects
                 </a>
                 <a href="#certifications" class="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition">
-                    View Certifications (OCP / OCA)
+                    View Certifications (OCP / OCA / PL/SQL)
                 </a>
             </div>
         </div>
@@ -85,8 +86,8 @@
     <section class="border-y border-slate-800 bg-[#0f1523]/60 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-                <div class="text-3xl sm:text-4xl font-black text-white">5+ Years</div>
-                <div class="text-xs sm:text-sm text-slate-400 mt-1">Enterprise Experience</div>
+                <div class="text-3xl sm:text-4xl font-black text-white">13+ Projects</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Live Interactive Portals</div>
             </div>
             <div>
                 <div class="text-3xl sm:text-4xl font-black text-blue-400">OCP &amp; OCA</div>
@@ -104,45 +105,28 @@
     </section>
 
     <!-- Featured Interactive Projects Showcase -->
-    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-12">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
-                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Live Case Studies &amp; Demos</h2>
-                <h3 class="text-3xl font-black text-white mt-1">Featured Technical Solutions</h3>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Portfolio &amp; Production Demos</h2>
+                <h3 class="text-3xl font-black text-white mt-1">13 Production Projects</h3>
             </div>
-            <p class="text-xs text-slate-400 max-w-md">
-                Click "Launch Live Demo" on any card to interact with the real deployed dashboards, test consoles, and analytical packs.
-            </p>
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap gap-2 text-xs">
+                <button onclick="filterProjects('all')" class="filter-btn active px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (13)</button>
+                <button onclick="filterProjects('db')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">Databases &amp; Ops</button>
+                <button onclick="filterProjects('finance')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance &amp; Banking</button>
+                <button onclick="filterProjects('ai')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML Pipelines</button>
+                <button onclick="filterProjects('telecom')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom &amp; Utility</button>
+                <button onclick="filterProjects('scraping')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping &amp; Auth</button>
+            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Projects Grid (13 Complete Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
 
-            <!-- Project 1: Financial Close & Controlling Suite -->
-            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-blue-950 text-blue-400 border border-blue-800">Finance &amp; Data</span>
-                        <span class="text-xs text-slate-500">IFRS / Dutch GAAP</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-white">Financial Close &amp; Consolidation Engine</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Automated multi-entity consolidation normalizer with Master Chart of Accounts (MCoA), mathematical Price-Volume-Mix (PVM) margin decomposition, and balance sheet reconciliation workpapers.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5 pt-2">
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python 3</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Power Query (M)</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Excel OpenPyXL</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PVM Analysis</span>
-                    </div>
-                </div>
-                <a href="projects/financial_close_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
-                    <span>Launch Interactive Dashboard</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                </a>
-            </div>
-
-            <!-- Project 2: Read-Only Database Extraction Suite -->
-            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+            <!-- 1. Database Extraction Tool -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="db">
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">Database Tools</span>
@@ -150,7 +134,7 @@
                     </div>
                     <h4 class="text-lg font-bold text-white">Read-Only Database Extraction &amp; Migration</h4>
                     <p class="text-xs text-slate-400 leading-relaxed">
-                        Enterprise tool extracting multi-gigabyte databases with zero production lock risk. Features driver-level read-only isolation, AST query whitelisting, and chunked Parquet streaming.
+                        Extracts multi-gigabyte production databases with zero lock risk. Features driver-level read-only flags, AST query whitelisting, and chunked Parquet streaming.
                     </p>
                     <div class="flex flex-wrap gap-1.5 pt-2">
                         <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">FastAPI</span>
@@ -165,56 +149,8 @@
                 </a>
             </div>
 
-            <!-- Project 3: CS2 Authenticated Scraper & Telemetry -->
-            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-orange-950 text-orange-400 border border-orange-800">Scraping &amp; Auth</span>
-                        <span class="text-xs text-slate-500">Esports Data Science</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-white">CS2 Authenticated Demo Scraper &amp; Telemetry</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        On-demand demo download pipeline operating behind login walls. Handles session persistence, Steam OpenID, Cloudflare clearance, chunked Gzip streaming, and tick-accurate telemetry.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5 pt-2">
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Session Auth</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Gzip Streaming</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Chart.js</span>
-                    </div>
-                </div>
-                <a href="projects/cs2_demo_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
-                    <span>Launch Telemetry Portal</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                </a>
-            </div>
-
-            <!-- Project 4: Millicom Telecom CDR Intelligence Suite -->
-            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-purple-950 text-purple-400 border border-purple-800">Big Data &amp; Telecom</span>
-                        <span class="text-xs text-slate-500">Tigo Tanzania Network</span>
-                    </div>
-                    <h4 class="text-lg font-bold text-white">Telecom CDR Analytics &amp; QoS Suite</h4>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Enterprise telecommunications mediation and fraud engine. Analyzes millions of CDRs, computes Erlang B traffic congestion, tracks TCRA QoS compliance, and detects interconnect bypass fraud.
-                    </p>
-                    <div class="flex flex-wrap gap-1.5 pt-2">
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Erlang Traffic</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">QoS Metrics</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">RAFM Fraud</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">GIS Mapping</span>
-                    </div>
-                </div>
-                <a href="projects/millicom_telecom_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
-                    <span>Launch Telecom Dashboard</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                </a>
-            </div>
-
-            <!-- Project 5: SQL Server & PowerShell Operator Console -->
-            <div class="glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5">
+            <!-- 2. SQL Server PowerShell Operator Console -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="db">
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-cyan-950 text-cyan-400 border border-cyan-800">Database Ops</span>
@@ -228,11 +164,263 @@
                         <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PowerShell 7</span>
                         <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">SQL Server</span>
                         <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Health Auditing</span>
-                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">dbatools</span>
                     </div>
                 </div>
                 <a href="projects/sql_powershell_console.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
                     <span>Launch Operations Console</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 3. Financial Close & Consolidation -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="finance">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-blue-950 text-blue-400 border border-blue-800">Finance &amp; Data</span>
+                        <span class="text-xs text-slate-500">IFRS / Dutch GAAP</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Financial Close &amp; Consolidation Engine</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automated multi-entity consolidation normalizer with Master Chart of Accounts (MCoA), mathematical Price-Volume-Mix (PVM) margin decomposition, and balance sheet reconciliations.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python 3</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Power Query (M)</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PVM Margin Analysis</span>
+                    </div>
+                </div>
+                <a href="projects/financial_close_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Interactive Dashboard</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 4. FNB Commercial Banking Intelligence -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="finance">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800">Commercial Banking</span>
+                        <span class="text-xs text-slate-500">First National Bank</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">FNB Banking Portfolio &amp; Credit Intelligence</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Commercial banking risk model analyzing NPL ratios, interest margin yields, deposit concentration, and liquidity stress across multi-currency corporate portfolios.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Credit Risk</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">NPL Metrics</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Basel Compliance</span>
+                    </div>
+                </div>
+                <a href="projects/fnb_banking_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Banking Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 5. Document AI Invoice Parser -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="ai">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-800">Applied GenAI</span>
+                        <span class="text-xs text-slate-500">Multimodal OCR &amp; NLP</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Document AI Invoice &amp; Receipt Parser</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Multimodal invoice intelligence system extracting structured JSON from raw PDF/image documents, validating VAT/tax calculations, and cross-checking purchase orders.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">OCR / Vision AI</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">FastAPI</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Tax Reconciliation</span>
+                    </div>
+                </div>
+                <a href="projects/document_ai_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Invoice AI Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 6. AI/ML Workflow Optimization -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="ai">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-fuchsia-950 text-fuchsia-400 border border-fuchsia-800">MLOps &amp; AutoML</span>
+                        <span class="text-xs text-slate-500">Hyperparameter Tuning</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">AI-ML Workflow Optimization Pipeline</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        High-performance automated ML experiment tracking pipeline. Benchmarks LightGBM, XGBoost, and CatBoost models with cross-validation and feature importance analysis.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">MLOps</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">XGBoost / LightGBM</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Model Registry</span>
+                    </div>
+                </div>
+                <a href="projects/ml_workflow_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch ML Experiment Lab</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 7. AI Trainer Data Engineering Evaluation -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="ai">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-violet-950 text-violet-400 border border-violet-800">LLM Benchmarking</span>
+                        <span class="text-xs text-slate-500">Evaluation Suite</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">AI Trainer Data Engineering Evaluator</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Evaluation and rubric scoring framework assessing LLM code generation quality, SQL execution safety, unit test coverage, and documentation accuracy.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">LLM Rubrics</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Code Quality</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">RLHF Auditing</span>
+                    </div>
+                </div>
+                <a href="projects/ai_trainer_evaluation_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Evaluation Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 8. Millicom Telecom CDR Suite -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="telecom">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-purple-950 text-purple-400 border border-purple-800">Big Data &amp; Telecom</span>
+                        <span class="text-xs text-slate-500">Tigo Tanzania Network</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Telecom CDR Analytics &amp; QoS Suite</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Enterprise telecommunications mediation and fraud engine. Analyzes millions of CDRs, computes Erlang B traffic congestion, tracks TCRA QoS compliance, and flags fraud.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Erlang Traffic</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">QoS Compliance</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">RAFM Fraud</span>
+                    </div>
+                </div>
+                <a href="projects/millicom_telecom_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Telecom Dashboard</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 9. TANESCO Power Utility Grid Analytics -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="telecom">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-yellow-950 text-yellow-400 border border-yellow-800">Energy &amp; Utility</span>
+                        <span class="text-xs text-slate-500">National Grid SCADA</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">TANESCO National Grid &amp; Load Dispatch</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        National electrical grid dispatch and sub-station telemetry. Models hydro/thermal power generation balance, transmission losses, and blackout risk forecasting.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Grid Telemetry</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Load Forecasting</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Transmission Losses</span>
+                    </div>
+                </div>
+                <a href="projects/tanesco_utility_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-yellow-600 hover:bg-yellow-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Grid SCADA Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 10. TPA Port Logistics & Vessel Turnaround -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="telecom">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-sky-950 text-sky-400 border border-sky-800">Maritime &amp; Supply Chain</span>
+                        <span class="text-xs text-slate-500">Tanzania Ports Authority</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">TPA Maritime Logistics &amp; Berth Optimization</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Port container throughput tracking, berth crane productivity, vessel dwell-time analytics, and automated TEU import/export flow scheduling.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Berth Allocation</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Vessel Turnaround</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Supply Chain</span>
+                    </div>
+                </div>
+                <a href="projects/tpa_port_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Maritime Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 11. National Petroleum Stock Strategic Inventory -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="telecom">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-rose-950 text-rose-400 border border-rose-800">Commodities &amp; Energy</span>
+                        <span class="text-xs text-slate-500">National Reserve</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Petroleum Strategic Reserve &amp; Supply Chain</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        National bulk petroleum inventory monitoring (PMS, AGO, Jet A-1). Forecasts national days-of-cover, vessel offloading queues, and storage terminal outages.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Supply Security</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Days of Cover</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Terminal SCADA</span>
+                    </div>
+                </div>
+                <a href="projects/petroleum_stock_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Reserve Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 12. CS2 Authenticated Scraper & Telemetry -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="scraping">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-orange-950 text-orange-400 border border-orange-800">Scraping &amp; Auth</span>
+                        <span class="text-xs text-slate-500">Esports Data Science</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">CS2 Authenticated Demo Scraper &amp; Telemetry</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        On-demand demo download pipeline operating behind login walls. Handles session persistence, Steam OpenID, Cloudflare clearance, chunked Gzip streaming, and tick-accurate telemetry.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Session Auth</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Gzip Streaming</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Chart.js</span>
+                    </div>
+                </div>
+                <a href="projects/cs2_demo_dashboard.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Telemetry Portal</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+
+            <!-- 13. Car Buyer Review Scraper & Sentiment -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="scraping">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-teal-950 text-teal-400 border border-teal-800">Scraping &amp; NLP</span>
+                        <span class="text-xs text-slate-500">Automotive Reviews</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Car Buyer Web Scraper &amp; Sentiment Lab</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Automated automotive marketplace scraper extracting verified buyer reviews, dealer satisfaction ratings, sentiment analysis, and vehicle reliability metrics.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Web Scraping</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Sentiment NLP</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Data Normalization</span>
+                    </div>
+                </div>
+                <a href="projects/car_review_scraper_viewer.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Review Viewer</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
             </div>
@@ -342,7 +530,7 @@
                 <div class="text-xs text-slate-500">Senior Data Scientist &amp; Database Systems Architect</div>
             </div>
             <div class="flex items-center gap-6 text-sm text-slate-400">
-                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+                <a href="#projects" class="hover:text-blue-400 transition">All Projects</a>
                 <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
                 <a href="https://github.com/lambertpatr" target="_blank" class="hover:text-blue-400 transition">GitHub</a>
             </div>
@@ -352,5 +540,20 @@
         </div>
     </footer>
 
+    <!-- Category Filter Script -->
+    <script>
+        function filterProjects(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + category).classList.add('active');
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
 </body>
 </html>

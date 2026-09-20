@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & ML Workflow Optimization | Experiment & Model Intelligence</title>
+    <style>
+        :root {
+            --bg-primary: #0A0E17;
+            --bg-card: #131B2A;
+            --bg-card-hover: #1A2538;
+            --border-color: #202D42;
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
+            --accent-blue: #38BDF8;
+            --accent-cyan: #06B6D4;
+            --accent-emerald: #10B981;
+            --accent-amber: #F59E0B;
+            --accent-rose: #F43F5E;
+            --accent-purple: #8B5CF6;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.5px;
+        }
+        .header-title p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .badge-live {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .badge-live::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+        .kpi-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .kpi-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 8px 0 4px 0;
+        }
+        .kpi-subtext {
+            font-size: 11px;
+            color: var(--accent-emerald);
+            font-weight: 500;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 10px;
+        }
+        .card-header h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            background: rgba(0,0,0,0.2);
+        }
+        tr:hover td {
+            background: var(--bg-card-hover);
+        }
+        .tag-iter {
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .cm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .cm-box {
+            padding: 14px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .cm-tp {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
+        .cm-tn {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+        .cm-fp {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+        .cm-fn {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+        }
+        .cm-num {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .bar-container {
+            margin-bottom: 12px;
+        }
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .bar-track {
+            height: 7px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+        }
+        .sim-input {
+            margin-bottom: 14px;
+        }
+        .sim-input label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .sim-input input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-blue);
+        }
+        .gauge-container {
+            text-align: center;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: 14px;
+        }
+        .gauge-val {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent-emerald);
+        }
+        .status-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <div class="header-title">
+            <h1>AI & Machine Learning Workflow Optimization</h1>
+            <p>End-to-End Pipeline Telemetry, Iterative Experiment Tracking & Production Model Diagnostics</p>
+        </div>
+        <div>
+            <span class="badge-live">Champion Model Deployed</span>
+        </div>
+    </div>
+
+    <!-- Top KPI Grid -->
+    <div class="kpi-grid">
+        <div class="kpi-card">
+            <div class="kpi-label">Hold-out Test F1-Score</div>
+            <div class="kpi-value">0.8547</div>
+            <div class="kpi-subtext">+5188.1% vs Baseline</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Hold-out Test ROC-AUC</div>
+            <div class="kpi-value">0.9831</div>
+            <div class="kpi-subtext">PR-AUC: 1.0000</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Hold-out Recall</div>
+            <div class="kpi-value">81.5%</div>
+            <div class="kpi-subtext">Precision: 89.8%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Optimal Threshold</div>
+            <div class="kpi-value">0.37</div>
+            <div class="kpi-subtext">F1-Calibrated Boundary</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">Brier Calibration Score</div>
+            <div class="kpi-value">0.0353</div>
+            <div class="kpi-subtext">High Probabilistic Reliability</div>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <!-- Left Column: Iteration Leaderboard & Progression -->
+        <div>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Iterative Experiment Lineage & Performance Leaderboard</h2>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Iteration</th>
+                            <th>Architecture</th>
+                            <th>Features</th>
+                            <th>Val F1</th>
+                            <th>Val ROC-AUC</th>
+                            <th>F1 Delta</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="tag-iter">Iter 1</span></td>
+                            <td><strong>Logistic Regression</strong></td>
+                            <td>13 cols</td>
+                            <td><strong>0.0159</strong></td>
+                            <td>0.5031</td>
+                            <td><span style='color: var(--text-muted);'>0.0000</span></td>
+                            <td>0.787s</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag-iter">Iter 2</span></td>
+                            <td><strong>Logistic Regression + Feature Transforms</strong></td>
+                            <td>38 cols</td>
+                            <td><strong>0.8145</strong></td>
+                            <td>0.9825</td>
+                            <td><span style='color: var(--accent-emerald); font-weight: 600;'>+0.7986</span></td>
+                            <td>2.535s</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag-iter">Iter 3</span></td>
+                            <td><strong>Random Forest (30 Trees)</strong></td>
+                            <td>38 cols</td>
+                            <td><strong>0.8347</strong></td>
+                            <td>0.9763</td>
+                            <td><span style='color: var(--accent-emerald); font-weight: 600;'>+0.0202</span></td>
+                            <td>5.06s</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag-iter">Iter 4</span></td>
+                            <td><strong>Gradient Boosting (45 Iterations)</strong></td>
+                            <td>38 cols</td>
+                            <td><strong>0.8158</strong></td>
+                            <td>0.9752</td>
+                            <td><span style='color: var(--text-muted);'>0.0000</span></td>
+                            <td>26.893s</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag-iter">Iter 5</span></td>
+                            <td><strong>Stacking Blend (LR 15%, RF 35%, GBDT 50%) + Optimal Threshold</strong></td>
+                            <td>38 cols</td>
+                            <td><strong>0.8408</strong></td>
+                            <td>0.9794</td>
+                            <td><span style='color: var(--accent-emerald); font-weight: 600;'>+0.0250</span></td>
+                            <td>0.082s</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Feature Importance Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Permutation Feature Importance (Drop in ROC-AUC on Hold-out Set)</h2>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Vibration Rms Mms</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.04088</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 100.0%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Thermal Vibration Stress Index</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00973</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 23.8%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Bearing Temperature C</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00495</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 12.1%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Acoustic Emission Db</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00230</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 5.6%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Lubricant Viscosity Cst</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00129</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 3.2%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Hydraulic Pressure Bar</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00100</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 2.4%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Acoustic Electrical Intensity</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00088</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 2.2%;"></div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label">
+                        <span>Operating Hours Total</span>
+                        <span style="font-weight:600; color:var(--accent-cyan);">0.00054</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 1.3%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Confusion Matrix & Live Simulator -->
+        <div>
+            <!-- Confusion Matrix Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Hold-out Confusion Matrix (N=5 Iterations)</h2>
+                </div>
+                <div class="cm-grid">
+                    <div class="cm-box cm-tp">
+                        <div class="kpi-label" style="color: var(--accent-emerald);">True Positives (TP)</div>
+                        <div class="cm-num" style="color: var(--accent-emerald);">203</div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Failures Caught</div>
+                    </div>
+                    <div class="cm-box cm-fp">
+                        <div class="kpi-label" style="color: var(--accent-amber);">False Positives (FP)</div>
+                        <div class="cm-num" style="color: var(--accent-amber);">23</div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top:2px;">False Alarms</div>
+                    </div>
+                    <div class="cm-box cm-fn">
+                        <div class="kpi-label" style="color: var(--accent-rose);">False Negatives (FN)</div>
+                        <div class="cm-num" style="color: var(--accent-rose);">46</div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Missed Breakdowns</div>
+                    </div>
+                    <div class="cm-box cm-tn">
+                        <div class="kpi-label" style="color: var(--accent-blue);">True Negatives (TN)</div>
+                        <div class="cm-num" style="color: var(--accent-blue);">1230</div>
+                        <div style="font-size: 10px; color: var(--text-muted); margin-top:2px;">Normal Operations</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Edge Inference Simulator -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Real-Time Edge Inference Simulator</h2>
+                </div>
+                
+                <div class="sim-input">
+                    <label>
+                        <span>Vibration RMS (mm/s)</span>
+                        <span id="vib_val">2.8 mm/s</span>
+                    </label>
+                    <input type="range" id="vib_slider" min="0.8" max="8.0" step="0.1" value="2.8" oninput="updateInference()">
+                </div>
+
+                <div class="sim-input">
+                    <label>
+                        <span>Bearing Temperature (°C)</span>
+                        <span id="temp_val">62 °C</span>
+                    </label>
+                    <input type="range" id="temp_slider" min="35" max="115" step="1" value="62" oninput="updateInference()">
+                </div>
+
+                <div class="sim-input">
+                    <label>
+                        <span>Hydraulic Pressure (Bar)</span>
+                        <span id="press_val">138 Bar</span>
+                    </label>
+                    <input type="range" id="press_slider" min="60" max="200" step="2" value="138" oninput="updateInference()">
+                </div>
+
+                <div class="sim-input">
+                    <label>
+                        <span>Cycles Since Last Service</span>
+                        <span id="cycles_val">620 Cycles</span>
+                    </label>
+                    <input type="range" id="cycles_slider" min="50" max="2800" step="50" value="620" oninput="updateInference()">
+                </div>
+
+                <div class="gauge-container">
+                    <div class="kpi-label">Predicted 7-Day Failure Probability</div>
+                    <div class="gauge-val" id="prob_disp">12.4%</div>
+                    <div id="status_disp" class="status-pill" style="background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald);">LOW RISK - NORMAL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateInference() {
+            const vib = parseFloat(document.getElementById('vib_slider').value);
+            const temp = parseFloat(document.getElementById('temp_slider').value);
+            const press = parseFloat(document.getElementById('press_slider').value);
+            const cycles = parseFloat(document.getElementById('cycles_slider').value);
+
+            document.getElementById('vib_val').innerText = vib.toFixed(1) + ' mm/s';
+            document.getElementById('temp_val').innerText = temp + ' °C';
+            document.getElementById('press_val').innerText = press + ' Bar';
+            document.getElementById('cycles_val').innerText = cycles + ' Cycles';
+
+            // Real-time logistic hazard model in JavaScript
+            let logit = -4.5 + 0.92 * (vib - 3.2) + 0.062 * (temp - 70.0) - 0.04 * (press - 120.0) + 0.00045 * (cycles - 500.0);
+            if (vib > 4.2 && temp > 80.0) {
+                logit += 1.6;
+            }
+
+            const prob = 1.0 / (1.0 + Math.exp(-logit));
+            const probPct = (prob * 100.0).toFixed(1);
+
+            const probDisp = document.getElementById('prob_disp');
+            const statusDisp = document.getElementById('status_disp');
+
+            probDisp.innerText = probPct + '%';
+
+            if (prob >= 0.65) {
+                probDisp.style.color = 'var(--accent-rose)';
+                statusDisp.style.background = 'rgba(244, 63, 94, 0.2)';
+                statusDisp.style.color = 'var(--accent-rose)';
+                statusDisp.innerText = 'CRITICAL RISK - IMMEDIATE SERVICE REQUIRED';
+            } else if (prob >= 0.35) {
+                probDisp.style.color = 'var(--accent-amber)';
+                statusDisp.style.background = 'rgba(245, 158, 11, 0.2)';
+                statusDisp.style.color = 'var(--accent-amber)';
+                statusDisp.innerText = 'ELEVATED RISK - SCHEDULE INSPECTION';
+            } else {
+                probDisp.style.color = 'var(--accent-emerald)';
+                statusDisp.style.background = 'rgba(16, 185, 129, 0.2)';
+                statusDisp.style.color = 'var(--accent-emerald)';
+                statusDisp.innerText = 'LOW RISK - NORMAL OPERATION';
+            }
+        }
+    </script>
+</body>
+</html>

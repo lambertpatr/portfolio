@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Data Engineering Evaluation - Expert Review Showcase</title>
+    <style>
+        :root {
+            --bg-base: #0B0F19;
+            --bg-surface: #111827;
+            --bg-card: #1F2937;
+            --border-color: #374151;
+            --accent-blue: #3B82F6;
+            --accent-green: #10B981;
+            --accent-red: #EF4444;
+            --accent-amber: #F59E0B;
+            --accent-purple: #8B5CF6;
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-base);
+            color: var(--text-main);
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1E1B4B 0%, #0F172A 100%);
+            border: 1px solid var(--border-color);
+            border-left: 6px solid var(--accent-purple);
+            border-radius: 10px;
+            padding: 24px 30px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-eval {
+            background: var(--accent-purple);
+            color: #FFFFFF;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* Summary Cards */
+        .grid-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+
+        .card-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .card-value {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        /* Tabs / Candidate Grid */
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 1100px) {
+            .candidates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .candidate-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .candidate-card.gold {
+            border-color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .candidate-card.fail {
+            border-color: var(--accent-red);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .candidate-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .tag-pill {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .tag-pill.pass { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .tag-pill.fail { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+        .tag-pill.amber { background: rgba(245, 158, 11, 0.2); color: var(--accent-amber); }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .metric-label { color: var(--text-muted); }
+        .metric-val { font-weight: 700; color: #FFF; }
+
+        .rationale-box {
+            background: #111827;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 14px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #D1D5DB;
+        }
+
+        /* Detailed Rubric Table */
+        .panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #1E293B;
+            color: #CBD5E1;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            color: #E2E8F0;
+        }
+
+        tr:nth-child(even) { background: rgba(31, 41, 55, 0.3); }
+
+        code {
+            background: #0F172A;
+            color: #38BDF8;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-family: monospace;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <h1><span>🧠</span> AI Data Engineering Agent Evaluation <span class="badge-eval">EXPERT BENCHMARK</span></h1>
+            <div class="subtitle">Task: Enterprise Idempotent SCD Type-2 Ingestion Pipeline & Balance Ledger Migration</div>
+        </div>
+        <div style="text-align:right;font-size:12px;color:var(--text-muted)">
+            <div>Evaluation ID: <strong style="color:#FFF">EVAL-DE-2026-08492</strong></div>
+            <div>Benchmark Suite: <strong style="color:var(--accent-purple)">RLHF Data Engineering Track</strong></div>
+        </div>
+    </div>
+
+    <!-- Summary KPIs -->
+    <div class="grid-summary">
+        <div class="card">
+            <div class="card-label">Evaluated Task Domain</div>
+            <div class="card-value" style="color:var(--accent-blue)">PostgreSQL / SCD-2</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Evaluated Candidates</div>
+            <div class="card-value">3 Models</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Judge Invariant Assertions</div>
+            <div class="card-value" style="color:var(--accent-purple)">4 Strict Checks</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Ground-Truth Pass Rate</div>
+            <div class="card-value" style="color:var(--accent-green)">33.3% (1 of 3)</div>
+        </div>
+    </div>
+
+    <!-- Candidate Comparison Grid -->
+    <div class="candidates-grid">
+        
+        <!-- Candidate A -->
+        <div class="candidate-card fail">
+            <div class="candidate-header">
+                <div class="candidate-title">Candidate Model A</div>
+                <span class="tag-pill fail">FAILED (2/4 Checks)</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Model Type:</span>
+                <span class="metric-val">Naive LLM Baseline</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Memory Ingestion:</span>
+                <span class="metric-val" style="color:var(--accent-red)">OOM on 10M rows (pd.read_csv)</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Balance Calculation:</span>
+                <span class="metric-val" style="color:var(--accent-red)">Ignores Historical Baseline</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Idempotency on Retry:</span>
+                <span class="metric-val" style="color:var(--accent-amber)">Non-atomic mutation</span>
+            </div>
+            <div class="rationale-box">
+                <strong style="color:var(--accent-red)">Expert Reviewer Rationale:</strong><br>
+                Model blindly sums daily delta without joining existing account balance. A customer with $15,000 initial balance ends with only $2,000. Catastrophic data corruption in production.
+            </div>
+        </div>
+
+        <!-- Candidate B -->
+        <div class="candidate-card">
+            <div class="candidate-header">
+                <div class="candidate-title">Candidate Model B</div>
+                <span class="tag-pill amber">PARTIAL PASS (3/4)</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Model Type:</span>
+                <span class="metric-val">Intermediate LLM</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Memory Ingestion:</span>
+                <span class="metric-val">Chunked dataframe read</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Balance Calculation:</span>
+                <span class="metric-val" style="color:var(--accent-green)">Correctly adds opening balance</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Idempotency on Retry:</span>
+                <span class="metric-val" style="color:var(--accent-amber)">Missing transaction block isolation</span>
+            </div>
+            <div class="rationale-box">
+                <strong style="color:var(--accent-amber)">Expert Reviewer Rationale:</strong><br>
+                SQL logic correctly computes ledger balance, but lacks an atomic transaction block. If an error occurs midway, historical validity timestamps become fragmented with orphaned rows.
+            </div>
+        </div>
+
+        <!-- Gold Standard -->
+        <div class="candidate-card gold">
+            <div class="candidate-header">
+                <div class="candidate-title">Gold Standard (Expert Ref)</div>
+                <span class="tag-pill pass">100% PASS (4/4 Checks)</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Author:</span>
+                <span class="metric-val">Lead Data Engineer</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Memory Ingestion:</span>
+                <span class="metric-val" style="color:var(--accent-green)">O(1) Streaming COPY Binary Protocol</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Balance Calculation:</span>
+                <span class="metric-val" style="color:var(--accent-green)">Atomic MERGE with COALESCE baseline</span>
+            </div>
+            <div class="metric-row">
+                <span class="metric-label">Idempotency on Retry:</span>
+                <span class="metric-val" style="color:var(--accent-green)">Deterministic SCD-2 Invariant Preserved</span>
+            </div>
+            <div class="rationale-box">
+                <strong style="color:var(--accent-green)">Expert Reviewer Rationale:</strong><br>
+                Engineered for multi-million row production scale. Uses staging tables with exact temporal continuity, constant RAM consumption, and strict balance mass-conservation assertions.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Detailed Evaluation Rubric -->
+    <div class="panel">
+        <div class="panel-title">Automated Judge Invariant Assertions & Failure Diagnoses</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Assertion Category</th>
+                    <th>Evaluation Criteria</th>
+                    <th>Model A</th>
+                    <th>Model B</th>
+                    <th>Gold Standard</th>
+                    <th>Production Failure Risk</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Temporal SCD-2 Uniqueness</strong></td>
+                    <td><code>count(is_current = 1) == 1</code> per active customer</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td>Multiple active rows break downstream analytics joins</td>
+                </tr>
+                <tr>
+                    <td><strong>Mathematical Balance Precision</strong></td>
+                    <td><code>new_balance == initial_balance + sum(deltas)</code></td>
+                    <td style="color:var(--accent-red);font-weight:700">FAIL ($2k vs $17k)</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td>Silent ledger corruption resulting in financial discrepancies</td>
+                </tr>
+                <tr>
+                    <td><strong>System Mass-Balance Invariant</strong></td>
+                    <td><code>total_active_balance == sum(all_accounts)</code></td>
+                    <td style="color:var(--accent-red);font-weight:700">FAIL (-$7.7k vs $61.7k)</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td>Audit failure during balance sheet financial reconciliation</td>
+                </tr>
+                <tr>
+                    <td><strong>Idempotent Retry Invariant</strong></td>
+                    <td>Pipeline re-run produces zero duplicate current records</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td style="color:var(--accent-green)">PASS</td>
+                    <td>Pipeline crash on Airflow/Cron task retry</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        AI Task Evaluation & RLHF Data Engineering Framework | Production Benchmark Architecture
+    </div>
+
+</body>
+</html>
