@@ -438,36 +438,134 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
-                    <div class="w-12 h-12 mx-auto bg-red-950/80 border border-red-800 rounded-xl flex items-center justify-center font-bold text-red-400 text-xl shadow">
-                        OCP
+                <!-- 1. Oracle Certified Professional (OCP) -->
+                <div class="bg-[#111827] border border-slate-800 hover:border-red-500/50 p-6 rounded-2xl text-center space-y-4 transition-all duration-300 group shadow-lg">
+                    <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 bg-red-600/10 rounded-full blur-xl group-hover:bg-red-600/20 transition"></div>
+                        <!-- Official Oracle OCP Shield Badge SVG -->
+                        <svg class="w-16 h-16 drop-shadow-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer Ribbon Ring -->
+                            <circle cx="50" cy="50" r="44" stroke="#F80000" stroke-width="3" stroke-dasharray="2 1" fill="#1C1113"/>
+                            <circle cx="50" cy="50" r="39" fill="url(#ocp-grad)" stroke="#C70000" stroke-width="1.5"/>
+                            <!-- Oracle Red Oval -->
+                            <rect x="26" y="24" width="48" height="24" rx="12" fill="#F80000"/>
+                            <rect x="30" y="28" width="40" height="16" rx="8" fill="#1C1113"/>
+                            <!-- Star Accents -->
+                            <path d="M50 54L52 59L57 60L53 64L54 69L50 66L46 69L47 64L43 60L48 59L50 54Z" fill="#FDB813"/>
+                            <!-- Certification Level Text -->
+                            <text x="50" y="78" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">OCP</text>
+                            <text x="50" y="87" font-family="-apple-system, system-ui, sans-serif" font-size="6" font-weight="700" fill="#FCA5A5" text-anchor="middle" letter-spacing="0.5">PROFESSIONAL</text>
+                            <defs>
+                                <radialGradient id="ocp-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50) rotate(90) scale(40)">
+                                    <stop stop-color="#450A0A"/>
+                                    <stop offset="1" stop-color="#180505"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
                     </div>
-                    <div class="font-bold text-white text-base">Oracle Certified Professional</div>
-                    <div class="text-xs text-slate-400">Database Administration (OCP)</div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-red-950/80 text-red-400 border border-red-800/80 mb-1">
+                            <span>★ Oracle DBA</span>
+                        </div>
+                        <div class="font-bold text-white text-base">Oracle Certified Professional</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Database Administration (OCP)</div>
+                    </div>
                 </div>
 
-                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
-                    <div class="w-12 h-12 mx-auto bg-red-950/80 border border-red-800 rounded-xl flex items-center justify-center font-bold text-red-400 text-xl shadow">
-                        OCA
+                <!-- 2. Oracle Certified Associate (OCA) -->
+                <div class="bg-[#111827] border border-slate-800 hover:border-red-500/50 p-6 rounded-2xl text-center space-y-4 transition-all duration-300 group shadow-lg">
+                    <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 bg-red-600/10 rounded-full blur-xl group-hover:bg-red-600/20 transition"></div>
+                        <!-- Official Oracle OCA Shield Badge SVG -->
+                        <svg class="w-16 h-16 drop-shadow-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer Silver Ring -->
+                            <circle cx="50" cy="50" r="44" stroke="#94A3B8" stroke-width="3" stroke-dasharray="2 1" fill="#151922"/>
+                            <circle cx="50" cy="50" r="39" fill="url(#oca-grad)" stroke="#64748B" stroke-width="1.5"/>
+                            <!-- Oracle Red Oval -->
+                            <rect x="26" y="24" width="48" height="24" rx="12" fill="#F80000"/>
+                            <rect x="30" y="28" width="40" height="16" rx="8" fill="#151922"/>
+                            <!-- Laurel Branch Accent -->
+                            <circle cx="50" cy="61" r="5" fill="#CBD5E1"/>
+                            <!-- Certification Level Text -->
+                            <text x="50" y="78" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">OCA</text>
+                            <text x="50" y="87" font-family="-apple-system, system-ui, sans-serif" font-size="6" font-weight="700" fill="#CBD5E1" text-anchor="middle" letter-spacing="0.5">ASSOCIATE</text>
+                            <defs>
+                                <radialGradient id="oca-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50) rotate(90) scale(40)">
+                                    <stop stop-color="#1E293B"/>
+                                    <stop offset="1" stop-color="#0F172A"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
                     </div>
-                    <div class="font-bold text-white text-base">Oracle Certified Associate</div>
-                    <div class="text-xs text-slate-400">Database Administration (OCA)</div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-slate-800 text-slate-300 border border-slate-700 mb-1">
+                            <span>★ Oracle Core</span>
+                        </div>
+                        <div class="font-bold text-white text-base">Oracle Certified Associate</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Database Administration (OCA)</div>
+                    </div>
                 </div>
 
-                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
-                    <div class="w-12 h-12 mx-auto bg-amber-950/80 border border-amber-800 rounded-xl flex items-center justify-center font-bold text-amber-400 text-xl shadow">
-                        PL/SQL
+                <!-- 3. Oracle PL/SQL Developer Certified Professional -->
+                <div class="bg-[#111827] border border-slate-800 hover:border-amber-500/50 p-6 rounded-2xl text-center space-y-4 transition-all duration-300 group shadow-lg">
+                    <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 bg-amber-600/10 rounded-full blur-xl group-hover:bg-amber-600/20 transition"></div>
+                        <!-- Oracle PL/SQL Badge SVG -->
+                        <svg class="w-16 h-16 drop-shadow-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Golden Starburst Outer Ring -->
+                            <circle cx="50" cy="50" r="44" stroke="#F59E0B" stroke-width="3" fill="#1C1811"/>
+                            <circle cx="50" cy="50" r="39" fill="url(#plsql-grad)" stroke="#D97706" stroke-width="1.5"/>
+                            <!-- Code Tag / Terminal Symbol -->
+                            <path d="M38 34L28 44L38 54M62 34L72 44L62 54" stroke="#FBBF24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="53" y1="32" x2="47" y2="56" stroke="#F80000" stroke-width="3" stroke-linecap="round"/>
+                            <!-- Certification Level Text -->
+                            <text x="50" y="73" font-family="-apple-system, system-ui, sans-serif" font-size="9" font-weight="900" fill="#FDE68A" text-anchor="middle" letter-spacing="0.8">PL / SQL</text>
+                            <text x="50" y="85" font-family="-apple-system, system-ui, sans-serif" font-size="6" font-weight="700" fill="#F59E0B" text-anchor="middle" letter-spacing="0.5">DEVELOPER</text>
+                            <defs>
+                                <radialGradient id="plsql-grad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(50 50) rotate(90) scale(40)">
+                                    <stop stop-color="#451A03"/>
+                                    <stop offset="1" stop-color="#180C02"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
                     </div>
-                    <div class="font-bold text-white text-base">Oracle Database PL/SQL</div>
-                    <div class="text-xs text-slate-400">Developer Certified Professional</div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-amber-950/80 text-amber-400 border border-amber-800/80 mb-1">
+                            <span>★ Stored Procedures</span>
+                        </div>
+                        <div class="font-bold text-white text-base">Oracle Database PL/SQL</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Developer Certified Professional</div>
+                    </div>
                 </div>
 
-                <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl text-center space-y-3">
-                    <div class="w-12 h-12 mx-auto bg-blue-950/80 border border-blue-800 rounded-xl flex items-center justify-center font-bold text-blue-400 text-xl shadow">
-                        PBI
+                <!-- 4. Microsoft Power BI Data Analyst -->
+                <div class="bg-[#111827] border border-slate-800 hover:border-yellow-500/50 p-6 rounded-2xl text-center space-y-4 transition-all duration-300 group shadow-lg">
+                    <div class="relative w-20 h-20 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 bg-yellow-500/10 rounded-full blur-xl group-hover:bg-yellow-500/20 transition"></div>
+                        <!-- Official Power BI Hexagonal Star Badge SVG -->
+                        <svg class="w-16 h-16 drop-shadow-md" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer Microsoft Hexagonal Badge Shape -->
+                            <polygon points="50,6 88,28 88,72 50,94 12,72 12,28" stroke="#F2C811" stroke-width="2.5" fill="#1C1A14"/>
+                            <!-- Power BI Iconic Bar Chart -->
+                            <rect x="32" y="52" width="8" height="18" rx="2" fill="#F2C811"/>
+                            <rect x="44" y="40" width="8" height="30" rx="2" fill="#EAA308"/>
+                            <rect x="56" y="28" width="8" height="42" rx="2" fill="#CA8A04"/>
+                            <!-- Microsoft Logo 4 Squares Small -->
+                            <rect x="42" y="14" width="6" height="6" fill="#F25022"/>
+                            <rect x="50" y="14" width="6" height="6" fill="#7FBA00"/>
+                            <rect x="42" y="21" width="6" height="6" fill="#00A4EF"/>
+                            <rect x="50" y="21" width="6" height="6" fill="#FFB900"/>
+                            <!-- Badge Ribbon Text -->
+                            <text x="50" y="86" font-family="-apple-system, system-ui, sans-serif" font-size="6" font-weight="900" fill="#FEF08A" text-anchor="middle" letter-spacing="0.5">DATA ANALYST</text>
+                        </svg>
                     </div>
-                    <div class="font-bold text-white text-base">Microsoft Power BI</div>
-                    <div class="text-xs text-slate-400">Certified Data Analyst &amp; Modeling</div>
+                    <div>
+                        <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-yellow-950/80 text-yellow-400 border border-yellow-800/80 mb-1">
+                            <span>★ Microsoft Certified</span>
+                        </div>
+                        <div class="font-bold text-white text-base">Microsoft Power BI</div>
+                        <div class="text-xs text-slate-400 mt-0.5">Certified Data Analyst &amp; Modeling</div>
+                    </div>
                 </div>
             </div>
         </div>
