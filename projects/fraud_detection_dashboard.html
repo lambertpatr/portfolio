@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisGuard AI | Financial Fraud Anomaly & Payment Theft Detection</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        fraud: {
+                            dark: '#0A0C14',
+                            card: '#101626',
+                            border: 'rgba(239, 68, 68, 0.2)',
+                            primary: '#EF4444',
+                            accent: '#F87171',
+                            cyan: '#06B6D4',
+                            emerald: '#10B981',
+                            amber: '#F59E0B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0A0C14;
+            color: #F8FAFC;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(16, 22, 38, 0.8);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        .glass-card:hover {
+            border-color: rgba(239, 68, 68, 0.35);
+        }
+        .fraud-alert {
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(239, 68, 68, 0.3); }
+            50% { border-color: rgba(239, 68, 68, 0.8); }
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0C14; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #EF4444; }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#0A0C14]/90 backdrop-blur-md border-b border-slate-800 px-6 py-4">
+        <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-rose-600 to-amber-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-red-500/20">
+                    <i data-lucide="shield-alert" class="w-5 h-5 text-white"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h1 class="text-lg font-bold text-white tracking-tight">AEGISGUARD <span class="text-red-500 font-extrabold">FRAUD INTELLIGENCE</span></h1>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-red-500/10 text-red-400 border border-red-500/20">Payment Anomaly Detection</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Isolation Forest &amp; Autoencoders</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Card-Not-Present Fraud, Account Takeovers, Velocity Spikes &amp; Synthetic Identity Scoring</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden lg:flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Interception Latency: <b class="text-emerald-400">4.2ms</b></span>
+                    <span class="text-slate-600">|</span>
+                    <span>Precision: <b class="text-cyan-400">99.82%</b></span>
+                    <span class="text-slate-600">|</span>
+                    <span>FPR: <b class="text-amber-400">0.03%</b></span>
+                </div>
+                <a href="../index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition shadow">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1600px] mx-auto px-6 py-6 space-y-6">
+
+        <!-- Top Metrics -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-red-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Intercepted Fraud Volume</span>
+                    <i data-lucide="shield-x" class="w-4 h-4 text-red-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">$1,420,890</div>
+                <div class="text-xs text-red-400 mt-1">Prevented chargebacks in last 30 days</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-amber-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Live Anomaly Rate</span>
+                    <i data-lucide="alert-octagon" class="w-4 h-4 text-amber-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">0.14%</div>
+                <div class="text-xs text-slate-400 mt-1">Within standard banking baseline (0.1%–0.2%)</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-cyan-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Scored Transactions / Sec</span>
+                    <i data-lucide="zap" class="w-4 h-4 text-cyan-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">4,250 TPS</div>
+                <div class="text-xs text-slate-400 mt-1">Kafka streaming &amp; ONNX engine runtime</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-emerald-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Legitimate Pass-Through</span>
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">99.97%</div>
+                <div class="text-xs text-emerald-400 mt-1">Zero user friction for trusted shoppers</div>
+            </div>
+        </section>
+
+        <!-- Anomaly Scoring Simulator & Live Stream -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left: Transaction Tester Simulator -->
+            <div class="lg:col-span-5 glass-card rounded-2xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="binary" class="w-5 h-5 text-red-400"></i>
+                        <h2 class="text-base font-bold text-white">Live Transaction Fraud Scorer</h2>
+                    </div>
+                    <span class="text-xs font-mono text-red-400">Isolation Forest</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Preset Scenario Tester -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Inject Test Transaction Scenario</label>
+                        <select id="scenarioSelect" onchange="loadScenario()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                            <option value="stolen_card">Card-Not-Present Bot Attack (High Amount, Foreign IP)</option>
+                            <option value="velocity_spike">Rapid Velocity Testing (12 micro-charges in 40s)</option>
+                            <option value="legit_coffee">Legitimate Local Purchase (Morning Coffee, Dar es Salaam)</option>
+                            <option value="crypto_drain">Account Takeover / Midnight Crypto Off-Ramp</option>
+                        </select>
+                    </div>
+
+                    <!-- Amount Slider -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1 flex justify-between">
+                            <span>Transaction Amount</span>
+                            <span id="valAmount" class="text-emerald-400 font-mono font-bold">$1,850.00</span>
+                        </label>
+                        <input type="range" id="simAmount" min="5" max="5000" value="1850" oninput="scoreTransaction()" class="w-full accent-red-500 cursor-pointer">
+                    </div>
+
+                    <!-- Geolocation / IP Distance -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1 flex justify-between">
+                            <span>IP Distance from Billing Address</span>
+                            <span id="valDistance" class="text-cyan-400 font-mono font-bold">6,400 km (Foreign Proxy)</span>
+                        </label>
+                        <input type="range" id="simDistance" min="0" max="10000" value="6400" oninput="scoreTransaction()" class="w-full accent-red-500 cursor-pointer">
+                    </div>
+
+                    <!-- Device Fingerprint Trust -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Device Fingerprint</label>
+                            <select id="simDevice" onchange="scoreTransaction()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                                <option value="unrecognized">Unrecognized Headless Browser</option>
+                                <option value="known_mobile">Known iOS / Android Device</option>
+                                <option value="new_laptop">New Desktop Chrome</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Transaction Velocity</label>
+                            <select id="simVelocity" onchange="scoreTransaction()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                                <option value="high">15 attempts / min (Bot)</option>
+                                <option value="moderate">3 attempts / 10 min</option>
+                                <option value="normal">1st txn today (Normal)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Score Output -->
+                <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs font-semibold text-slate-300">Anomaly Anomaly Score (-1.0 to +1.0)</span>
+                        <span id="decisionBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-950 text-red-400 border border-red-800">AUTOMATED DECLINE &amp; FREEZE</span>
+                    </div>
+                    <div class="flex items-baseline gap-3">
+                        <span id="anomalyScoreText" class="text-4xl font-black text-red-500 mono">0.962</span>
+                        <span class="text-xs text-slate-400">Fraud Confidence Index</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div id="anomalyBar" class="bg-red-500 h-full w-[96%] transition-all duration-300"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 pt-2 border-t border-slate-800">
+                        <span class="font-bold text-slate-200">Rule Trigger:</span>
+                        <span id="ruleTriggerReason" class="text-red-400 ml-1">TOR Exit Node + Mismatched GeoIP + Uncharacteristic High Value</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Anomaly Scatter & Velocity Distributions -->
+            <div class="lg:col-span-7 space-y-6">
+                <!-- Anomaly Space Chart -->
+                <div class="glass-card rounded-2xl p-6 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="scatter-chart" class="w-5 h-5 text-red-400"></i>
+                            <h3 class="text-base font-bold text-white">Isolation Forest Outlier Projection</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Amount vs Latency PCA</span>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        High-dimensional decision boundaries project red outliers far outside standard cluster ellipsoids.
+                    </p>
+                    <div class="h-[230px] w-full">
+                        <canvas id="anomalyScatterChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Fraud Vector Breakdown -->
+                <div class="glass-card rounded-2xl p-6 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="pie-chart" class="w-5 h-5 text-amber-400"></i>
+                            <h3 class="text-base font-bold text-white">Blocked Attack Typology (Last 24 Hours)</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">3,892 Interventions</span>
+                    </div>
+                    <div class="h-[210px] w-full">
+                        <canvas id="fraudTypesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Intercept Feed Table -->
+        <section class="glass-card rounded-2xl p-6 space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                    <h3 class="text-base font-bold text-white">Live Intercepted Incident Stream</h3>
+                </div>
+                <span class="text-xs font-mono text-slate-400">Streaming Kafka Broker: partition-09</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-slate-300">
+                    <thead class="bg-slate-900/80 text-slate-400 font-mono uppercase tracking-wider text-[11px] border-b border-slate-800">
+                        <tr>
+                            <th class="p-3">Txn Hash</th>
+                            <th class="p-3">Timestamp</th>
+                            <th class="p-3">Amount</th>
+                            <th class="p-3">Merchant Category</th>
+                            <th class="p-3">Anomaly Vector</th>
+                            <th class="p-3">Engine Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800/60 font-sans">
+                        <tr class="hover:bg-slate-800/30">
+                            <td class="p-3 font-mono font-bold text-white">0x8a12..9f04</td>
+                            <td class="p-3 mono text-slate-400">19:48:12</td>
+                            <td class="p-3 mono font-bold text-red-400">$2,450.00</td>
+                            <td class="p-3">Electronics (Direct API)</td>
+                            <td class="p-3 text-slate-400">IP Proxy + Geo-mismatch (Lagos -> Kiev)</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800 font-bold">HARD DECLINE</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/30">
+                            <td class="p-3 font-mono font-bold text-white">0x4c99..11b2</td>
+                            <td class="p-3 mono text-slate-400">19:47:55</td>
+                            <td class="p-3 mono font-bold text-amber-400">$0.99</td>
+                            <td class="p-3">Digital Micro-charge</td>
+                            <td class="p-3 text-slate-400">Card enumeration / BIN attack velocity</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800 font-bold">CHALLENGE 3DS</span></td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/30">
+                            <td class="p-3 font-mono font-bold text-white">0x1e33..77da</td>
+                            <td class="p-3 mono text-slate-400">19:46:21</td>
+                            <td class="p-3 mono font-bold text-red-400">$4,990.00</td>
+                            <td class="p-3">Crypto Exchange Off-ramp</td>
+                            <td class="p-3 text-slate-400">New device + 2FA SIM swap flag</td>
+                            <td class="p-3"><span class="px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800 font-bold">FREEZE ACCOUNT</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+
+        function loadScenario() {
+            const sc = document.getElementById('scenarioSelect').value;
+            if (sc === 'stolen_card') {
+                document.getElementById('simAmount').value = 2450;
+                document.getElementById('simDistance').value = 7500;
+                document.getElementById('simDevice').value = 'unrecognized';
+                document.getElementById('simVelocity').value = 'moderate';
+            } else if (sc === 'velocity_spike') {
+                document.getElementById('simAmount').value = 25;
+                document.getElementById('simDistance').value = 1200;
+                document.getElementById('simDevice').value = 'unrecognized';
+                document.getElementById('simVelocity').value = 'high';
+            } else if (sc === 'legit_coffee') {
+                document.getElementById('simAmount').value = 14;
+                document.getElementById('simDistance').value = 5;
+                document.getElementById('simDevice').value = 'known_mobile';
+                document.getElementById('simVelocity').value = 'normal';
+            } else if (sc === 'crypto_drain') {
+                document.getElementById('simAmount').value = 4900;
+                document.getElementById('simDistance').value = 4500;
+                document.getElementById('simDevice').value = 'unrecognized';
+                document.getElementById('simVelocity').value = 'moderate';
+            }
+            scoreTransaction();
+        }
+
+        function scoreTransaction() {
+            const amount = parseInt(document.getElementById('simAmount').value);
+            const dist = parseInt(document.getElementById('simDistance').value);
+            const dev = document.getElementById('simDevice').value;
+            const vel = document.getElementById('simVelocity').value;
+
+            document.getElementById('valAmount').innerText = `$${amount.toLocaleString()}.00`;
+            document.getElementById('valDistance').innerText = `${dist.toLocaleString()} km`;
+
+            let risk = 0.05;
+
+            if (amount > 1000) risk += 0.35;
+            else if (amount > 500) risk += 0.15;
+
+            if (dist > 3000) risk += 0.30;
+            else if (dist > 500) risk += 0.15;
+
+            if (dev === 'unrecognized') risk += 0.25;
+            else if (dev === 'new_laptop') risk += 0.10;
+
+            if (vel === 'high') risk += 0.30;
+            else if (vel === 'moderate') risk += 0.15;
+
+            risk = Math.max(0.01, Math.min(0.99, Math.round(risk * 1000) / 1000));
+
+            document.getElementById('anomalyScoreText').innerText = risk.toFixed(3);
+            document.getElementById('anomalyBar').style.width = (risk * 100) + '%';
+
+            const badge = document.getElementById('decisionBadge');
+            const reason = document.getElementById('ruleTriggerReason');
+
+            if (risk > 0.70) {
+                badge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-950 text-red-400 border border-red-800';
+                badge.innerText = 'AUTOMATED DECLINE & FREEZE';
+                reason.innerText = 'High anomaly vector (Foreign Proxy IP + Suspicious Velocity / Amount)';
+                document.getElementById('anomalyBar').className = 'bg-red-500 h-full transition-all duration-300';
+            } else if (risk > 0.35) {
+                badge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-950 text-amber-400 border border-amber-800';
+                badge.innerText = 'STEP-UP 3DS CHALLENGE';
+                reason.innerText = 'Moderate risk: Biometric OTP sent to registered mobile device';
+                document.getElementById('anomalyBar').className = 'bg-amber-500 h-full transition-all duration-300';
+            } else {
+                badge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800';
+                badge.innerText = 'APPROVED (ZERO-FRICTION)';
+                reason.innerText = 'Normal user behavior envelope verified by Isolation Forest';
+                document.getElementById('anomalyBar').className = 'bg-emerald-500 h-full transition-all duration-300';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            scoreTransaction();
+
+            // Scatter chart: Isolation Forest Outlier Plot
+            new Chart(document.getElementById('anomalyScatterChart'), {
+                type: 'scatter',
+                data: {
+                    datasets: [
+                        {
+                            label: 'Normal Transactions',
+                            data: Array.from({length: 40}, () => ({
+                                x: Math.random() * 200 + 10,
+                                y: Math.random() * 30 + 10
+                            })),
+                            backgroundColor: '#06B6D4'
+                        },
+                        {
+                            label: 'Flagged Anomalies',
+                            data: [
+                                { x: 850, y: 190 },
+                                { x: 1200, y: 140 },
+                                { x: 1850, y: 250 },
+                                { x: 2400, y: 210 },
+                                { x: 3100, y: 280 }
+                            ],
+                            backgroundColor: '#EF4444',
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.06)' },
+                            title: { display: true, text: 'Transaction Amount ($)', color: '#94A3B8' },
+                            ticks: { color: '#94A3B8' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.06)' },
+                            title: { display: true, text: 'Latency / Anomaly Score', color: '#94A3B8' },
+                            ticks: { color: '#94A3B8' }
+                        }
+                    },
+                    plugins: {
+                        legend: { labels: { color: '#E2E8F0', font: { size: 11 } } }
+                    }
+                }
+            });
+
+            // Pie Chart: Fraud typology
+            new Chart(document.getElementById('fraudTypesChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Card-Not-Present Botting', 'Synthetic Identity Fraud', 'Account Takeover (ATO)', 'BIN Attack Velocity', 'Friendly Fraud'],
+                    datasets: [{
+                        data: [42, 24, 18, 11, 5],
+                        backgroundColor: ['#EF4444', '#F59E0B', '#A855F7', '#06B6D4', '#64748B'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#E2E8F0', font: { size: 11 } }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

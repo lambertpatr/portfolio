@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamPulse AI | Hybrid Recommendation Engine Lab</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        stream: {
+                            dark: '#080C14',
+                            card: '#0F172A',
+                            border: 'rgba(99, 102, 241, 0.2)',
+                            primary: '#6366F1',
+                            accent: '#818CF8',
+                            emerald: '#10B981',
+                            amber: '#F59E0B',
+                            pink: '#EC4899'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #080C14;
+            color: #F8FAFC;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.45);
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #080C14; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6366F1; }
+    </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#080C14]/90 backdrop-blur-md border-b border-slate-800 px-6 py-4">
+        <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2.5">
+                        <h1 class="text-lg font-bold text-white tracking-tight">STREAMPULSE <span class="text-indigo-400 font-extrabold">RECOMMENDATION ENGINE</span></h1>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Hybrid AI RecSys</span>
+                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold tracking-wider uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Matrix Factorization (SVD) + Cosine</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Collaborative Filtering, Content Embeddings &amp; E-Commerce Personalized Discovery</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden lg:flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>NDCG@10: <b class="text-emerald-400">0.894</b></span>
+                    <span class="text-slate-600">|</span>
+                    <span>Catalog Latency: <b class="text-cyan-400">14ms</b></span>
+                </div>
+                <a href="../index.html" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition shadow">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                    <span>Back to Portfolio</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1600px] mx-auto px-6 py-6 space-y-6">
+
+        <!-- Top Metrics -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-indigo-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Active User Profiles</span>
+                    <i data-lucide="user-check" class="w-4 h-4 text-indigo-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">142,800</div>
+                <div class="text-xs text-slate-400 mt-1">SVD Latent Embeddings (dim=64)</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-emerald-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Click-Through Rate (CTR)</span>
+                    <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-emerald-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">14.6%</div>
+                <div class="text-xs text-emerald-400 mt-1">+38% Lift vs Popularity Baseline</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-purple-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Catalog Coverage</span>
+                    <i data-lucide="layers" class="w-4 h-4 text-purple-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">92.4%</div>
+                <div class="text-xs text-slate-400 mt-1">Mitigated Cold-Start Long Tail</div>
+            </div>
+
+            <div class="glass-card rounded-xl p-5 border-l-4 border-l-pink-500">
+                <div class="flex items-center justify-between text-slate-400 mb-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider">Model RMSE</span>
+                    <i data-lucide="target" class="w-4 h-4 text-pink-400"></i>
+                </div>
+                <div class="text-2xl font-black text-white mono">0.812</div>
+                <div class="text-xs text-slate-400 mt-1">Cross-Validation on 5-Star Scale</div>
+            </div>
+        </section>
+
+        <!-- Interactive User Persona Persona Recommendation Lab -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left Panel: User Profile Selector & Taste Sliders -->
+            <div class="lg:col-span-4 glass-card rounded-2xl p-6 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-5 h-5 text-indigo-400"></i>
+                        <h2 class="text-base font-bold text-white">Select User Persona</h2>
+                    </div>
+                    <span class="text-xs text-indigo-400 font-mono">Live RecSys</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-2">Simulate User Archetype</label>
+                    <div class="space-y-2" id="personaButtons">
+                        <button onclick="selectPersona('tech_geek')" id="p-tech_geek" class="w-full text-left p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-xs transition flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-white">Alex – Sci-Fi &amp; Tech Enthusiast</div>
+                                <div class="text-[11px] text-slate-400">AI, Cyberpunk, Complex Thrillers</div>
+                            </div>
+                            <span class="text-indigo-400 font-bold">Active</span>
+                        </button>
+                        <button onclick="selectPersona('drama_film')" id="p-drama_film" class="w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-xs transition flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-white">Sophia – Prestige Drama &amp; Indie</div>
+                                <div class="text-[11px] text-slate-400">Award Winners, Character Studies</div>
+                            </div>
+                            <span class="text-slate-500">Select</span>
+                        </button>
+                        <button onclick="selectPersona('action_anime')" id="p-action_anime" class="w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-xs transition flex justify-between items-center">
+                            <div>
+                                <div class="font-bold text-white">Marcus – Action &amp; Anime Fan</div>
+                                <div class="text-[11px] text-slate-400">Fast-paced, Fantasy, High Adrenaline</div>
+                            </div>
+                            <span class="text-slate-500">Select</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- RecSys Algorithm Weighting -->
+                <div class="pt-4 border-t border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center text-xs">
+                        <span class="font-semibold text-slate-300">Hybrid Blend Weighting</span>
+                        <span id="blendRatio" class="text-indigo-400 font-mono font-bold">70% Collab / 30% Content</span>
+                    </div>
+                    <input type="range" id="hybridSlider" min="0" max="100" value="70" oninput="updateHybridBlend()" class="w-full accent-indigo-500 cursor-pointer">
+                    <div class="flex justify-between text-[10px] text-slate-500">
+                        <span>100% Content-Based</span>
+                        <span>50/50 Balanced</span>
+                        <span>100% Collaborative (SVD)</span>
+                    </div>
+                </div>
+
+                <!-- Latent Vector Radar Summary -->
+                <div class="pt-2">
+                    <div class="text-xs font-semibold text-slate-300 mb-2">User Latent Taste Vector</div>
+                    <div class="h-[180px] w-full">
+                        <canvas id="userTasteRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Dynamic Ranked Recommendations & Cosine Distance -->
+            <div class="lg:col-span-8 glass-card rounded-2xl p-6 space-y-5">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-white">Personalized Top-N Recommendations</h3>
+                        <p class="text-xs text-slate-400">Ranked by cosine similarity in 64-dimensional latent embedding space.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-indigo-300 font-mono">
+                            Rank Metric: Hybrid Score = \alpha \cdot \hat{r}_{ui} + (1-\alpha) \cdot \cos(\vec{u}, \vec{v})
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Recommendations Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="recommendationsList">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RecSys Script -->
+    <script>
+        lucide.createIcons();
+
+        const catalog = {
+            tech_geek: [
+                { title: "Interstellar Horizon", genre: "Sci-Fi / Space", match: 98.4, type: "Content + Collab Match", desc: "Similar to users who rated Blade Runner 2049 5-stars. High affinity for astrophysics and philosophical depth.", tags: ["Cosmic", "AI", "Nolan-esque"] },
+                { title: "Silicon Singularity", genre: "Docuseries / Tech", match: 94.1, type: "Collaborative SVD", desc: "92% of users with your vector binge-watched this series within 48 hours of release.", tags: ["Machine Learning", "Venture", "Ethics"] },
+                { title: "Cyberpunk 2099", genre: "Neo-Noir / Action", match: 91.8, type: "Cosine Vector Match", desc: "Shared cast and visual aesthetic with Altered Carbon and The Matrix.", tags: ["Dystopian", "Synthesizer", "High Tech"] },
+                { title: "Quantum Paradox", genre: "Mystery / Thriller", match: 88.5, type: "Long-Tail Discovery", desc: "High rating surprise metric. Curated to prevent filter-bubble echo chambers.", tags: ["Time Travel", "Mind-bending"] }
+            ],
+            drama_film: [
+                { title: "The Anatomy of Solitude", genre: "Prestige Drama", match: 97.8, type: "Critical Acclaim SVD", desc: "Cannes Palme d'Or nominee with deep character arcs and naturalistic cinematography.", tags: ["Intimate", "Festival", "A24-Style"] },
+                { title: "Autumn in Vienna", genre: "Period Romance", match: 93.5, type: "Content-Based Match", desc: "Similar period pacing and orchestral score to The Crown and Atonement.", tags: ["Classical", "Historical", "Cinematic"] },
+                { title: "Echoes of Silence", genre: "Psychological Drama", match: 90.2, type: "Collaborative Match", desc: "Top recommendation among viewers who rated Manchester by the Sea 9/10.", tags: ["Emotional", "Raw", "Critique"] },
+                { title: "The Parisian Workshop", genre: "Indie / Biography", match: 86.9, type: "Serendipity Engine", desc: "Niche high-reputation release matching literary taste vector.", tags: ["Art", "Paris", "Reflective"] }
+            ],
+            action_anime: [
+                { title: "Demon Blade: Infinity", genre: "Anime / Supernatural", match: 99.1, type: "Peak Affinity Match", desc: "Phenomenal animation quality, dynamic swordplay, and unmatched emotional stakes.", tags: ["Ufotable", "Supernatural", "Epic"] },
+                { title: "Valkyrie Overdrive", genre: "Cyber Action", match: 94.7, type: "Collaborative Filtering", desc: "Users who loved Attack on Titan and Cyberpunk Edgerunners completed this series.", tags: ["Mecha", "Adrenaline", "Soundtrack"] },
+                { title: "Rogue Extraction", genre: "Tactical Action", match: 89.6, type: "Pacing Vector Match", desc: "High-octane practical stunt choreography similar to John Wick and Extraction.", tags: ["Combat", "Espionage", "Guns"] },
+                { title: "Shadow Ninja Chronicles", genre: "Martial Arts", match: 87.2, type: "Latent SVD Cluster", desc: "Dark fantasy feudal setting with intricate combat choreography.", tags: ["Shinobi", "Feudal Japan"] }
+            ]
+        };
+
+        const tasteVectors = {
+            tech_geek: [95, 85, 40, 25, 90, 80],
+            drama_film: [30, 45, 95, 90, 35, 92],
+            action_anime: [85, 95, 20, 30, 75, 40]
+        };
+
+        let currentPersona = 'tech_geek';
+        let radarChart = null;
+
+        function selectPersona(personaKey) {
+            currentPersona = personaKey;
+            ['tech_geek', 'drama_film', 'action_anime'].forEach(k => {
+                const btn = document.getElementById('p-' + k);
+                if (k === personaKey) {
+                    btn.className = 'w-full text-left p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-xs transition flex justify-between items-center';
+                    btn.querySelector('span').className = 'text-indigo-400 font-bold';
+                    btn.querySelector('span').innerText = 'Active';
+                } else {
+                    btn.className = 'w-full text-left p-3 rounded-xl border border-slate-800 bg-slate-900/60 text-xs transition flex justify-between items-center';
+                    btn.querySelector('span').className = 'text-slate-500';
+                    btn.querySelector('span').innerText = 'Select';
+                }
+            });
+
+            renderRecommendations();
+            updateRadar();
+        }
+
+        function updateHybridBlend() {
+            const val = document.getElementById('hybridSlider').value;
+            document.getElementById('blendRatio').innerText = `${val}% Collab / ${100 - val}% Content`;
+        }
+
+        function renderRecommendations() {
+            const container = document.getElementById('recommendationsList');
+            container.innerHTML = '';
+            const items = catalog[currentPersona];
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'p-5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-indigo-500/50 transition space-y-3';
+                card.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-indigo-400 font-mono">${item.genre}</span>
+                            <h4 class="text-base font-bold text-white mt-0.5">${item.title}</h4>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-sm font-black text-emerald-400 mono">${item.match}%</span>
+                            <div class="text-[9px] text-slate-500">Match Score</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">${item.desc}</p>
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-1">
+                            ${item.tags.map(t => `<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">${t}</span>`).join('')}
+                        </div>
+                        <span class="text-[10px] text-indigo-400 font-semibold">${item.type}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateRadar() {
+            if (radarChart) {
+                radarChart.data.datasets[0].data = tasteVectors[currentPersona];
+                radarChart.update();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderRecommendations();
+
+            const ctx = document.getElementById('userTasteRadar').getContext('2d');
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Sci-Fi', 'Action', 'Drama', 'Romance', 'Tech/Docs', 'Auteur'],
+                    datasets: [{
+                        label: 'Latent Affinity',
+                        data: tasteVectors[currentPersona],
+                        backgroundColor: 'rgba(99, 102, 241, 0.25)',
+                        borderColor: '#818CF8',
+                        pointBackgroundColor: '#6366F1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255,255,255,0.08)' },
+                            grid: { color: 'rgba(255,255,255,0.08)' },
+                            pointLabels: { color: '#94A3B8', font: { size: 10 } },
+                            ticks: { display: false, max: 100 }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
