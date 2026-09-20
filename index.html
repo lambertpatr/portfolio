@@ -72,6 +72,7 @@
             </a>
             <div class="hidden md:flex items-center gap-8 text-sm text-slate-300 font-medium">
                 <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
                 <a href="#projects" class="hover:text-blue-400 transition">All 18 Projects</a>
                 <a href="#certifications" class="hover:text-blue-400 transition">Certifications</a>
                 <a href="#skills" class="hover:text-blue-400 transition">Tech Stack</a>
@@ -80,8 +81,11 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Apple-Style Ambient Lighting & 3D Glass Device Stage -->
+    <!-- Hero Section with Apple-Style Ambient Lighting & 3D Interactive Neural Particle Canvas -->
     <header id="about" class="relative overflow-hidden pt-16 pb-20">
+        <!-- Interactive 3D Neural Particle Constellation Canvas (Arjun-inspired) -->
+        <canvas id="neural-mesh-canvas" class="absolute inset-0 w-full h-full pointer-events-none -z-10 opacity-70"></canvas>
+
         <!-- Ambient Glowing Radial Gradients (Apple Style) -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[400px] bg-gradient-to-tr from-blue-600/20 via-indigo-600/20 to-purple-600/15 blur-[120px] rounded-full pointer-events-none -z-10 animate-glow"></div>
         <div class="absolute top-1/3 left-1/4 w-[350px] h-[350px] bg-blue-500/10 blur-[90px] rounded-full pointer-events-none -z-10"></div>
@@ -214,11 +218,11 @@
         </div>
     </header>
 
-    <!-- Stats Banner -->
-    <section class="border-y border-slate-800 bg-[#0f1523]/60 py-10">
+    <!-- Stats Banner with Animated Counters -->
+    <section class="border-y border-slate-800 bg-[#0f1523]/60 py-10" id="stats-banner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-                <div class="text-3xl sm:text-4xl font-black text-white">18+ Projects</div>
+                <div class="text-3xl sm:text-4xl font-black text-white"><span class="counter" data-target="18">0</span>+ Projects</div>
                 <div class="text-xs sm:text-sm text-slate-400 mt-1">Live Interactive Portals</div>
             </div>
             <div>
@@ -226,32 +230,58 @@
                 <div class="text-xs sm:text-sm text-slate-400 mt-1">Oracle Certified Specialist</div>
             </div>
             <div>
-                <div class="text-3xl sm:text-4xl font-black text-emerald-400">100% Zero-Lock</div>
+                <div class="text-3xl sm:text-4xl font-black text-emerald-400"><span class="counter" data-target="100">0</span>% Zero-Lock</div>
                 <div class="text-xs sm:text-sm text-slate-400 mt-1">Safe Migration Architecture</div>
             </div>
             <div>
-                <div class="text-3xl sm:text-4xl font-black text-purple-400">Multi-Million</div>
-                <div class="text-xs sm:text-sm text-slate-400 mt-1">Records Processed / Hour</div>
+                <div class="text-3xl sm:text-4xl font-black text-purple-400"><span class="counter" data-target="99.8" data-decimal="1">0</span>% Uptime</div>
+                <div class="text-xs sm:text-sm text-slate-400 mt-1">Mission-Critical Telemetry</div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Interactive Projects Showcase -->
-    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-10">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+    <!-- Featured Interactive Projects Showcase with Live Search & Category Filters -->
+    <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-8">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
             <div>
-                <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Portfolio &amp; Production Demos</h2>
-                <h3 class="text-3xl font-black text-white mt-1">18 Production Projects</h3>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-950/80 text-blue-400 border border-blue-800/80 mb-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                    <span>Production Demos &amp; Portals</span>
+                </div>
+                <h3 class="text-3xl sm:text-4xl font-black text-white">18 Interactive Engineering Projects</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Explore live data science simulators, transactional ETL consoles, and executive analytics.</p>
             </div>
-            <!-- Category Filter Buttons -->
-            <div class="flex flex-wrap gap-2 text-xs">
-                <button onclick="filterProjects('all')" class="filter-btn active px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (18)</button>
-                <button onclick="filterProjects('ai')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML Pipelines</button>
-                <button onclick="filterProjects('db')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">Databases &amp; Ops</button>
-                <button onclick="filterProjects('finance')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance &amp; Banking</button>
-                <button onclick="filterProjects('telecom')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom &amp; Utility</button>
-                <button onclick="filterProjects('scraping')" class="filter-btn px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping &amp; NLP</button>
+
+            <!-- Search & Filter Controls -->
+            <div class="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <!-- Live Search Box -->
+                <div class="relative min-w-[240px] sm:w-64">
+                    <input type="text" id="projectSearch" oninput="searchProjects()" placeholder="Filter tech (e.g. XGBoost, Oracle, RecSys)..."
+                        class="w-full bg-[#111827] border border-slate-700 text-xs text-white placeholder-slate-500 rounded-xl pl-8 pr-7 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
+                    <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-1.5 text-slate-400 hover:text-white text-base leading-none">
+                        &times;
+                    </button>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                    <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (<span id="allCount">18</span>)</button>
+                    <button onclick="filterProjects('ai')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML</button>
+                    <button onclick="filterProjects('db')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">DB &amp; Ops</button>
+                    <button onclick="filterProjects('finance')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance</button>
+                    <button onclick="filterProjects('telecom')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom</button>
+                    <button onclick="filterProjects('scraping')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping</button>
+                </div>
             </div>
+        </div>
+
+        <!-- Real-time Filter Feedback Status Bar -->
+        <div id="searchFeedbackBar" class="hidden text-xs text-slate-400 flex items-center justify-between bg-slate-900/60 border border-slate-800 px-4 py-2 rounded-xl">
+            <span>Showing results matching: <span class="text-blue-400 font-bold" id="searchFeedbackQuery">""</span></span>
+            <span class="text-slate-400 font-mono text-[11px]" id="searchFeedbackCount">0 matching</span>
         </div>
 
         <!-- Projects Grid (13 Complete Cards) -->
@@ -681,6 +711,176 @@
         </div>
     </section>
 
+    <!-- Career Evolution & Experience Timeline (Inspired by Arjun Bhaybhang's journey) -->
+    <section id="experience" class="border-t border-slate-800 bg-[#0c111e]/80 py-20 relative overflow-hidden">
+        <!-- Ambient subtle glow behind timeline -->
+        <div class="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-950 text-indigo-400 border border-indigo-800/80">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                    <span>Career Evolution &amp; Impact</span>
+                </div>
+                <h3 class="text-3xl sm:text-4xl font-black text-white">The Engineering Journey</h3>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    A dual-competency trajectory: Rooted in high-concurrency enterprise database reliability, scaling into automated distributed pipelines, and culminating in predictive machine learning systems.
+                </p>
+            </div>
+
+            <!-- Vertical Timeline Track -->
+            <div class="relative pl-6 sm:pl-8 md:pl-32 space-y-12 before:absolute before:left-3 sm:before:left-4 md:before:left-28 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-purple-500 before:via-blue-500 before:to-emerald-500">
+                
+                <!-- Stage 3: Current - Senior Data Scientist & Predictive ML Systems -->
+                <div class="relative group">
+                    <!-- Glowing Timeline Node -->
+                    <div class="absolute -left-[23px] sm:-left-[27px] md:-left-[27px] top-1.5 w-5 h-5 rounded-full bg-purple-500 border-4 border-[#0c111e] shadow-[0_0_15px_rgba(168,85,247,0.9)]"></div>
+                    
+                    <!-- Date Pill for Desktop -->
+                    <div class="hidden md:block absolute -left-32 top-1 w-24 text-right">
+                        <span class="text-xs font-mono font-bold text-purple-400">2023 — Present</span>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border border-purple-500/20 hover:border-purple-500/50 transition">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <div>
+                                <span class="md:hidden inline-block text-[11px] font-mono font-bold text-purple-400 mb-1">2023 — Present</span>
+                                <h4 class="text-xl font-bold text-white flex flex-wrap items-center gap-2">
+                                    <span>Senior Data Scientist &amp; Predictive ML Systems</span>
+                                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-purple-950 text-purple-300 border border-purple-800">Current Focus</span>
+                                </h4>
+                                <div class="text-xs text-slate-400 mt-1">Enterprise Analytics &bull; Machine Learning Engineering &bull; Production Inference</div>
+                            </div>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Architecting and deploying predictive models directly into production operational flows. Eliminating blind spots in customer attrition, supply chain inventory, and fraud anomalies through explainable, low-latency AI microservices.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-1">
+                            <div class="flex items-start gap-2">
+                                <span class="text-purple-400 font-bold">&check;</span>
+                                <span><strong>Customer Churn ML:</strong> 88.4% retention yield simulator with XGBoost, Kaplan-Meier &amp; SHAP explainability.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-purple-400 font-bold">&check;</span>
+                                <span><strong>Real-Time Fraud Engine:</strong> Isolation Forest anomaly scoring over live Kafka streaming transactions.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-purple-400 font-bold">&check;</span>
+                                <span><strong>Demand Forecasting:</strong> Multi-season Prophet / ARIMA pipelines delivering 90-day inventory buffers.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-purple-400 font-bold">&check;</span>
+                                <span><strong>Hybrid RecSys &amp; NLP:</strong> Matrix factorization (SVD) + RoBERTa/VADER aspect sentiment mining.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">Python 3.12</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">XGBoost</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">Scikit-Learn</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">Prophet</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">SHAP &amp; LIME</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-purple-950/60 text-purple-300 border border-purple-800/60">FastAPI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Lead Data Engineer & Pipeline Automation Architect -->
+                <div class="relative group">
+                    <div class="absolute -left-[23px] sm:-left-[27px] md:-left-[27px] top-1.5 w-5 h-5 rounded-full bg-blue-500 border-4 border-[#0c111e] shadow-[0_0_15px_rgba(59,130,246,0.9)]"></div>
+                    
+                    <div class="hidden md:block absolute -left-32 top-1 w-24 text-right">
+                        <span class="text-xs font-mono font-bold text-blue-400">2020 — 2023</span>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border border-blue-500/20 hover:border-blue-500/50 transition">
+                        <div>
+                            <span class="md:hidden inline-block text-[11px] font-mono font-bold text-blue-400 mb-1">2020 — 2023</span>
+                            <h4 class="text-xl font-bold text-white">Lead Data Engineer &amp; Pipeline Automation Architect</h4>
+                            <div class="text-xs text-slate-400 mt-1">High-Throughput ETL &bull; Reverse Engineering &bull; Distributed Microservices</div>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Built robust data pipelines harvesting and synchronizing multi-million row datasets across national utility, petroleum, and maritime authorities. Engineered browser automation robots with Playwright and reverse-engineered session token exchanges for zero-loss ingestion.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-1">
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-400 font-bold">&check;</span>
+                                <span><strong>National Grid &amp; Petroleum Ingestion:</strong> Scaled automated daily telemetry extractions across 50,000+ meters.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-400 font-bold">&check;</span>
+                                <span><strong>Session Emulation &amp; Scraping:</strong> Headless Playwright pipelines bypassing bot challenges with exponential backoff.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-blue-400 font-bold">&check;</span>
+                                <span><strong>Embedded Analytics:</strong> Integrated DuckDB &amp; Apache Arrow for microsecond analytical rollups.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">Python 3</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">FastAPI</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">Playwright</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">DuckDB</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">Docker</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-blue-950/60 text-blue-300 border border-blue-800/60">Linux / Bash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 1: Senior Database Administrator & Infrastructure Specialist -->
+                <div class="relative group">
+                    <div class="absolute -left-[23px] sm:-left-[27px] md:-left-[27px] top-1.5 w-5 h-5 rounded-full bg-emerald-500 border-4 border-[#0c111e] shadow-[0_0_15px_rgba(16,185,129,0.9)]"></div>
+                    
+                    <div class="hidden md:block absolute -left-32 top-1 w-24 text-right">
+                        <span class="text-xs font-mono font-bold text-emerald-400">2017 — 2020</span>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border border-emerald-500/20 hover:border-emerald-500/50 transition">
+                        <div>
+                            <span class="md:hidden inline-block text-[11px] font-mono font-bold text-emerald-400 mb-1">2017 — 2020</span>
+                            <h4 class="text-xl font-bold text-white">Senior Database Administrator &amp; Infrastructure Architect</h4>
+                            <div class="text-xs text-slate-400 mt-1">Oracle OCP 19c &bull; Microsoft SQL Server &bull; Zero-Downtime High Availability</div>
+                        </div>
+
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Managed core mission-critical production OLTP database clusters. Administered Oracle RAC, Active Data Guard, SQL Server AlwaysOn Availability Groups, and implemented non-blocking snapshot isolation for heavy concurrent reporting workloads.
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 pt-1">
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">&check;</span>
+                                <span><strong>Zero-Downtime Upgrades:</strong> Executed live database cross-version migrations with 0 minutes of unbudgeted downtime.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">&check;</span>
+                                <span><strong>Query Optimization:</strong> Reduced mission-critical month-end batch queries from 4 hours to under 6 minutes.</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <span class="text-emerald-400 font-bold">&check;</span>
+                                <span><strong>Disaster Recovery:</strong> Validated RPO &lt; 5 seconds and RTO &lt; 2 minutes through automated live drills.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/60">Oracle 19c/21c/23ai</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/60">SQL Server AlwaysOn</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/60">PL/SQL &amp; T-SQL</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/60">PostgreSQL</span>
+                            <span class="px-2.5 py-1 rounded-md text-[11px] bg-emerald-950/60 text-emerald-300 border border-emerald-800/60">GoldenGate CDC</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Certifications & Credentials -->
     <section id="certifications" class="border-t border-slate-800 bg-[#0f1523]/40 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -829,14 +1029,21 @@
         <div class="text-center space-y-2">
             <h2 class="text-xs font-bold uppercase tracking-widest text-blue-500">Core Competencies</h2>
             <h3 class="text-3xl font-black text-white">Technical Arsenal</h3>
+            <p class="text-xs text-slate-400">Proficiency verified through enterprise production deployments and vendor certifications.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
-                <h4 class="text-base font-bold text-blue-400 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
-                    Databases &amp; Administration
-                </h4>
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-5 hover:border-blue-500/40 transition duration-300">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-base font-bold text-blue-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                        Databases &amp; Administration
+                    </h4>
+                    <span class="text-[11px] font-mono font-bold text-blue-400 bg-blue-950 px-2 py-0.5 rounded border border-blue-800">98%</span>
+                </div>
+                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-600 to-cyan-400 h-full w-[98%] rounded-full"></div>
+                </div>
                 <ul class="text-xs text-slate-300 space-y-2.5">
                     <li class="flex items-center gap-2"><span>•</span> <strong>Oracle Database:</strong> 19c, 21c, 23ai, PL/SQL, GoldenGate, Data Guard</li>
                     <li class="flex items-center gap-2"><span>•</span> <strong>Microsoft SQL Server:</strong> 2016-2022, T-SQL, Agent Jobs, Replication</li>
@@ -845,24 +1052,36 @@
                 </ul>
             </div>
 
-            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
-                <h4 class="text-base font-bold text-indigo-400 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                    Data Engineering &amp; Backend
-                </h4>
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-5 hover:border-indigo-500/40 transition duration-300">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-base font-bold text-indigo-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        Data Science &amp; ML Backend
+                    </h4>
+                    <span class="text-[11px] font-mono font-bold text-indigo-400 bg-indigo-950 px-2 py-0.5 rounded border border-indigo-800">95%</span>
+                </div>
+                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-400 h-full w-[95%] rounded-full"></div>
+                </div>
                 <ul class="text-xs text-slate-300 space-y-2.5">
-                    <li class="flex items-center gap-2"><span>•</span> <strong>Languages &amp; Runtimes:</strong> Python 3, PowerShell 7, Bash/Zsh</li>
-                    <li class="flex items-center gap-2"><span>•</span> <strong>Frameworks:</strong> FastAPI, Pandas, Apache Arrow, OpenPyXL</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Languages &amp; Runtimes:</strong> Python 3.12, PowerShell 7, Bash/Zsh</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>ML &amp; Predictive AI:</strong> XGBoost, Scikit-Learn, Prophet, Isolation Forest</li>
                     <li class="flex items-center gap-2"><span>•</span> <strong>Automation &amp; Scraping:</strong> Playwright, Requests, Session Auth, Cloudflare</li>
-                    <li class="flex items-center gap-2"><span>•</span> <strong>DevOps &amp; Infrastructure:</strong> Docker, Linux (Ubuntu/Debian), Nginx</li>
+                    <li class="flex items-center gap-2"><span>•</span> <strong>Data Engineering:</strong> FastAPI, DuckDB, Apache Arrow, Docker</li>
                 </ul>
             </div>
 
-            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-4">
-                <h4 class="text-base font-bold text-purple-400 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                    Financial Controlling &amp; BI
-                </h4>
+            <div class="bg-[#111827] border border-slate-800 p-6 rounded-2xl space-y-5 hover:border-purple-500/40 transition duration-300">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-base font-bold text-purple-400 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        Financial Controlling &amp; BI
+                    </h4>
+                    <span class="text-[11px] font-mono font-bold text-purple-400 bg-purple-950 px-2 py-0.5 rounded border border-purple-800">92%</span>
+                </div>
+                <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-gradient-to-r from-purple-600 to-pink-400 h-full w-[92%] rounded-full"></div>
+                </div>
                 <ul class="text-xs text-slate-300 space-y-2.5">
                     <li class="flex items-center gap-2"><span>•</span> <strong>BI &amp; Visualization:</strong> Microsoft Power BI, DAX, Chart.js</li>
                     <li class="flex items-center gap-2"><span>•</span> <strong>Close Automation:</strong> Excel Power Query (M), MCoA Mapping</li>
@@ -967,21 +1186,248 @@
         </div>
     </footer>
 
-    <!-- Category Filter & Clipboard Scripts -->
+    <!-- Interactive Scripts: Particle Canvas, Animated Counters, Live Search & Filters -->
     <script>
-        function filterProjects(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + category).classList.add('active');
+        // 1. Interactive 3D / Neural Mesh Particle Canvas (Arjun-inspired Hero Experience)
+        (function initNeuralMesh() {
+            const canvas = document.getElementById('neural-mesh-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+            const particleCount = 75;
+            const maxDistance = 115;
+            const mouse = { x: null, y: null, radius: 140 };
 
-            document.querySelectorAll('.project-card').forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
+            function resize() {
+                const header = canvas.parentElement;
+                width = canvas.width = header.offsetWidth;
+                height = canvas.height = header.offsetHeight;
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.7;
+                    this.vy = (Math.random() - 0.5) * 0.7;
+                    this.radius = Math.random() * 1.8 + 1.2;
+                    // Vary colors between cyan, indigo, and violet
+                    const colors = ['rgba(96, 165, 250, ', 'rgba(168, 85, 247, ', 'rgba(45, 212, 191, '];
+                    this.baseColor = colors[Math.floor(Math.random() * colors.length)];
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Bounce off boundaries
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                    // Mouse interaction
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = mouse.x - this.x;
+                        const dy = mouse.y - this.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < mouse.radius) {
+                            // Gentle gravitational pull
+                            const force = (mouse.radius - dist) / mouse.radius;
+                            this.x += (dx / dist) * force * 1.2;
+                            this.y += (dy / dist) * force * 1.2;
+                        }
+                    }
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.baseColor + '0.8)';
+                    ctx.shadowBlur = 6;
+                    ctx.shadowColor = this.baseColor + '0.6)';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            function setup() {
+                resize();
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function connectParticles() {
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a + 1; b < particles.length; b++) {
+                        const dx = particles[a].x - particles[b].x;
+                        const dy = particles[a].y - particles[b].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+
+                        if (dist < maxDistance) {
+                            const opacity = (1 - dist / maxDistance) * 0.25;
+                            ctx.strokeStyle = `rgba(147, 197, 253, ${opacity})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+
+                    // Connect to mouse cursor
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const dx = particles[a].x - mouse.x;
+                        const dy = particles[a].y - mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < mouse.radius) {
+                            const opacity = (1 - dist / mouse.radius) * 0.55;
+                            ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
+                            ctx.lineWidth = 1.2;
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(mouse.x, mouse.y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                connectParticles();
+                requestAnimationFrame(animate);
+            }
+
+            const headerEl = canvas.parentElement;
+            headerEl.addEventListener('mousemove', e => {
+                const rect = headerEl.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
+            });
+
+            headerEl.addEventListener('mouseleave', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            window.addEventListener('resize', () => {
+                resize();
+            });
+
+            setup();
+            animate();
+        })();
+
+        // 2. Animated Stats Counters (Intersection Observer)
+        (function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            if (!counters.length) return;
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseFloat(el.getAttribute('data-target'));
+                        const decimal = parseInt(el.getAttribute('data-decimal') || '0', 10);
+                        const duration = 1600;
+                        const startTime = performance.now();
+
+                        function updateCount(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            // Cubic ease out
+                            const ease = 1 - Math.pow(1 - progress, 3);
+                            const current = (ease * target).toFixed(decimal);
+                            el.textContent = current;
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                el.textContent = target.toFixed(decimal);
+                            }
+                        }
+                        requestAnimationFrame(updateCount);
+                        obs.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            counters.forEach(c => observer.observe(c));
+        })();
+
+        // 3. Category Filter & Live Search
+        let currentCategory = 'all';
+
+        function filterProjects(category) {
+            currentCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + category);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            applySearchAndFilter();
+        }
+
+        function searchProjects() {
+            const query = document.getElementById('projectSearch').value.trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) {
+                if (query.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                } else {
+                    clearBtn.classList.add('hidden');
+                }
+            }
+            applySearchAndFilter();
+        }
+
+        function clearSearch() {
+            const searchInput = document.getElementById('projectSearch');
+            if (searchInput) searchInput.value = '';
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (clearBtn) clearBtn.classList.add('hidden');
+            applySearchAndFilter();
+        }
+
+        function applySearchAndFilter() {
+            const searchInput = document.getElementById('projectSearch');
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const feedbackBar = document.getElementById('searchFeedbackBar');
+            const queryDisplay = document.getElementById('searchFeedbackQuery');
+            const countDisplay = document.getElementById('searchFeedbackCount');
+
+            let visibleCount = 0;
+            const cards = document.querySelectorAll('.project-card');
+
+            cards.forEach(card => {
+                const categoryMatch = (currentCategory === 'all' || card.getAttribute('data-category') === currentCategory);
+                const textContent = card.innerText.toLowerCase();
+                const searchMatch = query === '' || textContent.includes(query);
+
+                if (categoryMatch && searchMatch) {
                     card.classList.remove('hidden');
+                    visibleCount++;
                 } else {
                     card.classList.add('hidden');
                 }
             });
+
+            if (feedbackBar && queryDisplay && countDisplay) {
+                if (query.length > 0) {
+                    feedbackBar.classList.remove('hidden');
+                    queryDisplay.textContent = `"${query}"`;
+                    countDisplay.textContent = `${visibleCount} match${visibleCount === 1 ? '' : 'es'} found`;
+                } else {
+                    feedbackBar.classList.add('hidden');
+                }
+            }
         }
 
+        // 4. One-Click Clipboard Copy
         function copyToClipboard(text, btnElement) {
             navigator.clipboard.writeText(text).then(() => {
                 const originalHtml = btnElement.innerHTML;
