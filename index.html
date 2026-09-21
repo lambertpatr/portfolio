@@ -108,7 +108,7 @@
 
             <div class="flex flex-wrap justify-center gap-4 pt-2">
                 <a href="#projects" class="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition shadow-lg shadow-blue-600/25 flex items-center gap-2">
-                    <span>Explore 20 Live Demos</span>
+                    <span>Explore 24 Live Demos</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                 </a>
                 <a href="#certifications" class="px-6 py-3 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-sm transition flex items-center gap-2">
@@ -222,7 +222,7 @@
     <section class="border-y border-slate-800 bg-[#0f1523]/60 py-10" id="stats-banner">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-                <div class="text-3xl sm:text-4xl font-black text-white"><span class="counter" data-target="20">0</span>+ Projects</div>
+                <div class="text-3xl sm:text-4xl font-black text-white"><span class="counter" data-target="24">0</span>+ Projects</div>
                 <div class="text-xs sm:text-sm text-slate-400 mt-1">Live Interactive Portals</div>
             </div>
             <div>
@@ -248,15 +248,15 @@
                     <span class="w-2 h-2 rounded-full bg-blue-400"></span>
                     <span>Production Demos &amp; Portals</span>
                 </div>
-                <h3 class="text-3xl sm:text-4xl font-black text-white">20 Interactive Engineering Projects</h3>
-                <p class="text-xs sm:text-sm text-slate-400 mt-1">Explore live data science simulators, transactional ETL consoles, and executive analytics.</p>
+                <h3 class="text-3xl sm:text-4xl font-black text-white">24 Interactive Engineering Projects</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Explore live data science simulators, transactional ETL consoles, and executive financial workstations.</p>
             </div>
 
             <!-- Search & Filter Controls -->
             <div class="w-full lg:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <!-- Live Search Box -->
-                <div class="relative min-w-[240px] sm:w-64">
-                    <input type="text" id="projectSearch" oninput="searchProjects()" placeholder="Filter tech (e.g. XGBoost, Oracle, RecSys)..."
+                <div class="relative min-w-[260px] sm:w-72">
+                    <input type="text" id="projectSearch" oninput="searchProjects()" placeholder="Search projects, tech, formulas..."
                         class="w-full bg-[#111827] border border-slate-700 text-xs text-white placeholder-slate-500 rounded-xl pl-8 pr-7 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition">
                     <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -268,12 +268,12 @@
 
                 <!-- Category Filter Buttons -->
                 <div class="flex flex-wrap gap-1.5 text-xs">
-                    <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (<span id="allCount">20</span>)</button>
-                    <button onclick="filterProjects('ai')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML</button>
-                    <button onclick="filterProjects('db')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">DB &amp; Ops</button>
-                    <button onclick="filterProjects('finance')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance</button>
-                    <button onclick="filterProjects('telecom')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom</button>
-                    <button onclick="filterProjects('scraping')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping</button>
+                    <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (<span id="allCount">24</span>)</button>
+                    <button onclick="filterProjects('ai')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML (<span id="aiCount">9</span>)</button>
+                    <button onclick="filterProjects('db')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">DB &amp; Ops (<span id="dbCount">3</span>)</button>
+                    <button onclick="filterProjects('finance')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance (<span id="financeCount">5</span>)</button>
+                    <button onclick="filterProjects('telecom')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom (<span id="telecomCount">4</span>)</button>
+                    <button onclick="filterProjects('scraping')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping (<span id="scrapingCount">3</span>)</button>
                 </div>
             </div>
         </div>
@@ -479,7 +479,7 @@
             </div>
 
             <!-- 4D. DuckDB-Wasm In-Browser Analytical SQL Explorer -->
-            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="data analytics">
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="db data analytics">
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-yellow-950 text-yellow-400 border border-yellow-800">DuckDB-Wasm OLAP</span>
@@ -500,6 +500,38 @@
                     <span>Launch DuckDB SQL Explorer</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>
+            </div>
+
+            <!-- 4E. Master Financial Modeling & Analysis Workstation (Excel 365 & Google Sheets) -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="finance analytics">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-indigo-950 text-indigo-400 border border-indigo-800">Financial Engineering</span>
+                        <span class="text-xs text-slate-500">Excel 365 &amp; Google Sheets</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Universal Master Financial Modeling &amp; Analysis Workstation</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Institutional-grade financial workstation covering 5-year 3-statement model, DCF valuation with WACC &amp; 2-way sensitivity tables, 60-month loan amortization (PMT/IPMT/PPMT), multi-method depreciation (SLN/DB/SYD), and modern dynamic arrays (LET, LAMBDA, FILTER, UNIQUE, XLOOKUP). Full cross-platform compatibility guide.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Excel 365 / Sheets</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">3-Statement Model</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">DCF &amp; WACC</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">PMT / Amortization</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">LET &amp; LAMBDA</span>
+                        <span class="text-[10px] bg-indigo-950 text-indigo-400 px-2 py-0.5 rounded font-bold">538 Formulas</span>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <a href="projects/master_financial_workstation_dashboard.html" target="_blank" class="flex-1 text-center py-2.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-1.5">
+                        <span>Launch Workstation</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                    <a href="assets/Master_Financial_Analysis_and_Modeling_Workstation.xlsx" download class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs transition flex items-center justify-center gap-1.5" title="Download Excel .xlsx">
+                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        <span>.xlsx</span>
+                    </a>
+                </div>
             </div>
 
             <!-- 5. Document AI Invoice Parser -->
@@ -1485,6 +1517,21 @@
         // 3. Category Filter & Live Search
         let currentCategory = 'all';
 
+        function updateCategoryCounts() {
+            const cards = document.querySelectorAll('.project-card');
+            const counts = { all: cards.length, ai: 0, db: 0, finance: 0, telecom: 0, scraping: 0 };
+            cards.forEach(card => {
+                const cats = (card.getAttribute('data-category') || '').toLowerCase().split(/\s+/);
+                cats.forEach(c => {
+                    if (counts.hasOwnProperty(c)) counts[c]++;
+                });
+            });
+            for (const key in counts) {
+                const el = document.getElementById(key + 'Count');
+                if (el) el.innerText = counts[key];
+            }
+        }
+
         function filterProjects(category) {
             currentCategory = category;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -1517,18 +1564,22 @@
 
         function applySearchAndFilter() {
             const searchInput = document.getElementById('projectSearch');
-            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const rawQuery = searchInput ? searchInput.value.toLowerCase().trim() : '';
             const feedbackBar = document.getElementById('searchFeedbackBar');
             const queryDisplay = document.getElementById('searchFeedbackQuery');
             const countDisplay = document.getElementById('searchFeedbackCount');
+
+            const queryTerms = rawQuery.split(/\s+/).filter(Boolean);
 
             let visibleCount = 0;
             const cards = document.querySelectorAll('.project-card');
 
             cards.forEach(card => {
-                const categoryMatch = (currentCategory === 'all' || card.getAttribute('data-category') === currentCategory);
+                const cardCats = (card.getAttribute('data-category') || '').toLowerCase().split(/\s+/);
+                const categoryMatch = (currentCategory === 'all' || cardCats.includes(currentCategory));
+                
                 const textContent = card.innerText.toLowerCase();
-                const searchMatch = query === '' || textContent.includes(query);
+                const searchMatch = queryTerms.length === 0 || queryTerms.every(term => textContent.includes(term));
 
                 if (categoryMatch && searchMatch) {
                     card.classList.remove('hidden');
@@ -1539,15 +1590,17 @@
             });
 
             if (feedbackBar && queryDisplay && countDisplay) {
-                if (query.length > 0) {
+                if (rawQuery.length > 0) {
                     feedbackBar.classList.remove('hidden');
-                    queryDisplay.textContent = `"${query}"`;
+                    queryDisplay.textContent = `"${rawQuery}"`;
                     countDisplay.textContent = `${visibleCount} match${visibleCount === 1 ? '' : 'es'} found`;
                 } else {
                     feedbackBar.classList.add('hidden');
                 }
             }
         }
+
+        window.addEventListener('DOMContentLoaded', updateCategoryCounts);
 
         // 4. One-Click Clipboard Copy
         function copyToClipboard(text, btnElement) {
