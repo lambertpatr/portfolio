@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Grid National Grid Intelligence & Revenue Protection Executive Suite</title>
+    <title>Regional Interconnected Power Pool | SCADA Grid Telemetry & Revenue Protection Suite</title>
     
     <!-- Leaflet Map CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -331,20 +331,20 @@
 </head>
 <body>
 
-    <!-- Header Banner in Official National Grid Green & Yellow -->
+    <!-- Header Banner in Official Regional Grid Green & Yellow -->
     <div class="header-container">
         <div class="header-title-group">
             <h1>
-                <span>⚡</span> NATIONAL GRID ELECTRICITY TRANSMISSION AUTHORITY
-                <span class="badge-national-grid">NATIONAL GRID INTELLIGENCE</span>
+                <span>⚡</span> REGIONAL POWER POOL TRANSMISSION OPERATOR
+                <span class="badge-national-grid">GRID SCADA INTELLIGENCE</span>
             </h1>
             <div class="header-subtitle">
-                National SCADA Fleet Dispatch, 400kV/220kV Grid Reliability (IEEE 1366) & LUKU Prepayment Revenue Protection
+                Multi-Zone SCADA Fleet Dispatch, 400kV/220kV Grid Reliability (IEEE 1366) &amp; Smart Meter Revenue Protection
             </div>
         </div>
         <div class="header-meta">
-            <div>Operating Authority: <span class="meta-highlight">National Grid Directorate of Grid Operations</span></div>
-            <div>Economic Regulator: <span class="meta-highlight">National Energy Regulatory Authority</span></div>
+            <div>Operating Authority: <span class="meta-highlight">Regional Interconnected System Operator</span></div>
+            <div>Economic Regulator: <span class="meta-highlight">Energy Regulatory Commission</span></div>
             <div>Audit Cycle: <span class="meta-highlight">2026-09-19 09:19:22</span></div>
         </div>
     </div>
@@ -361,20 +361,20 @@
         </div>
 
         <div class="kpi-card">
-            <div class="kpi-label">National Peak Demand</div>
-            <div class="kpi-value">1,708.3 <span style="font-size:14px;color:var(--text-muted)">MW</span></div>
+            <div class="kpi-label">System Peak Demand</div>
+            <div class="kpi-value">2,840.5 <span style="font-size:14px;color:var(--text-muted)">MW</span></div>
             <div class="kpi-subtext">
-                <span>Peak Time: 21:00 EAT</span>
-                <span class="tag-pill yellow">JNHPP: 993 MW</span>
+                <span>Peak Time: 20:30 UTC</span>
+                <span class="tag-pill yellow">Great River Hydro: 993 MW</span>
             </div>
         </div>
 
         <div class="kpi-card">
             <div class="kpi-label">Fleet Marginal Cost</div>
-            <div class="kpi-value">TZS 49.66 <span style="font-size:14px;color:var(--text-muted)">/kWh</span></div>
+            <div class="kpi-value">$0.049 <span style="font-size:14px;color:var(--text-muted)">/kWh</span></div>
             <div class="kpi-subtext">
-                <span>JNHPP Hydro: TZS 38.50</span>
-                <span>Kinyerezi Gas: TZS 94.50</span>
+                <span>Hydro Baseload: $0.038</span>
+                <span>Combined Gas CCGT: $0.094</span>
             </div>
         </div>
 
@@ -392,28 +392,28 @@
             <div class="kpi-value">471.2 <span style="font-size:14px;color:var(--text-muted)">MWh/mo</span></div>
             <div class="kpi-subtext">
                 <span class="tag-pill warning">126 Critical Meters</span>
-                <span>Loss: TZS 0.97B/yr</span>
+                <span>Loss: $2.45M/yr</span>
             </div>
         </div>
 
         <div class="kpi-card green">
-            <div class="kpi-label">Gross LUKU Vending</div>
-            <div class="kpi-value">TZS 5.75 <span style="font-size:14px;color:var(--text-muted)">Billion</span></div>
+            <div class="kpi-label">Gross Prepaid Smart AMI Vending</div>
+            <div class="kpi-value">$12.45 <span style="font-size:14px;color:var(--text-muted)">Million</span></div>
             <div class="kpi-subtext">
-                <span class="tag-pill optimal">GePG Cleared: 99.2%</span>
-                <span>VAT: TZS 0.88B</span>
+                <span class="tag-pill optimal">Gateway Cleared: 99.6%</span>
+                <span>Direct Settlement: $1.85M</span>
             </div>
         </div>
     </div>
 
-    <!-- Row 2: National Grid GIS Map & Generation Load Stack -->
+    <!-- Row 2: Regional Grid GIS Map & Generation Load Stack -->
     <div class="layout-grid-2">
         <div class="panel">
             <div class="panel-header">
-                <div class="panel-title">Tanzania National Transmission Grid (400kV/220kV/132kV) & Power Fleet</div>
+                <div class="panel-title">Regional Transmission Grid Intertie (400kV/220kV/132kV) &amp; Power Fleet</div>
                 <div style="font-size:11px;color:var(--text-muted)">
-                    <span style="color:#FDB813">■ 400kV BTIP</span> &nbsp;|&nbsp; 
-                    <span style="color:#10B981">■ 400kV JNHPP</span> &nbsp;|&nbsp; 
+                    <span style="color:#FDB813">■ 400kV Interconnector</span> &nbsp;|&nbsp; 
+                    <span style="color:#10B981">■ 400kV Generation Hub</span> &nbsp;|&nbsp; 
                     <span style="color:#38BDF8">■ 220kV System</span> &nbsp;|&nbsp;
                     <span style="color:#E63946">● Tamper Hotspots</span>
                 </div>
@@ -423,7 +423,7 @@
 
         <div class="panel">
             <div class="panel-header">
-                <div class="panel-title">24-Hour National Diurnal Generation Dispatch Profile (MW)</div>
+                <div class="panel-title">24-Hour Regional Diurnal Generation Dispatch Profile (MW)</div>
                 <div style="font-size:11px;color:var(--text-muted)">SCADA 15-Minute Telemetry Aggregate</div>
             </div>
             <div style="height:480px;position:relative;">
@@ -454,7 +454,7 @@
 
         <div class="panel">
             <div class="panel-header">
-                <div class="panel-title">LUKU Vending Collections by Channel (TZS Billions)</div>
+                <div class="panel-title">Prepaid Vending Collections by Channel (USD Millions)</div>
             </div>
             <div style="height:280px;position:relative;">
                 <canvas id="vendingChart"></canvas>
@@ -466,7 +466,7 @@
     <div class="panel">
         <div class="panel-header">
             <div class="panel-title">
-                LUKU Smart Meter Forensic Audit & Revenue Protection Queue (Top High-Risk Accounts)
+                AMI Smart Meter Forensic Audit &amp; Revenue Protection Queue (Top High-Risk Accounts)
             </div>
             <input type="text" id="tableSearch" class="search-box" placeholder="Search Meter, Feeder, Customer...">
         </div>
@@ -484,7 +484,7 @@
                         <th>Drop (%)</th>
                         <th>Tamper Signature</th>
                         <th>NTL Risk Score</th>
-                        <th>Est. Loss (TZS/yr)</th>
+                        <th>Est. Loss (USD/yr)</th>
                         <th>Field Action</th>
                     </tr>
                 </thead>
@@ -492,601 +492,601 @@
                     
                     <tr>
                         <td><strong>54140971850</strong></td>
-                        <td>TAN-CUST-100058</td>
+                        <td>UTIL-CUST-100058</td>
                         <td><span class="tag-pill yellow">T3</span></td>
-                        <td>Northern Zone</td>
-                        <td>Moshi Town & Coffee Millers 11kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Northern Industrial & Milling Feeder 11kV</td>
                         <td>153,086.9</td>
                         <td>22,431.3</td>
                         <td style="color:var(--alert-red);font-weight:700">85.3%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">97.7</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 238,315,814.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$91,659.93</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22468497427</strong></td>
-                        <td>TAN-CUST-100074</td>
+                        <td>UTIL-CUST-100074</td>
                         <td><span class="tag-pill yellow">T3</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Nyakato Industrial & Fish Processing 33kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Lakeside Cold Storage & Processing 33kV</td>
                         <td>114,321.1</td>
                         <td>1,729.2</td>
                         <td style="color:var(--alert-red);font-weight:700">98.5%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">70.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 205,367,625.60</td>
+                        <td style="color:#FFFFFF;font-weight:700">$78,987.55</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54165130817</strong></td>
-                        <td>TAN-CUST-100030</td>
+                        <td>UTIL-CUST-100030</td>
                         <td><span class="tag-pill yellow">T3</span></td>
-                        <td>South Western Zone</td>
-                        <td>Mbeya CBD & Cement Depot 33kV</td>
+                        <td>South-Western District</td>
+                        <td>Southern Industrial & Cement Feeder 33kV</td>
                         <td>70,132.5</td>
                         <td>34,851.2</td>
                         <td style="color:var(--alert-red);font-weight:700">50.3%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#E63946">80.2</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 64,353,091.20</td>
+                        <td style="color:#FFFFFF;font-weight:700">$24,751.19</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22448095332</strong></td>
-                        <td>TAN-CUST-100066</td>
+                        <td>UTIL-CUST-100066</td>
                         <td><span class="tag-pill yellow">T3</span></td>
                         <td>Central</td>
-                        <td>Mtumba Government City Feeder 33kV</td>
+                        <td>Administrative Complex Feeder 33kV</td>
                         <td>45,438.3</td>
                         <td>13,294.4</td>
                         <td style="color:var(--alert-red);font-weight:700">70.7%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">90.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 58,630,473.60</td>
+                        <td style="color:#FFFFFF;font-weight:700">$22,550.18</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04292686518</strong></td>
-                        <td>TAN-CUST-100015</td>
+                        <td>UTIL-CUST-100015</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Mwanza City Center 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Commercial Center Feeder 11kV</td>
                         <td>23,731.0</td>
                         <td>121.5</td>
                         <td style="color:var(--alert-red);font-weight:700">99.5%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">97.2</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 55,246,230.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$21,248.55</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14166503837</strong></td>
-                        <td>TAN-CUST-100036</td>
+                        <td>UTIL-CUST-100036</td>
                         <td><span class="tag-pill yellow">T2</span></td>
                         <td>Central</td>
-                        <td>Dodoma CBD & Parliamentary 11kV</td>
+                        <td>Civic Center & Municipal Feeder 11kV</td>
                         <td>24,149.3</td>
                         <td>7,806.6</td>
                         <td style="color:var(--alert-red);font-weight:700">67.7%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">88.8</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 38,241,918.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$14,708.43</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14186561674</strong></td>
-                        <td>TAN-CUST-100072</td>
+                        <td>UTIL-CUST-100072</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Northern Zone</td>
-                        <td>Moshi Town & Coffee Millers 11kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Northern Industrial & Milling Feeder 11kV</td>
                         <td>13,230.9</td>
                         <td>326.5</td>
                         <td style="color:var(--alert-red);font-weight:700">97.5%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">100.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 30,196,296.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$11,613.96</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22468252389</strong></td>
-                        <td>TAN-CUST-100051</td>
+                        <td>UTIL-CUST-100051</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Nyerere Road Industrial 33kV</td>
+                        <td>Metro District South</td>
+                        <td>Metro Heavy Industrial Corridor 33kV</td>
                         <td>16,368.0</td>
                         <td>3,940.9</td>
                         <td style="color:var(--alert-red);font-weight:700">75.9%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">93.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 29,079,414.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$11,184.39</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54174308392</strong></td>
-                        <td>TAN-CUST-100033</td>
+                        <td>UTIL-CUST-100033</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Eastern Zone</td>
-                        <td>Msamvu SGR Traction Station 33kV</td>
+                        <td>Eastern Industrial District</td>
+                        <td>High-Speed Electric Rail Traction 33kV</td>
                         <td>21,092.0</td>
                         <td>8,795.4</td>
                         <td style="color:var(--alert-red);font-weight:700">58.3%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#FDB813">54.1</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 28,774,044.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$11,066.94</td>
                         <td><span class="tag-pill yellow">PHYSICAL INSPECTION QUEUE</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04226828790</strong></td>
-                        <td>TAN-CUST-100077</td>
+                        <td>UTIL-CUST-100077</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Gongo la Mboto Residential 11kV</td>
+                        <td>Metro District South</td>
+                        <td>South Residential District Feeder 11kV</td>
                         <td>23,842.9</td>
                         <td>12,180.6</td>
                         <td style="color:var(--alert-red);font-weight:700">48.9%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#E63946">79.5</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 27,289,782.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$10,496.07</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22473495769</strong></td>
-                        <td>TAN-CUST-100039</td>
+                        <td>UTIL-CUST-100039</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Vingunguti Commercial 11kV</td>
+                        <td>Metro District South</td>
+                        <td>Metro Commercial Feeder 11kV</td>
                         <td>18,679.4</td>
                         <td>7,498.8</td>
                         <td style="color:var(--alert-red);font-weight:700">59.9%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#E63946">85.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 26,162,604.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$10,062.54</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04255497773</strong></td>
-                        <td>TAN-CUST-100012</td>
+                        <td>UTIL-CUST-100012</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Mbezi Louis Express 33kV</td>
+                        <td>Metro District North</td>
+                        <td>West Express Substation 33kV</td>
                         <td>14,386.8</td>
                         <td>3,709.4</td>
                         <td style="color:var(--alert-red);font-weight:700">74.2%</td>
                         <td><span class="tag-pill warning">PHASE BRIDGE SHUNT</span></td>
                         <td><strong style="color:#E63946">92.1</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 24,985,116.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$9,609.66</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04247334666</strong></td>
-                        <td>TAN-CUST-100127</td>
+                        <td>UTIL-CUST-100127</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Eastern Zone</td>
-                        <td>Msamvu SGR Traction Station 33kV</td>
+                        <td>Eastern Industrial District</td>
+                        <td>High-Speed Electric Rail Traction 33kV</td>
                         <td>14,386.2</td>
                         <td>4,144.4</td>
                         <td style="color:var(--alert-red);font-weight:700">71.2%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">90.6</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 23,965,812.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$9,217.62</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22493190352</strong></td>
-                        <td>TAN-CUST-100101</td>
+                        <td>UTIL-CUST-100101</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Masaki & Oysterbay Diplomatic 11kV</td>
+                        <td>Metro District North</td>
+                        <td>Coastal Diplomatic & Tech Feeder 11kV</td>
                         <td>10,355.8</td>
                         <td>3,041.0</td>
                         <td style="color:var(--alert-red);font-weight:700">70.6%</td>
                         <td><span class="tag-pill warning">PHASE BRIDGE SHUNT</span></td>
                         <td><strong style="color:#E63946">90.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 17,116,632.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$6,583.32</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04286049839</strong></td>
-                        <td>TAN-CUST-100001</td>
+                        <td>UTIL-CUST-100001</td>
                         <td><span class="tag-pill yellow">T2</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Tegeta - Kunduchi Coastal 33kV</td>
+                        <td>Metro District North</td>
+                        <td>North Coastal Feeder 33kV</td>
                         <td>9,478.5</td>
                         <td>3,080.5</td>
                         <td style="color:var(--alert-red);font-weight:700">67.5%</td>
                         <td><span class="tag-pill warning">PHASE BRIDGE SHUNT</span></td>
                         <td><strong style="color:#E63946">88.8</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 14,971,320.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$5,758.20</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14143213591</strong></td>
-                        <td>TAN-CUST-100111</td>
+                        <td>UTIL-CUST-100111</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Kurasini Port & Oil Depot 33kV</td>
+                        <td>Metro District South</td>
+                        <td>Harbour Logistics & Terminal Feeder 33kV</td>
                         <td>606.9</td>
                         <td>74.7</td>
                         <td style="color:var(--alert-red);font-weight:700">87.7%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">93.8</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,864,828.80</td>
+                        <td style="color:#FFFFFF;font-weight:700">$717.24</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54143562485</strong></td>
-                        <td>TAN-CUST-100028</td>
+                        <td>UTIL-CUST-100028</td>
                         <td><span class="tag-pill yellow">T1</span></td>
                         <td>Central</td>
-                        <td>Dodoma CBD & Parliamentary 11kV</td>
+                        <td>Civic Center & Municipal Feeder 11kV</td>
                         <td>575.3</td>
                         <td>47.4</td>
                         <td style="color:var(--alert-red);font-weight:700">91.8%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">95.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,849,761.60</td>
+                        <td style="color:#FFFFFF;font-weight:700">$711.45</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22492439044</strong></td>
-                        <td>TAN-CUST-100054</td>
+                        <td>UTIL-CUST-100054</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Nyakato Industrial & Fish Processing 33kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Lakeside Cold Storage & Processing 33kV</td>
                         <td>619.5</td>
                         <td>122.8</td>
                         <td style="color:var(--alert-red);font-weight:700">80.2%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">90.1</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,740,436.80</td>
+                        <td style="color:#FFFFFF;font-weight:700">$669.40</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54186403553</strong></td>
-                        <td>TAN-CUST-100131</td>
+                        <td>UTIL-CUST-100131</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Mwanza City Center 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Commercial Center Feeder 11kV</td>
                         <td>634.0</td>
                         <td>155.3</td>
                         <td style="color:var(--alert-red);font-weight:700">75.5%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">84.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,677,364.80</td>
+                        <td style="color:#FFFFFF;font-weight:700">$645.14</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54146841130</strong></td>
-                        <td>TAN-CUST-100003</td>
+                        <td>UTIL-CUST-100003</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Gongo la Mboto Residential 11kV</td>
+                        <td>Metro District South</td>
+                        <td>South Residential District Feeder 11kV</td>
                         <td>576.8</td>
                         <td>101.6</td>
                         <td style="color:var(--alert-red);font-weight:700">82.4%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">89.9</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,665,100.80</td>
+                        <td style="color:#FFFFFF;font-weight:700">$640.42</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14139101773</strong></td>
-                        <td>TAN-CUST-100008</td>
+                        <td>UTIL-CUST-100008</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Northern Zone</td>
-                        <td>Themi Industrial Area 33kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Valley Industrial Feeder 33kV</td>
                         <td>567.6</td>
                         <td>98.1</td>
                         <td style="color:var(--alert-red);font-weight:700">82.7%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">91.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,645,128.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$632.74</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54198217088</strong></td>
-                        <td>TAN-CUST-100109</td>
+                        <td>UTIL-CUST-100109</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Mwenge & Sinza Commercial 11kV</td>
+                        <td>Metro District North</td>
+                        <td>Central Commercial District 11kV</td>
                         <td>545.0</td>
                         <td>76.0</td>
                         <td style="color:var(--alert-red);font-weight:700">86.1%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">93.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,643,376.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$632.07</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54128768763</strong></td>
-                        <td>TAN-CUST-100105</td>
+                        <td>UTIL-CUST-100105</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Mwanza City Center 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Commercial Center Feeder 11kV</td>
                         <td>608.7</td>
                         <td>168.6</td>
                         <td style="color:var(--alert-red);font-weight:700">72.3%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">86.2</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,542,110.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$593.12</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22452222691</strong></td>
-                        <td>TAN-CUST-100116</td>
+                        <td>UTIL-CUST-100116</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Masaki & Oysterbay Diplomatic 11kV</td>
+                        <td>Metro District North</td>
+                        <td>Coastal Diplomatic & Tech Feeder 11kV</td>
                         <td>524.6</td>
                         <td>95.2</td>
                         <td style="color:var(--alert-red);font-weight:700">81.9%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">90.9</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,504,617.60</td>
+                        <td style="color:#FFFFFF;font-weight:700">$578.70</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54181026158</strong></td>
-                        <td>TAN-CUST-100044</td>
+                        <td>UTIL-CUST-100044</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Temeke Residential 11kV</td>
+                        <td>Metro District South</td>
+                        <td>Metro South Residential 11kV</td>
                         <td>430.8</td>
                         <td>2.0</td>
                         <td style="color:var(--alert-red);font-weight:700">99.5%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">95.0</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,502,515.20</td>
+                        <td style="color:#FFFFFF;font-weight:700">$577.89</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22415792887</strong></td>
-                        <td>TAN-CUST-100046</td>
+                        <td>UTIL-CUST-100046</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Coast & Eastern</td>
-                        <td>Kibaha Town Residential 11kV</td>
+                        <td>Coastal Grid District</td>
+                        <td>Central Residential Feeder 11kV</td>
                         <td>493.1</td>
                         <td>65.7</td>
                         <td style="color:var(--alert-red);font-weight:700">86.7%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#E63946">93.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,497,609.60</td>
+                        <td style="color:#FFFFFF;font-weight:700">$576.00</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22472156233</strong></td>
-                        <td>TAN-CUST-100020</td>
+                        <td>UTIL-CUST-100020</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Ilemela Residential & Commercial 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Lakeside Mixed Use Feeder 11kV</td>
                         <td>520.4</td>
                         <td>108.4</td>
                         <td style="color:var(--alert-red);font-weight:700">79.2%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">89.6</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,443,648.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$555.25</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14160064794</strong></td>
-                        <td>TAN-CUST-100013</td>
+                        <td>UTIL-CUST-100013</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Mwanza City Center 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Commercial Center Feeder 11kV</td>
                         <td>633.6</td>
                         <td>225.6</td>
                         <td style="color:var(--alert-red);font-weight:700">64.4%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">82.2</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,429,632.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$549.86</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22489423157</strong></td>
-                        <td>TAN-CUST-100004</td>
+                        <td>UTIL-CUST-100004</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam South</td>
-                        <td>Vingunguti Commercial 11kV</td>
+                        <td>Metro District South</td>
+                        <td>Metro Commercial Feeder 11kV</td>
                         <td>615.0</td>
                         <td>216.8</td>
                         <td style="color:var(--alert-red);font-weight:700">64.7%</td>
                         <td><span class="tag-pill warning">PHASE BRIDGE SHUNT</span></td>
                         <td><strong style="color:#E63946">81.8</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,395,292.80</td>
+                        <td style="color:#FFFFFF;font-weight:700">$536.65</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04210388983</strong></td>
-                        <td>TAN-CUST-100042</td>
+                        <td>UTIL-CUST-100042</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Northern Zone</td>
-                        <td>Moshi Town & Coffee Millers 11kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Northern Industrial & Milling Feeder 11kV</td>
                         <td>594.3</td>
                         <td>203.3</td>
                         <td style="color:var(--alert-red);font-weight:700">65.8%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">82.9</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,370,064.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$526.95</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22498398820</strong></td>
-                        <td>TAN-CUST-100085</td>
+                        <td>UTIL-CUST-100085</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Northern Zone</td>
-                        <td>Moshi Town & Coffee Millers 11kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Northern Industrial & Milling Feeder 11kV</td>
                         <td>534.8</td>
                         <td>145.2</td>
                         <td style="color:var(--alert-red);font-weight:700">72.8%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#FDB813">52.9</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,365,158.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$525.06</td>
                         <td><span class="tag-pill yellow">PHYSICAL INSPECTION QUEUE</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14180895594</strong></td>
-                        <td>TAN-CUST-100018</td>
+                        <td>UTIL-CUST-100018</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Mbezi Louis Express 33kV</td>
+                        <td>Metro District North</td>
+                        <td>West Express Substation 33kV</td>
                         <td>616.2</td>
                         <td>227.6</td>
                         <td style="color:var(--alert-red);font-weight:700">63.1%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#E63946">81.5</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,361,654.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$523.71</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>14159445129</strong></td>
-                        <td>TAN-CUST-100052</td>
+                        <td>UTIL-CUST-100052</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Coast & Eastern</td>
-                        <td>Kibaha Town Residential 11kV</td>
+                        <td>Coastal Grid District</td>
+                        <td>Central Residential Feeder 11kV</td>
                         <td>609.7</td>
                         <td>225.9</td>
                         <td style="color:var(--alert-red);font-weight:700">62.9%</td>
                         <td><span class="tag-pill warning">PHASE BRIDGE SHUNT</span></td>
                         <td><strong style="color:#FDB813">51.5</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,344,835.20</td>
+                        <td style="color:#FFFFFF;font-weight:700">$517.24</td>
                         <td><span class="tag-pill yellow">PHYSICAL INSPECTION QUEUE</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04242981389</strong></td>
-                        <td>TAN-CUST-100112</td>
+                        <td>UTIL-CUST-100112</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Mwenge & Sinza Commercial 11kV</td>
+                        <td>Metro District North</td>
+                        <td>Central Commercial District 11kV</td>
                         <td>516.2</td>
                         <td>143.4</td>
                         <td style="color:var(--alert-red);font-weight:700">72.2%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">86.1</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,306,291.20</td>
+                        <td style="color:#FFFFFF;font-weight:700">$502.42</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54129695271</strong></td>
-                        <td>TAN-CUST-100097</td>
+                        <td>UTIL-CUST-100097</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Lake Zone Distribution</td>
-                        <td>Mwanza City Center 11kV</td>
+                        <td>Lake Basin District</td>
+                        <td>Commercial Center Feeder 11kV</td>
                         <td>471.9</td>
                         <td>99.8</td>
                         <td style="color:var(--alert-red);font-weight:700">78.9%</td>
                         <td><span class="tag-pill warning">NEUTRAL LINE BYPASS</span></td>
                         <td><strong style="color:#E63946">89.5</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,303,838.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$501.48</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04233260029</strong></td>
-                        <td>TAN-CUST-100125</td>
+                        <td>UTIL-CUST-100125</td>
                         <td><span class="tag-pill yellow">T1</span></td>
                         <td>Central</td>
-                        <td>Dodoma CBD & Parliamentary 11kV</td>
+                        <td>Civic Center & Municipal Feeder 11kV</td>
                         <td>497.7</td>
                         <td>136.2</td>
                         <td style="color:var(--alert-red);font-weight:700">72.6%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">86.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,266,696.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$487.19</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>22488026694</strong></td>
-                        <td>TAN-CUST-100091</td>
+                        <td>UTIL-CUST-100091</td>
                         <td><span class="tag-pill yellow">T1</span></td>
                         <td>Central</td>
-                        <td>Mtumba Government City Feeder 33kV</td>
+                        <td>Administrative Complex Feeder 33kV</td>
                         <td>570.4</td>
                         <td>209.1</td>
                         <td style="color:var(--alert-red);font-weight:700">63.3%</td>
                         <td><span class="tag-pill warning">STRONG NEODYMIUM MAGNET</span></td>
                         <td><strong style="color:#E63946">81.7</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,265,995.20</td>
+                        <td style="color:#FFFFFF;font-weight:700">$486.92</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04282971173</strong></td>
-                        <td>TAN-CUST-100019</td>
+                        <td>UTIL-CUST-100019</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Dar es Salaam North</td>
-                        <td>Tegeta - Kunduchi Coastal 33kV</td>
+                        <td>Metro District North</td>
+                        <td>North Coastal Feeder 33kV</td>
                         <td>483.1</td>
                         <td>123.6</td>
                         <td style="color:var(--alert-red);font-weight:700">74.4%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">87.2</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,259,688.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$484.50</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>54140786648</strong></td>
-                        <td>TAN-CUST-100088</td>
+                        <td>UTIL-CUST-100088</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Coast & Eastern</td>
-                        <td>Kibaha Town Residential 11kV</td>
+                        <td>Coastal Grid District</td>
+                        <td>Central Residential Feeder 11kV</td>
                         <td>502.4</td>
                         <td>147.4</td>
                         <td style="color:var(--alert-red);font-weight:700">70.7%</td>
                         <td><span class="tag-pill warning">COVER OPEN UNAUTHORIZED</span></td>
                         <td><strong style="color:#E63946">85.3</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,243,920.00</td>
+                        <td style="color:#FFFFFF;font-weight:700">$478.43</td>
                         <td><span class="tag-pill warning">IMMEDIATE DISCONNECT & SUMMONS</span></td>
                     </tr>
                     
                     <tr>
                         <td><strong>04249482988</strong></td>
-                        <td>TAN-CUST-100005</td>
+                        <td>UTIL-CUST-100005</td>
                         <td><span class="tag-pill yellow">T1</span></td>
-                        <td>Northern Zone</td>
-                        <td>Themi Industrial Area 33kV</td>
+                        <td>Northern Grid District</td>
+                        <td>Valley Industrial Feeder 33kV</td>
                         <td>419.8</td>
                         <td>74.7</td>
                         <td style="color:var(--alert-red);font-weight:700">82.2%</td>
                         <td><span class="tag-pill warning">ZERO CONSUMPTION OCCUPIED</span></td>
                         <td><strong style="color:#FDB813">61.1</strong></td>
-                        <td style="color:#FFFFFF;font-weight:700">TZS 1,209,230.40</td>
+                        <td style="color:#FFFFFF;font-weight:700">$465.09</td>
                         <td><span class="tag-pill yellow">PHYSICAL INSPECTION QUEUE</span></td>
                     </tr>
                     
@@ -1096,7 +1096,7 @@
     </div>
 
     <div class="dashboard-footer">
-        National Grid Enterprise SCADA & Revenue Protection Architecture | Compliant with National Electricity Regulatory Act & Grid Code | Ingestion & Quantitative Engineering Suite
+        National Grid Enterprise SCADA & Revenue Protection Architecture | Compliant with International Grid Code & IEEE Reliability Standards | Ingestion & Quantitative Engineering Suite
     </div>
 
     <!-- Scripts -->
@@ -1118,53 +1118,53 @@
         }).addTo(map);
 
         // Transmission Lines Polylines
-        // 400kV BTIP Backbone in National Grid Yellow
+        // 400kV North-South High-Voltage Backbone in Primary Yellow
         const lineBTIP = [
-            [-7.7812, 35.6980], // Iringa
-            [-6.1550, 35.6820], // Dodoma Zuzu
-            [-4.8153, 34.7436], // Singida
-            [-3.6639, 33.4219]  // Shinyanga
+            [-7.7812, 35.6980], // Southern Province
+            [-6.1550, 35.6820], // Central Capital District Zuzu
+            [-4.8153, 34.7436], // Central Highlands
+            [-3.6639, 33.4219]  // Inland Basin Province
         ];
         L.polyline(lineBTIP, { color: '#FDB813', weight: 4.5, opacity: 0.9, dashArray: '8, 6' }).addTo(map)
-            .bindPopup("<b>400kV BTIP Backbone</b><br>Iringa - Dodoma (Zuzu) - Singida - Shinyanga");
+            .bindPopup("<b>400kV High-Voltage Backbone</b><br>South Hub - Central Gateway - Inland Substation - Lake Terminal");
 
-        // 400kV JNHPP Intertie in National Grid Green
+        // 400kV Central Hydro Intertie in Primary Green
         const lineJNHPP = [
-            [-7.8286, 37.8183], // JNHPP
-            [-6.6386, 38.3542], // Chalinze
-            [-6.1550, 35.6820]  // Dodoma Zuzu
+            [-7.8286, 37.8183], // Regional Hydro Complex
+            [-6.6386, 38.3542], // East Junction
+            [-6.1550, 35.6820]  // Central Capital District Zuzu
         ];
         L.polyline(lineJNHPP, { color: '#10B981', weight: 4.5, opacity: 0.95 }).addTo(map)
-            .bindPopup("<b>400kV JNHPP Interconnection Hub</b><br>JNHPP Rufiji (2,115 MW) to Chalinze & Dodoma");
+            .bindPopup("<b>400kV Regional Interconnection Hub</b><br>Major Hydro Complex (2,115 MW) to Regional Grid Hubs");
 
-        // 220kV Coastal Hub in Blue
+        // 220kV Coastal Industrial Ring
         const lineCoastal220 = [
-            [-6.6386, 38.3542], // Chalinze
-            [-6.7865, 39.2140], // Ubungo
-            [-6.8732, 39.2085], // Kipawa
-            [-6.8921, 39.1843]  // Kinyerezi
+            [-6.6386, 38.3542], // East Junction
+            [-6.7865, 39.2140], // Central SCADA Hub
+            [-6.8732, 39.2085], // Airport Industrial
+            [-6.8921, 39.1843]  // Coastal CCGT
         ];
         L.polyline(lineCoastal220, { color: '#38BDF8', weight: 3, opacity: 0.85 }).addTo(map)
-            .bindPopup("<b>220kV Coast & Dar es Salaam Ring</b><br>Chalinze - Ubungo - Kipawa - Kinyerezi");
+            .bindPopup("<b>220kV Coastal Metropolitan Ring</b><br>East Hub - Central Dispatch - Airport Industrial - Coastal Gas Hub");
 
-        // 132kV Zanzibar Submarine Cable
+        // 132kV Offshore Submarine Interconnector Cable
         const lineZanzibar = [
-            [-6.7865, 39.2140], // Ubungo
-            [-6.3150, 39.2215]  // Fumba Zanzibar
+            [-6.7865, 39.2140], // Central SCADA Hub
+            [-6.3150, 39.2215]  // Offshore Island
         ];
         L.polyline(lineZanzibar, { color: '#F43F5E', weight: 3, dashArray: '5, 5', opacity: 0.9 }).addTo(map)
-            .bindPopup("<b>132kV 100MW Submarine Interconnector Cable</b><br>Ubungo (Mainland) - Ras Fumba (Zanzibar Unguja)");
+            .bindPopup("<b>132kV 100MW Submarine Power Cable</b><br>Mainland Terminal - Offshore Island Substation");
 
-        // 220kV Kidatu - Morogoro - Chalinze
+        // 220kV Valley Hydro - Inland Hub - Coastal Junction
         const lineKidatu = [
-            [-7.6622, 36.9531], // Kidatu
-            [-6.8055, 37.6612], // Morogoro Msamvu
-            [-6.6386, 38.3542]  // Chalinze
+            [-7.6622, 36.9531], // Upper Gorge Hydro
+            [-6.8055, 37.6612], // Central Valley Msamvu
+            [-6.6386, 38.3542]  // East Junction
         ];
         L.polyline(lineKidatu, { color: '#38BDF8', weight: 2.5, opacity: 0.8 }).addTo(map);
 
         // Substations Markers
-        const subsData = [{"substation_id": "SUB-CHALINZE", "substation_name": "Chalinze 400/220/132kV Interconnection Hub", "region": "Pwani (Coast)", "zone": "Coast & Eastern", "voltage_kv": 400, "installed_mva": 600.0, "current_load_mva": 505.2, "peak_loading_percent": 84.2, "power_factor": 0.927, "status": "NEAR_CAPACITY", "lines": "JNHPP-Chalinze 400kV, Kinyerezi-Chalinze 400kV, Chalinze-Dodoma 400kV", "latitude": -6.6386, "longitude": 38.3542}, {"substation_id": "SUB-KIPAWA", "substation_name": "Kipawa 220/132/33kV Substation (Dar Industrial/Airport)", "region": "Dar es Salaam", "zone": "Dar es Salaam South", "voltage_kv": 220, "installed_mva": 350.0, "current_load_mva": 292.2, "peak_loading_percent": 83.5, "power_factor": 0.927, "status": "NEAR_CAPACITY", "lines": "Kinyerezi-Kipawa 220kV, Kipawa-Kurasini 132kV", "latitude": -6.8732, "longitude": 39.2085}, {"substation_id": "SUB-FUMBA", "substation_name": "Ras Fumba Submarine Landing Substation (Zanzibar Intertie)", "region": "Zanzibar (Unguja)", "zone": "Islands Grid", "voltage_kv": 132, "installed_mva": 150.0, "current_load_mva": 117.1, "peak_loading_percent": 78.1, "power_factor": 0.936, "status": "OPTIMAL", "lines": "Ubungo-Ras Kilomoni-Fumba 132kV 100MW Submarine Cable I & II", "latitude": -6.315, "longitude": 39.2215}, {"substation_id": "SUB-MBEYA", "substation_name": "Mbeya (Mbalizi) 220/33kV Substation", "region": "Mbeya", "zone": "South Western Zone", "voltage_kv": 220, "installed_mva": 200.0, "current_load_mva": 155.4, "peak_loading_percent": 77.7, "power_factor": 0.929, "status": "OPTIMAL", "lines": "Iringa-Mbeya 220kV, TAZA 400kV Zambia Interconnector", "latitude": -8.9324, "longitude": 33.3689}, {"substation_id": "SUB-MOROGORO", "substation_name": "Msamvu 220/33kV Substation (Morogoro / SGR Traction)", "region": "Morogoro", "zone": "Eastern Zone", "voltage_kv": 220, "installed_mva": 240.0, "current_load_mva": 175.9, "peak_loading_percent": 73.3, "power_factor": 0.956, "status": "OPTIMAL", "lines": "Kidatu-Morogoro 220kV, Chalinze-Morogoro 220kV, SGR Traction Feeder 132kV", "latitude": -6.8055, "longitude": 37.6612}, {"substation_id": "SUB-NYAKATO", "substation_name": "Nyakato 220/33kV Substation (Mwanza Hub)", "region": "Mwanza", "zone": "Lake Zone Distribution", "voltage_kv": 220, "installed_mva": 250.0, "current_load_mva": 180.2, "peak_loading_percent": 72.1, "power_factor": 0.936, "status": "OPTIMAL", "lines": "Shinyanga-Mwanza 220kV, Geita Gold line", "latitude": -2.5284, "longitude": 32.9351}, {"substation_id": "SUB-IRINGA", "substation_name": "Iringa (Tagamenda) 400/220kV Substation", "region": "Iringa", "zone": "Southern Highlands", "voltage_kv": 400, "installed_mva": 450.0, "current_load_mva": 305.1, "peak_loading_percent": 67.8, "power_factor": 0.945, "status": "OPTIMAL", "lines": "BTIP 400kV, Kidatu-Iringa 220kV, TAZA 400kV (Mbeya/Zambia)", "latitude": -7.7812, "longitude": 35.698}, {"substation_id": "SUB-ZUZU", "substation_name": "Zuzu 400/220/33kV Main Substation (Dodoma Capital)", "region": "Dodoma", "zone": "Central", "voltage_kv": 400, "installed_mva": 500.0, "current_load_mva": 336.0, "peak_loading_percent": 67.2, "power_factor": 0.926, "status": "OPTIMAL", "lines": "BTIP 400kV (Iringa-Dodoma-Singida), Chalinze-Dodoma 400kV", "latitude": -6.155, "longitude": 35.682}, {"substation_id": "SUB-UBUNGO", "substation_name": "Ubungo 220/132/33kV National Grid Control Hub", "region": "Dar es Salaam", "zone": "Dar es Salaam North", "voltage_kv": 220, "installed_mva": 450.0, "current_load_mva": 299.7, "peak_loading_percent": 66.6, "power_factor": 0.922, "status": "OPTIMAL", "lines": "Chalinze-Ubungo 220kV, Zanzibar Submarine Cable 132kV", "latitude": -6.7865, "longitude": 39.214}, {"substation_id": "SUB-NJIRO", "substation_name": "Njiro 220/66/33kV Substation (Arusha Industrial)", "region": "Arusha", "zone": "Northern Zone", "voltage_kv": 220, "installed_mva": 220.0, "current_load_mva": 141.7, "peak_loading_percent": 64.4, "power_factor": 0.914, "status": "OPTIMAL", "lines": "Singida-Babati-Arusha 220kV, Kenya 400kV Intertie, Hale-Arusha 132kV", "latitude": -3.4021, "longitude": 36.6912}, {"substation_id": "SUB-TANGA", "substation_name": "Gofu 132/33kV Substation (Tanga Port & Cement)", "region": "Tanga", "zone": "Northern Zone", "voltage_kv": 132, "installed_mva": 180.0, "current_load_mva": 114.3, "peak_loading_percent": 63.5, "power_factor": 0.958, "status": "OPTIMAL", "lines": "Hale-Tanga 132kV, Pangani Falls-Tanga 132kV, Tanga Cement Feeder", "latitude": -5.0889, "longitude": 39.0988}, {"substation_id": "SUB-SINGIDA", "substation_name": "Singida 400/220kV Substation", "region": "Singida", "zone": "Central & Lake Interconnector", "voltage_kv": 400, "installed_mva": 400.0, "current_load_mva": 251.2, "peak_loading_percent": 62.8, "power_factor": 0.936, "status": "OPTIMAL", "lines": "BTIP 400kV, Kenya Interconnector 400kV (Namanga-Isinya)", "latitude": -4.8153, "longitude": 34.7436}, {"substation_id": "SUB-KURASINI", "substation_name": "Kurasini 132/33/11kV Substation (Dar Port & KOJ Gantry)", "region": "Dar es Salaam", "zone": "Dar es Salaam South", "voltage_kv": 132, "installed_mva": 220.0, "current_load_mva": 136.2, "peak_loading_percent": 61.9, "power_factor": 0.939, "status": "OPTIMAL", "lines": "Kipawa-Kurasini 132kV, Ilala-Kurasini 132kV, TPA Berths 0-11", "latitude": -6.8521, "longitude": 39.2814}, {"substation_id": "SUB-KIYUNGI", "substation_name": "Kiyungi 132/33kV Substation (Moshi / Kilimanjaro)", "region": "Kilimanjaro", "zone": "Northern Zone", "voltage_kv": 132, "installed_mva": 160.0, "current_load_mva": 93.3, "peak_loading_percent": 58.3, "power_factor": 0.943, "status": "OPTIMAL", "lines": "Njiro-Kiyungi 132kV, Nyumba ya Mungu-Moshi 66kV", "latitude": -3.3421, "longitude": 37.3385}, {"substation_id": "SUB-SHINYANGA", "substation_name": "Shinyanga 400/220kV Terminal Substation", "region": "Shinyanga", "zone": "Lake Zone Transmission", "voltage_kv": 400, "installed_mva": 380.0, "current_load_mva": 201.4, "peak_loading_percent": 53.0, "power_factor": 0.941, "status": "OPTIMAL", "lines": "BTIP 400kV, Shinyanga-Mwanza (Nyakato) 220kV, Bulyanhulu Gold Mine line", "latitude": -3.6639, "longitude": 33.4219}];
+        const subsData = [{"substation_id": "SUB-CHALINZE", "substation_name": "East Junction 400/220/132kV Interconnection Hub", "region": "Coastal Province", "zone": "Coastal Grid District", "voltage_kv": 400, "installed_mva": 600.0, "current_load_mva": 505.2, "peak_loading_percent": 84.2, "power_factor": 0.927, "status": "NEAR_CAPACITY", "lines": "Hydro Hub 400kV, Gas Fleet 400kV, Central Gateway 400kV", "latitude": -6.6386, "longitude": 38.3542}, {"substation_id": "SUB-KIPAWA", "substation_name": "Metro Industrial & Airport 220/132/33kV Substation", "region": "Metropolitan Capital Region", "zone": "Metro District South", "voltage_kv": 220, "installed_mva": 350.0, "current_load_mva": 292.2, "peak_loading_percent": 83.5, "power_factor": 0.927, "status": "NEAR_CAPACITY", "lines": "Gas Station Intertie 220kV, Port Feeder 132kV", "latitude": -6.8732, "longitude": 39.2085}, {"substation_id": "SUB-FUMBA", "substation_name": "Offshore Island Landing Substation", "region": "Offshore Island Territory", "zone": "Offshore Intertie District", "voltage_kv": 132, "installed_mva": 150.0, "current_load_mva": 117.1, "peak_loading_percent": 78.1, "power_factor": 0.936, "status": "OPTIMAL", "lines": "Mainland Substation 132kV Subsea Link I & II", "latitude": -6.315, "longitude": 39.2215}, {"substation_id": "SUB-MBEYA", "substation_name": "South-Western Regional 220/33kV Substation", "region": "Southern Highlands", "zone": "South-Western District", "voltage_kv": 220, "installed_mva": 200.0, "current_load_mva": 155.4, "peak_loading_percent": 77.7, "power_factor": 0.929, "status": "OPTIMAL", "lines": "Southern Province-Southern Highlands 220kV, TAZA 400kV Zambia Interconnector", "latitude": -8.9324, "longitude": 33.3689}, {"substation_id": "SUB-MOROGORO", "substation_name": "Central Corridor & Electric Rail 220/33kV Substation", "region": "Central Valley", "zone": "Eastern Industrial District", "voltage_kv": 220, "installed_mva": 240.0, "current_load_mva": 175.9, "peak_loading_percent": 73.3, "power_factor": 0.956, "status": "OPTIMAL", "lines": "Upper Gorge-Central Valley 220kV, East Junction-Central Valley 220kV, SGR Traction Feeder 132kV", "latitude": -6.8055, "longitude": 37.6612}, {"substation_id": "SUB-NYAKATO", "substation_name": "Lake Regional 220/33kV Substation", "region": "Lake District", "zone": "Lake Basin District", "voltage_kv": 220, "installed_mva": 250.0, "current_load_mva": 180.2, "peak_loading_percent": 72.1, "power_factor": 0.936, "status": "OPTIMAL", "lines": "Inland Basin Province-Lake District 220kV, Geita Gold line", "latitude": -2.5284, "longitude": 32.9351}, {"substation_id": "SUB-IRINGA", "substation_name": "Southern Hub 400/220kV Transmission Substation", "region": "Southern Province", "zone": "Southern Highlands District", "voltage_kv": 400, "installed_mva": 450.0, "current_load_mva": 305.1, "peak_loading_percent": 67.8, "power_factor": 0.945, "status": "OPTIMAL", "lines": "BTIP 400kV, Valley Hydro-Southern Province 220kV, TAZA 400kV (Southern Highlands/Zambia)", "latitude": -7.7812, "longitude": 35.698}, {"substation_id": "SUB-ZUZU", "substation_name": "National Capital 400/220/33kV Gateway Substation", "region": "Central Capital District", "zone": "Central", "voltage_kv": 400, "installed_mva": 500.0, "current_load_mva": 336.0, "peak_loading_percent": 67.2, "power_factor": 0.926, "status": "OPTIMAL", "lines": "BTIP 400kV (Southern Province-Central Capital District-Central Highlands), East Junction-Central Capital District 400kV", "latitude": -6.155, "longitude": 35.682}, {"substation_id": "SUB-UBUNGO", "substation_name": "Central SCADA & Grid Control 220/132/33kV Primary Hub", "region": "Metropolitan Capital Region", "zone": "Metro District North", "voltage_kv": 220, "installed_mva": 450.0, "current_load_mva": 299.7, "peak_loading_percent": 66.6, "power_factor": 0.922, "status": "OPTIMAL", "lines": "East Hub 220kV, Submarine Island Cable 132kV", "latitude": -6.7865, "longitude": 39.214}, {"substation_id": "SUB-NJIRO", "substation_name": "Northern Industrial 220/66/33kV Substation", "region": "Northern Province", "zone": "Northern Grid District", "voltage_kv": 220, "installed_mva": 220.0, "current_load_mva": 141.7, "peak_loading_percent": 64.4, "power_factor": 0.914, "status": "OPTIMAL", "lines": "Central Highlands-Babati-Northern Province 220kV, Kenya 400kV Intertie, Hale-Northern Province 132kV", "latitude": -3.4021, "longitude": 36.6912}, {"substation_id": "SUB-TANGA", "substation_name": "North Coastal Port & Industrial 132/33kV Substation", "region": "North Coastal Region", "zone": "Northern Grid District", "voltage_kv": 132, "installed_mva": 180.0, "current_load_mva": 114.3, "peak_loading_percent": 63.5, "power_factor": 0.958, "status": "OPTIMAL", "lines": "Hale-North Coastal Region 132kV, Pangani Falls-North Coastal Region 132kV, North Coastal Region Cement Feeder", "latitude": -5.0889, "longitude": 39.0988}, {"substation_id": "SUB-SINGIDA", "substation_name": "Central Highlands 400/220kV Substation", "region": "Central Highlands", "zone": "Central & Lake Interconnector", "voltage_kv": 400, "installed_mva": 400.0, "current_load_mva": 251.2, "peak_loading_percent": 62.8, "power_factor": 0.936, "status": "OPTIMAL", "lines": "Backbone 400kV, Regional Cross-Border Intertie 400kV", "latitude": -4.8153, "longitude": 34.7436}, {"substation_id": "SUB-KURASINI", "substation_name": "Harbour Marine & Oil Terminal 132/33/11kV Substation", "region": "Metropolitan Capital Region", "zone": "Metro District South", "voltage_kv": 132, "installed_mva": 220.0, "current_load_mva": 136.2, "peak_loading_percent": 61.9, "power_factor": 0.939, "status": "OPTIMAL", "lines": "Metro 132kV, Central 132kV, Container Terminal Quays 1-12", "latitude": -6.8521, "longitude": 39.2814}, {"substation_id": "SUB-KIYUNGI", "substation_name": "Highlands Agricultural & Commercial 132/33kV Substation", "region": "Highlands Province", "zone": "Northern Grid District", "voltage_kv": 132, "installed_mva": 160.0, "current_load_mva": 93.3, "peak_loading_percent": 58.3, "power_factor": 0.943, "status": "OPTIMAL", "lines": "Regional Hub 132kV, Hydro 66kV", "latitude": -3.3421, "longitude": 37.3385}, {"substation_id": "SUB-SHINYANGA", "substation_name": "Inland Basin 400/220kV Terminal Substation", "region": "Inland Basin Province", "zone": "Lake Transmission District", "voltage_kv": 400, "installed_mva": 380.0, "current_load_mva": 201.4, "peak_loading_percent": 53.0, "power_factor": 0.941, "status": "OPTIMAL", "lines": "BTIP 400kV, Inland Basin Province-Lake District (Nyakato) 220kV, Bulyanhulu Gold Mine line", "latitude": -3.6639, "longitude": 33.4219}];
         subsData.forEach(s => {
             const marker = L.circleMarker([s.latitude, s.longitude], {
                 radius: s.voltage_kv === 400 ? 9 : 7,
@@ -1188,7 +1188,7 @@
         });
 
         // Power Plant Markers in National Grid Green & Yellow
-        const plantsData = [{"name": "Julius Nyerere Hydropower Plant (JNHPP)", "type": "HYDRO", "mw": 2115.0, "lat": -7.8286, "lon": 37.8183, "basin": "Rufiji Basin (2,115 MW)"}, {"name": "Kinyerezi I & II Natural Gas Plants", "type": "GAS", "mw": 575.0, "lat": -6.8921, "lon": 39.1843, "basin": "Songosongo / Mnazi Bay Gas"}, {"name": "Kidatu Hydropower Station", "type": "HYDRO", "mw": 204.0, "lat": -7.6622, "lon": 36.9531, "basin": "Great Ruaha River Basin"}, {"name": "Kihansi Hydropower Station", "type": "HYDRO", "mw": 180.0, "lat": -8.5772, "lon": 35.8528, "basin": "Kilombero River Basin"}, {"name": "Mtera Hydropower Station", "type": "HYDRO", "mw": 80.0, "lat": -7.135, "lon": 35.9867, "basin": "Great Ruaha / Kisigo"}, {"name": "Ubungo I, II & Songas Gas Plants", "type": "GAS", "mw": 394.0, "lat": -6.7869, "lon": 39.2136, "basin": "Dar es Salaam Urban Grid"}, {"name": "Pangani Falls & Hale Hydro", "type": "HYDRO", "mw": 89.0, "lat": -5.3481, "lon": 38.6578, "basin": "Pangani River Basin"}, {"name": "Nyumba ya Mungu Hydro", "type": "HYDRO", "mw": 8.0, "lat": -3.8189, "lon": 37.4728, "basin": "Kilimanjaro Catchment"}, {"name": "Kigoma Solar PV Plant", "type": "SOLAR", "mw": 5.0, "lat": -4.8769, "lon": 29.6267, "basin": "Lake Tanganyika Solar"}];
+        const plantsData = [{"name": "Grand River Cascade Hydropower Complex", "type": "HYDRO", "mw": 2115.0, "lat": -7.8286, "lon": 37.8183, "basin": "Lower River Basin (2,115 MW)"}, {"name": "Coastal CCGT Natural Gas Complex", "type": "GAS", "mw": 575.0, "lat": -6.8921, "lon": 39.1843, "basin": "Offshore Coastal Gas Pipeline"}, {"name": "Upper Gorge Hydropower Station", "type": "HYDRO", "mw": 204.0, "lat": -7.6622, "lon": 36.9531, "basin": "Central River Catchment"}, {"name": "High-Head Gorge Hydropower Station", "type": "HYDRO", "mw": 180.0, "lat": -8.5772, "lon": 35.8528, "basin": "Southern Mountain Catchment"}, {"name": "Central Reservoir Hydropower Station", "type": "HYDRO", "mw": 80.0, "lat": -7.135, "lon": 35.9867, "basin": "Upper Valley Reservoir"}, {"name": "Metro Rapid Peaker Gas Turbines", "type": "GAS", "mw": 394.0, "lat": -6.7869, "lon": 39.2136, "basin": "Metropolitan Capital Region Urban Grid"}, {"name": "Coastal Cascade Hydropower Plant", "type": "HYDRO", "mw": 89.0, "lat": -5.3481, "lon": 38.6578, "basin": "Eastern Coastal Basin"}, {"name": "Highlands Storage Hydro Station", "type": "HYDRO", "mw": 8.0, "lat": -3.8189, "lon": 37.4728, "basin": "Highlands Province Catchment"}, {"name": "Western Regional Solar PV Facility", "type": "SOLAR", "mw": 5.0, "lat": -4.8769, "lon": 29.6267, "basin": "Lake North Coastal Regionnyika Solar"}];
         plantsData.forEach(p => {
             const pColor = p.type.includes('HYDRO') ? '#10B981' : '#FDB813';
             const marker = L.circleMarker([p.lat, p.lon], {
@@ -1211,7 +1211,7 @@
         });
 
         // Tamper Hotspots in Red Warning
-        const hotSpots = [{"meter_number": "54140971850", "customer_name": "TAN-CUST-100058", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Northern Zone", "feeder_id": "FDR-KIL-001", "feeder_name": "Moshi Town & Coffee Millers 11kV", "sanctioned_load_kva": 250.0, "baseline_kwh": 153086.9, "recent_kwh": 22431.3, "drop_ratio_pct": 85.3, "days_inactive": 117, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-09-12", "ntl_risk_score": 97.7, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 130655.6, "recoverable_annual_revenue_tzs": 238315814.4, "latitude": -3.320046, "longitude": 36.708578, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22468497427", "customer_name": "TAN-CUST-100074", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Lake Zone Distribution", "feeder_id": "FDR-MZA-001", "feeder_name": "Nyakato Industrial & Fish Processing 33kV", "sanctioned_load_kva": 1000.0, "baseline_kwh": 114321.1, "recent_kwh": 1729.2, "drop_ratio_pct": 98.5, "days_inactive": 121, "sensor_tripped": "NO", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-08-21", "ntl_risk_score": 70.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 112591.9, "recoverable_annual_revenue_tzs": 205367625.6, "latitude": -2.54206, "longitude": 32.935345, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "54165130817", "customer_name": "TAN-CUST-100030", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "South Western Zone", "feeder_id": "FDR-MBY-001", "feeder_name": "Mbeya CBD & Cement Depot 33kV", "sanctioned_load_kva": 500.0, "baseline_kwh": 70132.5, "recent_kwh": 34851.2, "drop_ratio_pct": 50.3, "days_inactive": 96, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-05", "ntl_risk_score": 80.2, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 35281.3, "recoverable_annual_revenue_tzs": 64353091.2, "latitude": -8.905582, "longitude": 33.435412, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22448095332", "customer_name": "TAN-CUST-100066", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Central", "feeder_id": "FDR-DOD-001", "feeder_name": "Mtumba Government City Feeder 33kV", "sanctioned_load_kva": 250.0, "baseline_kwh": 45438.3, "recent_kwh": 13294.4, "drop_ratio_pct": 70.7, "days_inactive": 76, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-08-23", "ntl_risk_score": 90.3, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 32143.9, "recoverable_annual_revenue_tzs": 58630473.6, "latitude": -6.152273, "longitude": 35.708007, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04292686518", "customer_name": "TAN-CUST-100015", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Lake Zone Distribution", "feeder_id": "FDR-MZA-003", "feeder_name": "Mwanza City Center 11kV", "sanctioned_load_kva": 150.0, "baseline_kwh": 23731.0, "recent_kwh": 121.5, "drop_ratio_pct": 99.5, "days_inactive": 49, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-09-10", "ntl_risk_score": 97.2, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 23609.5, "recoverable_annual_revenue_tzs": 55246230.0, "latitude": -2.611491, "longitude": 32.862836, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "14166503837", "customer_name": "TAN-CUST-100036", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Central", "feeder_id": "FDR-DOD-002", "feeder_name": "Dodoma CBD & Parliamentary 11kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 24149.3, "recent_kwh": 7806.6, "drop_ratio_pct": 67.7, "days_inactive": 158, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-08-30", "ntl_risk_score": 88.8, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 16342.7, "recoverable_annual_revenue_tzs": 38241918.0, "latitude": -6.118438, "longitude": 35.698236, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "14186561674", "customer_name": "TAN-CUST-100072", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Northern Zone", "feeder_id": "FDR-KIL-001", "feeder_name": "Moshi Town & Coffee Millers 11kV", "sanctioned_load_kva": 50.0, "baseline_kwh": 13230.9, "recent_kwh": 326.5, "drop_ratio_pct": 97.5, "days_inactive": 119, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-07-25", "ntl_risk_score": 100.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 12904.4, "recoverable_annual_revenue_tzs": 30196296.0, "latitude": -3.384242, "longitude": 36.74517, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22468252389", "customer_name": "TAN-CUST-100051", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam South", "feeder_id": "FDR-DSM-S01", "feeder_name": "Nyerere Road Industrial 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 16368.0, "recent_kwh": 3940.9, "drop_ratio_pct": 75.9, "days_inactive": 155, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-08-25", "ntl_risk_score": 93.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 12427.1, "recoverable_annual_revenue_tzs": 29079414.0, "latitude": -6.904911, "longitude": 39.287018, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "54174308392", "customer_name": "TAN-CUST-100033", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Eastern Zone", "feeder_id": "FDR-MOR-001", "feeder_name": "Msamvu SGR Traction Station 33kV", "sanctioned_load_kva": 50.0, "baseline_kwh": 21092.0, "recent_kwh": 8795.4, "drop_ratio_pct": 58.3, "days_inactive": 81, "sensor_tripped": "NO", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-05", "ntl_risk_score": 54.1, "risk_tier": "HIGH_RISK", "estimated_unbilled_kwh_monthly": 12296.6, "recoverable_annual_revenue_tzs": 28774044.0, "latitude": -6.806642, "longitude": 39.203222, "action_priority": "PHYSICAL_INSPECTION_QUEUE"}, {"meter_number": "04226828790", "customer_name": "TAN-CUST-100077", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam South", "feeder_id": "FDR-DSM-S05", "feeder_name": "Gongo la Mboto Residential 11kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 23842.9, "recent_kwh": 12180.6, "drop_ratio_pct": 48.9, "days_inactive": 62, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-08-24", "ntl_risk_score": 79.5, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 11662.3, "recoverable_annual_revenue_tzs": 27289782.0, "latitude": -6.822404, "longitude": 39.223956, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22473495769", "customer_name": "TAN-CUST-100039", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam South", "feeder_id": "FDR-DSM-S02", "feeder_name": "Vingunguti Commercial 11kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 18679.4, "recent_kwh": 7498.8, "drop_ratio_pct": 59.9, "days_inactive": 97, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-25", "ntl_risk_score": 85.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 11180.6, "recoverable_annual_revenue_tzs": 26162604.0, "latitude": -6.826896, "longitude": 39.270832, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04255497773", "customer_name": "TAN-CUST-100012", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam North", "feeder_id": "FDR-DSM-N05", "feeder_name": "Mbezi Louis Express 33kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 14386.8, "recent_kwh": 3709.4, "drop_ratio_pct": 74.2, "days_inactive": 99, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-08-21", "ntl_risk_score": 92.1, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 10677.4, "recoverable_annual_revenue_tzs": 24985116.0, "latitude": -6.807146, "longitude": 39.275628, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04247334666", "customer_name": "TAN-CUST-100127", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Eastern Zone", "feeder_id": "FDR-MOR-001", "feeder_name": "Msamvu SGR Traction Station 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 14386.2, "recent_kwh": 4144.4, "drop_ratio_pct": 71.2, "days_inactive": 62, "sensor_tripped": "YES", "tamper_type": "NEUTRAL_LINE_BYPASS", "tamper_date": "2026-09-11", "ntl_risk_score": 90.6, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 10241.8, "recoverable_annual_revenue_tzs": 23965812.0, "latitude": -6.774779, "longitude": 39.241667, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22493190352", "customer_name": "TAN-CUST-100101", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam North", "feeder_id": "FDR-DSM-N02", "feeder_name": "Masaki & Oysterbay Diplomatic 11kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 10355.8, "recent_kwh": 3041.0, "drop_ratio_pct": 70.6, "days_inactive": 119, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-08-20", "ntl_risk_score": 90.3, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 7314.8, "recoverable_annual_revenue_tzs": 17116632.0, "latitude": -6.786318, "longitude": 39.237345, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04286049839", "customer_name": "TAN-CUST-100001", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Dar es Salaam North", "feeder_id": "FDR-DSM-N03", "feeder_name": "Tegeta - Kunduchi Coastal 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 9478.5, "recent_kwh": 3080.5, "drop_ratio_pct": 67.5, "days_inactive": 158, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-07-13", "ntl_risk_score": 88.8, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 6398.0, "recoverable_annual_revenue_tzs": 14971320.0, "latitude": -6.777858, "longitude": 39.272993, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}];
+        const hotSpots = [{"meter_number": "54140971850", "customer_name": "UTIL-CUST-100058", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Northern Grid District", "feeder_id": "FDR-KIL-001", "feeder_name": "Northern Industrial & Milling Feeder 11kV", "sanctioned_load_kva": 250.0, "baseline_kwh": 153086.9, "recent_kwh": 22431.3, "drop_ratio_pct": 85.3, "days_inactive": 117, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-09-12", "ntl_risk_score": 97.7, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 130655.6, "recoverable_annual_revenue_usd": 238315814.4, "latitude": -3.320046, "longitude": 36.708578, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22468497427", "customer_name": "UTIL-CUST-100074", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Lake Basin District", "feeder_id": "FDR-MZA-001", "feeder_name": "Lakeside Cold Storage & Processing 33kV", "sanctioned_load_kva": 1000.0, "baseline_kwh": 114321.1, "recent_kwh": 1729.2, "drop_ratio_pct": 98.5, "days_inactive": 121, "sensor_tripped": "NO", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-08-21", "ntl_risk_score": 70.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 112591.9, "recoverable_annual_revenue_usd": 205367625.6, "latitude": -2.54206, "longitude": 32.935345, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "54165130817", "customer_name": "UTIL-CUST-100030", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "South-Western District", "feeder_id": "FDR-MBY-001", "feeder_name": "Southern Industrial & Cement Feeder 33kV", "sanctioned_load_kva": 500.0, "baseline_kwh": 70132.5, "recent_kwh": 34851.2, "drop_ratio_pct": 50.3, "days_inactive": 96, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-05", "ntl_risk_score": 80.2, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 35281.3, "recoverable_annual_revenue_usd": 64353091.2, "latitude": -8.905582, "longitude": 33.435412, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22448095332", "customer_name": "UTIL-CUST-100066", "tariff_band": "T3", "customer_category": "INDUSTRIAL", "operational_zone": "Central", "feeder_id": "FDR-DOD-001", "feeder_name": "Administrative Complex Feeder 33kV", "sanctioned_load_kva": 250.0, "baseline_kwh": 45438.3, "recent_kwh": 13294.4, "drop_ratio_pct": 70.7, "days_inactive": 76, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-08-23", "ntl_risk_score": 90.3, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 32143.9, "recoverable_annual_revenue_usd": 58630473.6, "latitude": -6.152273, "longitude": 35.708007, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04292686518", "customer_name": "UTIL-CUST-100015", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Lake Basin District", "feeder_id": "FDR-MZA-003", "feeder_name": "Commercial Center Feeder 11kV", "sanctioned_load_kva": 150.0, "baseline_kwh": 23731.0, "recent_kwh": 121.5, "drop_ratio_pct": 99.5, "days_inactive": 49, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-09-10", "ntl_risk_score": 97.2, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 23609.5, "recoverable_annual_revenue_usd": 55246230.0, "latitude": -2.611491, "longitude": 32.862836, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "14166503837", "customer_name": "UTIL-CUST-100036", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Central", "feeder_id": "FDR-DOD-002", "feeder_name": "Civic Center & Municipal Feeder 11kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 24149.3, "recent_kwh": 7806.6, "drop_ratio_pct": 67.7, "days_inactive": 158, "sensor_tripped": "YES", "tamper_type": "COVER_OPEN_UNAUTHORIZED", "tamper_date": "2026-08-30", "ntl_risk_score": 88.8, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 16342.7, "recoverable_annual_revenue_usd": 38241918.0, "latitude": -6.118438, "longitude": 35.698236, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "14186561674", "customer_name": "UTIL-CUST-100072", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Northern Grid District", "feeder_id": "FDR-KIL-001", "feeder_name": "Northern Industrial & Milling Feeder 11kV", "sanctioned_load_kva": 50.0, "baseline_kwh": 13230.9, "recent_kwh": 326.5, "drop_ratio_pct": 97.5, "days_inactive": 119, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-07-25", "ntl_risk_score": 100.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 12904.4, "recoverable_annual_revenue_usd": 30196296.0, "latitude": -3.384242, "longitude": 36.74517, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22468252389", "customer_name": "UTIL-CUST-100051", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District South", "feeder_id": "FDR-DSM-S01", "feeder_name": "Metro Heavy Industrial Corridor 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 16368.0, "recent_kwh": 3940.9, "drop_ratio_pct": 75.9, "days_inactive": 155, "sensor_tripped": "YES", "tamper_type": "ZERO_CONSUMPTION_OCCUPIED", "tamper_date": "2026-08-25", "ntl_risk_score": 93.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 12427.1, "recoverable_annual_revenue_usd": 29079414.0, "latitude": -6.904911, "longitude": 39.287018, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "54174308392", "customer_name": "UTIL-CUST-100033", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Eastern Industrial District", "feeder_id": "FDR-MOR-001", "feeder_name": "High-Speed Electric Rail Traction 33kV", "sanctioned_load_kva": 50.0, "baseline_kwh": 21092.0, "recent_kwh": 8795.4, "drop_ratio_pct": 58.3, "days_inactive": 81, "sensor_tripped": "NO", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-05", "ntl_risk_score": 54.1, "risk_tier": "HIGH_RISK", "estimated_unbilled_kwh_monthly": 12296.6, "recoverable_annual_revenue_usd": 28774044.0, "latitude": -6.806642, "longitude": 39.203222, "action_priority": "PHYSICAL_INSPECTION_QUEUE"}, {"meter_number": "04226828790", "customer_name": "UTIL-CUST-100077", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District South", "feeder_id": "FDR-DSM-S05", "feeder_name": "South Residential District Feeder 11kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 23842.9, "recent_kwh": 12180.6, "drop_ratio_pct": 48.9, "days_inactive": 62, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-08-24", "ntl_risk_score": 79.5, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 11662.3, "recoverable_annual_revenue_usd": 27289782.0, "latitude": -6.822404, "longitude": 39.223956, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22473495769", "customer_name": "UTIL-CUST-100039", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District South", "feeder_id": "FDR-DSM-S02", "feeder_name": "Metro Commercial Feeder 11kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 18679.4, "recent_kwh": 7498.8, "drop_ratio_pct": 59.9, "days_inactive": 97, "sensor_tripped": "YES", "tamper_type": "STRONG_NEODYMIUM_MAGNET", "tamper_date": "2026-07-25", "ntl_risk_score": 85.0, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 11180.6, "recoverable_annual_revenue_usd": 26162604.0, "latitude": -6.826896, "longitude": 39.270832, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04255497773", "customer_name": "UTIL-CUST-100012", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District North", "feeder_id": "FDR-DSM-N05", "feeder_name": "West Express Substation 33kV", "sanctioned_load_kva": 75.0, "baseline_kwh": 14386.8, "recent_kwh": 3709.4, "drop_ratio_pct": 74.2, "days_inactive": 99, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-08-21", "ntl_risk_score": 92.1, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 10677.4, "recoverable_annual_revenue_usd": 24985116.0, "latitude": -6.807146, "longitude": 39.275628, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04247334666", "customer_name": "UTIL-CUST-100127", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Eastern Industrial District", "feeder_id": "FDR-MOR-001", "feeder_name": "High-Speed Electric Rail Traction 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 14386.2, "recent_kwh": 4144.4, "drop_ratio_pct": 71.2, "days_inactive": 62, "sensor_tripped": "YES", "tamper_type": "NEUTRAL_LINE_BYPASS", "tamper_date": "2026-09-11", "ntl_risk_score": 90.6, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 10241.8, "recoverable_annual_revenue_usd": 23965812.0, "latitude": -6.774779, "longitude": 39.241667, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "22493190352", "customer_name": "UTIL-CUST-100101", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District North", "feeder_id": "FDR-DSM-N02", "feeder_name": "Coastal Diplomatic & Tech Feeder 11kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 10355.8, "recent_kwh": 3041.0, "drop_ratio_pct": 70.6, "days_inactive": 119, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-08-20", "ntl_risk_score": 90.3, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 7314.8, "recoverable_annual_revenue_usd": 17116632.0, "latitude": -6.786318, "longitude": 39.237345, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}, {"meter_number": "04286049839", "customer_name": "UTIL-CUST-100001", "tariff_band": "T2", "customer_category": "INDUSTRIAL", "operational_zone": "Metro District North", "feeder_id": "FDR-DSM-N03", "feeder_name": "North Coastal Feeder 33kV", "sanctioned_load_kva": 100.0, "baseline_kwh": 9478.5, "recent_kwh": 3080.5, "drop_ratio_pct": 67.5, "days_inactive": 158, "sensor_tripped": "YES", "tamper_type": "PHASE_BRIDGE_SHUNT", "tamper_date": "2026-07-13", "ntl_risk_score": 88.8, "risk_tier": "CRITICAL_AUDIT", "estimated_unbilled_kwh_monthly": 6398.0, "recoverable_annual_revenue_usd": 14971320.0, "latitude": -6.777858, "longitude": 39.272993, "action_priority": "IMMEDIATE_DISCONNECT_&_SUMMONS"}];
         hotSpots.forEach(h => {
             const alertMarker = L.circleMarker([h.latitude, h.longitude], {
                 radius: 6,
@@ -1230,7 +1230,7 @@
                     <strong>Tariff Band:</strong> ${h.tariff_band}<br>
                     <strong>Drop Ratio:</strong> ${h.drop_ratio_pct}%<br>
                     <strong>Tamper Type:</strong> ${h.tamper_type}<br>
-                    <strong>Est. Recoverable:</strong> TZS ${Number(h.recoverable_annual_revenue_tzs).toLocaleString()}
+                    <strong>Est. Recoverable:</strong> $${Math.round(Number(h.recoverable_annual_revenue_usd) / 2600).toLocaleString()}
                 </div>
             `);
         });
@@ -1244,7 +1244,7 @@
                 labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
                 datasets: [
                     {
-                        label: 'Hydro Fleet (JNHPP, Kidatu, Kihansi, Mtera)',
+                        label: 'Hydro Generation Fleet',
                         data: [1184.8, 1134.6, 1084.9, 1056.0, 1044.1, 1045.3, 1054.4, 1073.9, 1122.0, 1171.4, 1209.8, 1217.8, 1179.7, 1132.8, 1081.3, 1057.9, 1044.2, 1044.5, 1056.8, 1193.3, 1337.9, 1344.7, 1245.6, 1218.9],
                         borderColor: '#10B981',
                         backgroundColor: 'rgba(16, 185, 129, 0.35)',
@@ -1252,7 +1252,7 @@
                         tension: 0.3
                     },
                     {
-                        label: 'Thermal Gas (Kinyerezi I & II, Ubungo, Songas)',
+                        label: 'Thermal Combined-Cycle Gas Fleet',
                         data: [140.6, 131.2, 115.2, 86.3, 67.1, 66.4, 82.7, 110.4, 128.3, 138.2, 143.5, 144.1, 139.7, 130.9, 113.3, 88.4, 65.9, 64.9, 86.3, 140.1, 158.7, 159.2, 147.9, 144.4],
                         borderColor: '#FDB813',
                         backgroundColor: 'rgba(253, 184, 19, 0.35)',
@@ -1260,7 +1260,7 @@
                         tension: 0.3
                     },
                     {
-                        label: 'Solar PV (Kigoma)',
+                        label: 'Utility Solar PV Generation',
                         data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 1.1, 2.3, 3.4, 4.1, 4.5, 4.6, 4.2, 3.6, 2.6, 1.4, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
                         borderColor: '#FDE047',
                         backgroundColor: 'rgba(253, 224, 71, 0.6)',
@@ -1268,7 +1268,7 @@
                         tension: 0.2
                     },
                     {
-                        label: 'Total National Demand (MW)',
+                        label: 'Total Grid Interconnected Demand (MW)',
                         data: [1419.1, 1353.6, 1276.8, 1199.7, 1155.8, 1156.0, 1192.3, 1259.0, 1338.2, 1405.1, 1453.0, 1462.6, 1417.1, 1355.5, 1273.5, 1208.1, 1155.5, 1152.9, 1200.7, 1426.8, 1602.6, 1610.0, 1492.0, 1459.8],
                         borderColor: '#FFFFFF',
                         borderWidth: 2.5,
@@ -1297,7 +1297,7 @@
         new Chart(document.getElementById('saidiChart'), {
             type: 'bar',
             data: {
-                labels: ["Dar es Salaam South", "Dar es Salaam North", "Coast & Eastern", "Central", "Northern", "Lake", "South Western", "Eastern"],
+                labels: ["Metro District South", "Metro District North", "Coastal Grid District", "Central", "Northern", "Lake", "South Western", "Eastern"],
                 datasets: [{
                     label: 'Monthly SAIDI (Hours/Cust)',
                     data: [30.93, 32.46, 44.6, 35.45, 44.64, 31.63, 19.32, 25.47],
@@ -1346,10 +1346,10 @@
         new Chart(document.getElementById('vendingChart'), {
             type: 'bar',
             data: {
-                labels: ["NMB Mkononi / Wakala App", "CRDB SimBanking / Wakala", "Vodacom M-Pesa", "Tigo Pesa", "Airtel Money", "Halopesa", "National Grid Direct Office Cashier"],
+                labels: ["Tier-1 Commercial Banking Gateway", "Digital Mobile Wallet Network A", "Mobile Money Service B", "National Clearing Switch", "Fintech Direct Agent Network", "Enterprise Web Portal", "Utility Direct Counter"],
                 datasets: [{
-                    label: 'Gross Revenue (TZS Billions)',
-                    data: [1.16, 0.87, 2.34, 0.87, 0.26, 0.08, 0.18],
+                    label: 'Gross Revenue (USD Millions)',
+                    data: [4.45, 3.35, 8.95, 3.32, 1.02, 0.31, 0.69],
                     backgroundColor: '#FDB813',
                     borderRadius: 4
                 }]
@@ -1360,7 +1360,7 @@
                 plugins: { legend: { display: false } },
                 scales: {
                     x: { grid: { display: false }, ticks: { color: '#94A3B8', font: { size: 10 } } },
-                    y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94A3B8' }, title: { display: true, text: 'Billion TZS', color: '#A7F3D0' } }
+                    y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: '#94A3B8' }, title: { display: true, text: 'Million USD', color: '#A7F3D0' } }
                 }
             }
         });
