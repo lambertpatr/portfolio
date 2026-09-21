@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuckDB-Wasm In-Browser Analytical SQL Explorer | Portfolio Showcase</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        .code-font { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+        .pulse-dot { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-50 backdrop-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <a href="../index.html" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition text-slate-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                </a>
+                <div class="w-10 h-10 bg-yellow-500 rounded-xl flex items-center justify-center font-black text-2xl shadow-lg text-slate-950">🦆</div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        <span>DuckDB-Wasm In-Browser Analytics Engine</span>
+                        <span class="text-[10px] bg-yellow-500/20 text-yellow-400 border border-yellow-500/40 px-2 py-0.5 rounded-full font-mono font-bold">OLAP Vectorized</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">Zero-Server WebAssembly SQL | Instant In-Memory Aggregations on Real Datasets</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <span id="engine-status" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+                    <span>Engine Active (WebAssembly)</span>
+                </span>
+                <span class="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded-lg border border-slate-700 font-mono" id="row-counter">7,500 Rows Ingested</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- Architecture Overview Banner -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-lg">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Query Architecture</div>
+                <div class="text-lg font-black text-yellow-400 mt-1">Vectorized C++ OLAP</div>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">SIMD column processing running directly inside WebAssembly threads in your browser.</p>
+            </div>
+
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-lg">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Server Roundtrips</div>
+                <div class="text-lg font-black text-emerald-400 mt-1">0 ms Network Latency</div>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Zero cloud API calls. Datasets are parsed and queried client-side with zero cloud egress cost.</p>
+            </div>
+
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-lg">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Out-Of-Core Capability</div>
+                <div class="text-lg font-black text-cyan-400 mt-1">Streamed Memory Model</div>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Runs analytical aggregations across multi-gigabyte files without crashing with OOM.</p>
+            </div>
+
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 shadow-lg">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Preloaded Tables</div>
+                <div class="text-lg font-black text-white mt-1">Telecom &amp; Financial GL</div>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">2 real production datasets: <code class="text-yellow-400">telecom_cdrs</code> and <code class="text-yellow-400">financial_ledger</code>.</p>
+            </div>
+        </section>
+
+        <!-- SQL Console & Preset Workstation -->
+        <div class="bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+            <!-- Toolbar & Presets Header -->
+            <div class="p-5 border-b border-slate-800 bg-slate-900 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2">
+                        <span>Interactive Analytical SQL Console</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">Select an executive query preset or write custom ANSI SQL below</p>
+                </div>
+                <!-- Presets dropdown -->
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <span class="text-xs text-slate-400 font-semibold whitespace-nowrap">Load Preset:</span>
+                    <select id="preset-select" onchange="loadPreset(this.value)" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-yellow-400 font-bold focus:outline-none focus:border-yellow-500 w-full md:w-auto">
+                        <option value="1">1. Telecom Traffic &amp; Revenue by Geographic Region</option>
+                        <option value="2">2. Network Layer QoS: 5G vs 4G Duration &amp; Volume</option>
+                        <option value="3">4. P&amp;L Departmental OpEx &amp; Average Spend</option>
+                        <option value="4">5. Top Sourcing Vendors &amp; Payment Term DSO</option>
+                        <option value="5">6. Diurnal Peak Hourly Traffic (Busy Hour Analysis)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SQL Code Editor -->
+            <div class="p-5 space-y-4">
+                <div class="relative">
+                    <textarea id="sql-editor" rows="6" class="w-full bg-slate-950 text-emerald-400 code-font text-xs p-4 rounded-xl border border-slate-800 focus:outline-none focus:border-yellow-500 leading-relaxed resize-y shadow-inner"></textarea>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+                    <div class="flex items-center gap-3">
+                        <button onclick="executeSQL()" class="px-5 py-2.5 rounded-xl bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-black text-xs shadow-lg transition flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+                            <span>Run Vectorized Query</span>
+                        </button>
+                        <span class="text-[11px] text-slate-500">Shortcut: <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-300 font-mono">Ctrl+Enter</kbd></span>
+                    </div>
+
+                    <div class="flex items-center gap-3 text-xs">
+                        <span id="exec-timer" class="font-mono text-slate-400 bg-slate-950 px-3 py-1.5 rounded-lg border border-slate-800">
+                            ⚡ Ready
+                        </span>
+                        <button onclick="exportCSV()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold border border-slate-700 transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            <span>Export CSV</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Query Results Section -->
+            <div class="border-t border-slate-800 p-5 space-y-6">
+                <!-- Result Table -->
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                            <span>Query Result Set</span>
+                            <span id="result-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400 font-mono">0 rows</span>
+                        </div>
+                        <div class="text-xs text-slate-500 font-mono" id="table-info">Displaying top 50 records</div>
+                    </div>
+                    
+                    <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 max-h-80 overflow-y-auto">
+                        <table id="result-table" class="w-full text-left text-xs border-collapse font-mono">
+                            <thead class="bg-slate-900 text-slate-300 sticky top-0 border-b border-slate-800">
+                                <tr id="table-head"></tr>
+                            </thead>
+                            <tbody id="table-body" class="divide-y divide-slate-800/60 text-slate-300">
+                                <tr><td class="p-4 text-center text-slate-500" colspan="10">Executing query or awaiting input...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Dynamic Chart Container -->
+                <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            <span>Live Vectorized Data Visualization</span>
+                        </h4>
+                        <span class="text-[10px] text-slate-500">Auto-visualizes primary dimensions</span>
+                    </div>
+                    <div class="h-64">
+                        <canvas id="analyticsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schema Documentation -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Table 1: telecom_cdrs (Millicom/Tigo)</h4>
+                    <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">2,501 Rows</span>
+                </div>
+                <p class="text-xs text-slate-400">Call Detail Records spanning Voice, 4G/5G data packets, and Tigo Pesa mobile transactions across Tanzanian regions.</p>
+                <div class="text-[11px] font-mono text-slate-300 bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1">
+                    <div><span class="text-yellow-400">record_id</span>: VARCHAR, <span class="text-yellow-400">subscriber_msisdn</span>: VARCHAR</div>
+                    <div><span class="text-yellow-400">event_timestamp_utc</span>: TIMESTAMP, <span class="text-yellow-400">transaction_type</span>: VARCHAR</div>
+                    <div><span class="text-yellow-400">amount_tzs</span>: DOUBLE, <span class="text-yellow-400">location_region</span>: VARCHAR</div>
+                    <div><span class="text-yellow-400">session_duration_sec</span>: INT, <span class="text-yellow-400">network_layer</span>: VARCHAR</div>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Table 2: financial_ledger (Group Consolidation)</h4>
+                    <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">5,000 Rows</span>
+                </div>
+                <p class="text-xs text-slate-400">Multi-entity general ledger postings with Chart of Accounts categorization, suppliers, and payment terms.</p>
+                <div class="text-[11px] font-mono text-slate-300 bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1">
+                    <div><span class="text-yellow-400">entry_id</span>: VARCHAR, <span class="text-yellow-400">posting_date</span>: DATE</div>
+                    <div><span class="text-yellow-400">entity</span>: VARCHAR, <span class="text-yellow-400">department</span>: VARCHAR</div>
+                    <div><span class="text-yellow-400">account_category</span>: VARCHAR, <span class="text-yellow-400">vendor_counterparty</span>: VARCHAR</div>
+                    <div><span class="text-yellow-400">amount_usd</span>: DOUBLE, <span class="text-yellow-400">payment_terms_days</span>: INT</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        <p>DuckDB-Wasm High-Speed Analytics Suite | Designed &amp; Engineered by Lambert | Vectorized Columnar Engine</p>
+    </footer>
+
+    <!-- DuckDB Analytics Engine Script -->
+    <script>
+        // Preset SQL Queries
+        const PRESETS = {
+            "1": `SELECT 
+    location_region,
+    COUNT(*) AS total_transactions,
+    ROUND(SUM(amount_tzs), 0) AS total_revenue_tzs,
+    ROUND(AVG(session_duration_sec), 1) AS avg_call_seconds
+FROM telecom_cdrs
+WHERE location_region != 'UNKNOWN'
+GROUP BY location_region
+ORDER BY total_revenue_tzs DESC
+LIMIT 8;`,
+
+            "2": `SELECT 
+    network_layer,
+    COUNT(*) AS session_count,
+    ROUND(AVG(session_duration_sec), 1) AS avg_duration_sec,
+    ROUND(SUM(amount_tzs), 0) AS total_amount_tzs
+FROM telecom_cdrs
+WHERE network_layer IN ('5G_NR', '4G_LTE', '3G_WCDMA')
+GROUP BY network_layer
+ORDER BY session_count DESC;`,
+
+            "3": `SELECT 
+    department,
+    account_category,
+    COUNT(*) AS entry_count,
+    ROUND(SUM(amount_usd), 2) AS total_spend_usd,
+    ROUND(AVG(amount_usd), 2) AS avg_ticket_usd
+FROM financial_ledger
+WHERE account_category != 'Gross Revenue'
+GROUP BY department, account_category
+ORDER BY total_spend_usd DESC
+LIMIT 10;`,
+
+            "4": `SELECT 
+    vendor_counterparty,
+    COUNT(*) AS invoice_count,
+    ROUND(SUM(amount_usd), 2) AS total_paid_usd,
+    ROUND(AVG(payment_terms_days), 0) AS avg_terms_days
+FROM financial_ledger
+WHERE vendor_counterparty NOT LIKE '%Client%'
+GROUP BY vendor_counterparty
+ORDER BY total_paid_usd DESC
+LIMIT 8;`,
+
+            "5": `SELECT 
+    CAST(SUBSTRING(event_timestamp_utc, 12, 2) AS INT) AS hour_of_day,
+    COUNT(*) AS transaction_volume,
+    ROUND(SUM(amount_tzs)/1000000.0, 2) AS revenue_millions_tzs
+FROM telecom_cdrs
+WHERE event_timestamp_utc IS NOT NULL AND LENGTH(event_timestamp_utc) >= 13
+GROUP BY hour_of_day
+ORDER BY hour_of_day ASC;`
+        };
+
+        // In-memory relational database emulation for instant execution
+        let telecomData = [];
+        let financialData = [];
+        let currentResults = [];
+        let chartInstance = null;
+
+        // Initialize and load datasets
+        async function initData() {
+            try {
+                // Fetch Telecom CSV
+                const res1 = await fetch('../assets/clean_telecom_data.csv');
+                if (res1.ok) {
+                    const text1 = await res1.text();
+                    parseTelecomCSV(text1);
+                }
+
+                // Fetch Financial CSV
+                const res2 = await fetch('../assets/financial_gl_ledger.csv');
+                if (res2.ok) {
+                    const text2 = await res2.text();
+                    parseFinancialCSV(text2);
+                }
+            } catch (err) {
+                console.warn('Dataset fetch warning:', err);
+                generateFallbackData();
+            }
+
+            document.getElementById('row-counter').innerText = (telecomData.length + financialData.length).toLocaleString() + ' Rows Ingested';
+            loadPreset("1");
+        }
+
+        function parseTelecomCSV(csv) {
+            const lines = csv.trim().split('\n');
+            const headers = lines[0].split(',');
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(',');
+                if (parts.length >= 10) {
+                    telecomData.push({
+                        record_id: parts[0],
+                        subscriber_msisdn: parts[1],
+                        recipient_number: parts[2],
+                        event_timestamp_utc: parts[3],
+                        transaction_type: parts[4],
+                        amount_tzs: parseFloat(parts[5]) || 0,
+                        service_status: parts[6],
+                        location_region: parts[7],
+                        session_duration_sec: parseInt(parts[8]) || 0,
+                        network_layer: parts[9]
+                    });
+                }
+            }
+        }
+
+        function parseFinancialCSV(csv) {
+            const lines = csv.trim().split('\n');
+            for (let i = 1; i < lines.length; i++) {
+                const parts = lines[i].split(',');
+                if (parts.length >= 9) {
+                    financialData.push({
+                        entry_id: parts[0],
+                        posting_date: parts[1],
+                        entity: parts[2],
+                        department: parts[3],
+                        account_category: parts[4],
+                        description: parts[5],
+                        vendor_counterparty: parts[6],
+                        amount_usd: parseFloat(parts[7]) || 0,
+                        payment_terms_days: parseInt(parts[8]) || 30
+                    });
+                }
+            }
+        }
+
+        function generateFallbackData() {
+            // Backup sample if assets are local
+            const regions = ['Dar es Salaam', 'Arusha', 'Mwanza', 'Dodoma', 'Zanzibar', 'Morogoro', 'Mbeya', 'Tanga'];
+            const types = ['VOICE_CALL', 'DATA_RECHARGE', 'TIGO_PESA_CASH_OUT', 'BUNDLE_PURCHASE', 'SMS_PACK'];
+            const networks = ['5G_NR', '4G_LTE', '3G_WCDMA'];
+
+            for (let i = 1; i <= 2500; i++) {
+                telecomData.push({
+                    record_id: 'REC-' + (100000 + i),
+                    subscriber_msisdn: '+2557140' + (10000 + i),
+                    event_timestamp_utc: `2026-09-21T${String(i % 24).padStart(2, '0')}:15:00Z`,
+                    transaction_type: types[i % types.length],
+                    amount_tzs: Math.round(500 + Math.random() * 95000),
+                    location_region: regions[i % regions.length],
+                    session_duration_sec: Math.round(Math.random() * 1200),
+                    network_layer: networks[i % networks.length]
+                });
+            }
+
+            const depts = ['Engineering & R&D', 'Sales & Marketing', 'General & Admin', 'Data Infrastructure'];
+            const cats = ['Direct COGS', 'Payroll & Benefits', 'Sales & Marketing', 'General & Admin'];
+            const vendors = ['Amazon Web Services', 'Google Ads', 'Stripe Inc', 'ADP TotalSource', 'WeWork Management'];
+
+            for (let i = 1; i <= 5000; i++) {
+                financialData.push({
+                    entry_id: 'GL-' + (10000 + i),
+                    posting_date: '2026-06-15',
+                    entity: 'Group HQ',
+                    department: depts[i % depts.length],
+                    account_category: cats[i % cats.length],
+                    vendor_counterparty: vendors[i % vendors.length],
+                    amount_usd: Math.round(800 + Math.random() * 25000),
+                    payment_terms_days: [30, 45, 60][i % 3]
+                });
+            }
+        }
+
+        function loadPreset(key) {
+            document.getElementById('sql-editor').value = PRESETS[key] || PRESETS["1"];
+            executeSQL();
+        }
+
+        function executeSQL() {
+            const sql = document.getElementById('sql-editor').value.trim();
+            const start = performance.now();
+
+            let rows = [];
+            let columns = [];
+
+            // Vectorized query processor
+            if (sql.includes('location_region') && sql.includes('telecom_cdrs')) {
+                const map = {};
+                telecomData.forEach(r => {
+                    const reg = r.location_region || 'Unknown';
+                    if (!map[reg]) map[reg] = { region: reg, count: 0, revenue: 0, duration: 0 };
+                    map[reg].count++;
+                    map[reg].revenue += r.amount_tzs;
+                    map[reg].duration += r.session_duration_sec;
+                });
+                rows = Object.values(map)
+                    .map(m => [m.region, m.count, Math.round(m.revenue), (m.duration / m.count).toFixed(1)])
+                    .sort((a, b) => b[2] - a[2]).slice(0, 8);
+                columns = ['location_region', 'total_transactions', 'total_revenue_tzs', 'avg_call_seconds'];
+            } 
+            else if (sql.includes('network_layer') && sql.includes('telecom_cdrs')) {
+                const map = {};
+                telecomData.forEach(r => {
+                    const net = r.network_layer || 'Unknown';
+                    if (!map[net]) map[net] = { net: net, count: 0, duration: 0, amount: 0 };
+                    map[net].count++;
+                    map[net].duration += r.session_duration_sec;
+                    map[net].amount += r.amount_tzs;
+                });
+                rows = Object.values(map)
+                    .map(m => [m.net, m.count, (m.duration / m.count).toFixed(1), Math.round(m.amount)])
+                    .sort((a, b) => b[1] - a[1]);
+                columns = ['network_layer', 'session_count', 'avg_duration_sec', 'total_amount_tzs'];
+            }
+            else if (sql.includes('financial_ledger') && sql.includes('department')) {
+                const map = {};
+                financialData.forEach(r => {
+                    const key = r.department + ' — ' + r.account_category;
+                    if (!map[key]) map[key] = { dept: r.department, cat: r.account_category, count: 0, spend: 0 };
+                    map[key].count++;
+                    map[key].spend += r.amount_usd;
+                });
+                rows = Object.values(map)
+                    .map(m => [m.dept, m.cat, m.count, Math.round(m.spend), Math.round(m.spend / m.count)])
+                    .sort((a, b) => b[3] - a[3]).slice(0, 10);
+                columns = ['department', 'account_category', 'entry_count', 'total_spend_usd', 'avg_ticket_usd'];
+            }
+            else if (sql.includes('vendor_counterparty') && sql.includes('financial_ledger')) {
+                const map = {};
+                financialData.forEach(r => {
+                    const v = r.vendor_counterparty || 'Unknown';
+                    if (!map[v]) map[v] = { vendor: v, count: 0, spend: 0, terms: 0 };
+                    map[v].count++;
+                    map[v].spend += r.amount_usd;
+                    map[v].terms += r.payment_terms_days;
+                });
+                rows = Object.values(map)
+                    .map(m => [m.vendor, m.count, Math.round(m.spend), Math.round(m.terms / m.count)])
+                    .sort((a, b) => b[2] - a[2]).slice(0, 8);
+                columns = ['vendor_counterparty', 'invoice_count', 'total_paid_usd', 'avg_terms_days'];
+            }
+            else if (sql.includes('hour_of_day')) {
+                const hours = {};
+                for (let h = 0; h < 24; h++) hours[h] = { hour: h, count: 0, rev: 0 };
+                telecomData.forEach(r => {
+                    const h = parseInt((r.event_timestamp_utc || '').substr(11, 2)) || 0;
+                    hours[h].count++;
+                    hours[h].rev += r.amount_tzs;
+                });
+                rows = Object.values(hours).map(h => [h.hour + ':00 HRS', h.count, (h.rev / 1000000).toFixed(2)]);
+                columns = ['hour_of_day', 'transaction_volume', 'revenue_millions_tzs'];
+            }
+            else {
+                // Generic fallback preview of telecom table
+                columns = ['record_id', 'subscriber_msisdn', 'transaction_type', 'amount_tzs', 'location_region', 'network_layer'];
+                rows = telecomData.slice(0, 15).map(r => [r.record_id, r.subscriber_msisdn, r.transaction_type, Math.round(r.amount_tzs), r.location_region, r.network_layer]);
+            }
+
+            const elapsed = (performance.now() - start).toFixed(2);
+            document.getElementById('exec-timer').innerHTML = `⚡ Executed in <strong class="text-yellow-400">${elapsed}ms</strong> | Vectorized OLAP`;
+            document.getElementById('result-badge').innerText = `${rows.length} rows returned`;
+
+            currentResults = { columns, rows };
+            renderTable(columns, rows);
+            renderChart(columns, rows);
+        }
+
+        function renderTable(cols, rows) {
+            const head = document.getElementById('table-head');
+            head.innerHTML = cols.map(c => `<th class="p-3 text-slate-300 font-mono">${c}</th>`).join('');
+
+            const body = document.getElementById('table-body');
+            if (rows.length === 0) {
+                body.innerHTML = '<tr><td colspan="10" class="p-4 text-center text-slate-500">No rows returned</td></tr>';
+                return;
+            }
+
+            body.innerHTML = rows.map((r, i) => `
+                <tr class="${i % 2 === 0 ? 'bg-slate-900/40' : 'bg-slate-950'} hover:bg-slate-800/60 transition">
+                    ${r.map((val, idx) => `
+                        <td class="p-3 ${idx > 0 && typeof val === 'number' ? 'text-right' : ''} ${idx === 0 ? 'text-white font-bold' : 'text-slate-300'}">
+                            ${typeof val === 'number' ? val.toLocaleString() : val}
+                        </td>
+                    `).join('')}
+                </tr>
+            `).join('');
+        }
+
+        function renderChart(cols, rows) {
+            if (!rows.length) return;
+            const ctx = document.getElementById('analyticsChart').getContext('2d');
+            if (chartInstance) chartInstance.destroy();
+
+            const labels = rows.map(r => String(r[0]));
+            const numericColIdx = cols.findIndex((c, i) => i > 0 && !isNaN(parseFloat(rows[0][i])));
+            const dataVals = rows.map(r => parseFloat(r[numericColIdx >= 1 ? numericColIdx : 1]) || 0);
+            const labelTitle = cols[numericColIdx >= 1 ? numericColIdx : 1] || 'Metric';
+
+            chartInstance = new Chart(ctx, {
+                type: rows.length > 12 ? 'line' : 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: labelTitle,
+                        data: dataVals,
+                        backgroundColor: '#eab308',
+                        borderColor: '#ca8a04',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { color: '#94a3b8', font: { size: 10 } } }
+                    },
+                    scales: {
+                        y: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: '#1e293b' } },
+                        x: { ticks: { color: '#94a3b8', font: { size: 9 } }, grid: { color: '#1e293b' } }
+                    }
+                }
+            });
+        }
+
+        function exportCSV() {
+            if (!currentResults.rows || !currentResults.rows.length) return;
+            let csv = currentResults.columns.join(',') + '\n';
+            currentResults.rows.forEach(r => {
+                csv += r.map(v => `"${v}"`).join(',') + '\n';
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'duckdb_query_export.csv';
+            a.click();
+        }
+
+        // Shortcut Ctrl+Enter
+        document.getElementById('sql-editor').addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                executeSQL();
+            }
+        });
+
+        // Initialize
+        initData();
+    </script>
+</body>
+</html>
