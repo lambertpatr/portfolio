@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spokane Accela Permit Portal Automation & Scraping Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-base: #0B132B;
+            --bg-card: #1C2541;
+            --border-color: #334155;
+            --accent-gold: #F59E0B;
+            --accent-blue: #38BDF8;
+            --accent-green: #10B981;
+        }
+        body {
+            background: #0B132B;
+            color: #F8FAFC;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        .glass-card {
+            background: rgba(28, 37, 65, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-7xl mx-auto space-y-8">
+
+    <!-- Header Navigation -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-900 border border-slate-800 p-6 rounded-2xl">
+        <div>
+            <div class="flex items-center gap-3 mb-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-amber-500/20 text-amber-400 border border-amber-500/30">Live Production Automation</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold uppercase bg-sky-500/20 text-sky-400 border border-sky-500/30">Python Playwright + Google Sheets</span>
+            </div>
+            <h1 class="text-2xl md:text-3xl font-extrabold text-white">Spokane Accela Citizen Access (ACA) Permit Scraper</h1>
+            <p class="text-sm text-slate-400 mt-1">High-throughput extraction of ~2,400 municipal permits with dynamic schema alignment and postback handling.</p>
+        </div>
+        <a href="../index.html" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+            Back to Portfolio
+        </a>
+    </div>
+
+    <!-- Architecture & Metrics Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="glass-card p-5 rounded-xl border border-slate-800 space-y-1">
+            <div class="text-xs uppercase text-slate-400 font-bold">Target Volume</div>
+            <div class="text-2xl font-black text-amber-400">~2,400 Records</div>
+            <div class="text-[11px] text-slate-400">01/01/2025 to Present</div>
+        </div>
+        <div class="glass-card p-5 rounded-xl border border-slate-800 space-y-1">
+            <div class="text-xs uppercase text-slate-400 font-bold">WAF Bypass</div>
+            <div class="text-2xl font-black text-emerald-400">Imperva Incapsula</div>
+            <div class="text-[11px] text-slate-400">Stealth Context &amp; Cookie Persistence</div>
+        </div>
+        <div class="glass-card p-5 rounded-xl border border-slate-800 space-y-1">
+            <div class="text-xs uppercase text-slate-400 font-bold">Postback Engine</div>
+            <div class="text-2xl font-black text-sky-400">ASP.NET WebForms</div>
+            <div class="text-[11px] text-slate-400">__VIEWSTATE &amp; __doPostBack</div>
+        </div>
+        <div class="glass-card p-5 rounded-xl border border-slate-800 space-y-1">
+            <div class="text-xs uppercase text-slate-400 font-bold">Sync Destination</div>
+            <div class="text-2xl font-black text-indigo-400">Google Sheets API</div>
+            <div class="text-[11px] text-slate-400">Live gspread Batch Append + CSV</div>
+        </div>
+    </div>
+
+    <!-- Technical Workflow Overview -->
+    <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Automated Extraction Architecture
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
+                <div class="font-bold text-sky-400 text-sm">1. Search &amp; List Pagination</div>
+                <p class="text-slate-300 leading-relaxed">
+                    Executes automated search across target modules (Roofing, Siding, Window). Dynamically monitors ASP.NET <code class="text-amber-300">__VIEWSTATE</code> updates during pagination to ensure zero page skips or dropouts.
+                </p>
+            </div>
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
+                <div class="font-bold text-emerald-400 text-sm">2. Nested Accordion Extraction</div>
+                <p class="text-slate-300 leading-relaxed">
+                    Clicks into each permit record, extracts the <strong>Licensed Professional</strong> (placed after Status), and expands <code class="text-amber-300">More Details &gt; Application Information</code> to harvest all key-value pairs without dropping unmapped fields.
+                </p>
+            </div>
+            <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2">
+                <div class="font-bold text-indigo-400 text-sm">3. Dynamic Schema Alignment</div>
+                <p class="text-slate-300 leading-relaxed">
+                    Harmonizes variable custom fields across permit types into a unified matrix. Implements rate limiting (1.5s jitter), automated duplicate prevention by Record Number, and logs 3x retry errors to <code class="text-rose-400">Failed_Logs</code>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Sample Dataset Viewer -->
+    <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            <div>
+                <h3 class="text-lg font-bold text-white">Extracted Production Sample (Batch Run)</h3>
+                <p class="text-xs text-slate-400">Aligned records showing contractor capture, missing field tolerance, and dynamic accordion attributes.</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <input type="text" id="searchInput" placeholder="Search record, contractor, type..." class="px-3 py-1.5 bg-slate-900 border border-slate-700 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 w-64" onkeyup="filterTable()">
+            </div>
+        </div>
+
+        <div class="overflow-x-auto border border-slate-800 rounded-xl">
+            <table class="w-full text-left text-xs text-slate-300" id="permitTable">
+                <thead class="bg-slate-900 text-slate-400 font-semibold uppercase text-[11px] border-b border-slate-800">
+                    <tr>
+                        <th class="p-3">Record #</th>
+                        <th class="p-3">Date</th>
+                        <th class="p-3">Status</th>
+                        <th class="p-3 text-amber-400 font-bold">Licensed Professional</th>
+                        <th class="p-3">Type</th>
+                        <th class="p-3">Description</th>
+                        <th class="p-3">Valuation</th>
+                        <th class="p-3">Structure Type</th>
+                        <th class="p-3">Specific Attribute</th>
+                        <th class="p-3">Parcel #</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/60 font-mono">
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501482</td>
+                        <td class="p-3">01/06/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-sans text-[10px]">Issued</span></td>
+                        <td class="p-3 font-semibold text-white">INLAND NORTHWEST ROOFING LLC</td>
+                        <td class="p-3">Roofing</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Tear-off and re-roof single family dwelling with comp shingles</td>
+                        <td class="p-3 text-right text-emerald-400">$14,500</td>
+                        <td class="p-3 font-sans">Single Family</td>
+                        <td class="p-3 font-sans">Architectural Shingle (26 Sq)</td>
+                        <td class="p-3">35184.0210</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501509</td>
+                        <td class="p-3">01/08/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-blue-950 text-blue-400 font-sans text-[10px]">Finaled</span></td>
+                        <td class="p-3 font-semibold text-white">APEX EXTERIORS INC</td>
+                        <td class="p-3">Siding</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Replacement of exterior siding with fiber cement lap siding</td>
+                        <td class="p-3 text-right text-emerald-400">$22,400</td>
+                        <td class="p-3 font-sans">Single Family</td>
+                        <td class="p-3 font-sans">Fiber Cement (2,100 sq ft)</td>
+                        <td class="p-3">35291.1405</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501533</td>
+                        <td class="p-3">01/10/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-sans text-[10px]">Issued</span></td>
+                        <td class="p-3 font-semibold text-white">RENEWAL BY ANDERSEN SPOKANE</td>
+                        <td class="p-3">Window</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Retrofit replacement of 9 vinyl windows like-for-like</td>
+                        <td class="p-3 text-right text-emerald-400">$16,800</td>
+                        <td class="p-3 font-sans">Single Family</td>
+                        <td class="p-3 font-sans">9 Windows (U-Factor ≤ 0.28)</td>
+                        <td class="p-3">25053.0812</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501570</td>
+                        <td class="p-3">01/14/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-amber-950 text-amber-400 font-sans text-[10px]">Under Review</span></td>
+                        <td class="p-3 text-slate-500 italic font-sans">(Owner-Builder / Blank)</td>
+                        <td class="p-3">Roofing</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Re-roof garage and main dwelling, replace damaged decking</td>
+                        <td class="p-3 text-right text-emerald-400">$11,200</td>
+                        <td class="p-3 font-sans">Residential Detached</td>
+                        <td class="p-3 font-sans">3-Tab Asphalt (18 Sq)</td>
+                        <td class="p-3">35092.3301</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501612</td>
+                        <td class="p-3">01/18/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-400 font-sans text-[10px]">Approved</span></td>
+                        <td class="p-3 font-semibold text-white">CHAMPION WINDOW CO</td>
+                        <td class="p-3">Window</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Replace 6 bedroom windows with low-E Argon double hung</td>
+                        <td class="p-3 text-right text-emerald-400">$12,100</td>
+                        <td class="p-3 font-sans">Duplex</td>
+                        <td class="p-3 font-sans">6 Windows (Egress: Yes)</td>
+                        <td class="p-3">35144.1109</td>
+                    </tr>
+                    <tr class="hover:bg-slate-800/40">
+                        <td class="p-3 font-bold text-sky-400">B2501655</td>
+                        <td class="p-3">01/22/2025</td>
+                        <td class="p-3"><span class="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 font-sans text-[10px]">Issued</span></td>
+                        <td class="p-3 font-semibold text-white">SPOKANE PRO ROOFING CORP</td>
+                        <td class="p-3">Roofing</td>
+                        <td class="p-3 font-sans max-w-xs truncate">Commercial steep slope asphalt shingle replacement</td>
+                        <td class="p-3 text-right text-emerald-400">$38,000</td>
+                        <td class="p-3 font-sans">Multi-Family</td>
+                        <td class="p-3 font-sans">Architectural Shingle (54 Sq)</td>
+                        <td class="p-3">35322.0914</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filterTable() {
+            var input = document.getElementById("searchInput");
+            var filter = input.value.toLowerCase();
+            var table = document.getElementById("permitTable");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < tr.length; i++) {
+                var text = tr[i].textContent.toLowerCase();
+                if (text.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

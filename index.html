@@ -268,13 +268,13 @@
 
                 <!-- Category Filter Buttons -->
                 <div class="flex flex-wrap gap-1.5 text-xs">
-                    <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (<span id="allCount">24</span>)</button>
+                    <button onclick="filterProjects('all')" class="filter-btn active px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-all">All (<span id="allCount">25</span>)</button>
                     <button onclick="filterProjects('cleaning')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-cleaning">Data Cleaning (<span id="cleaningCount">5</span>)</button>
                     <button onclick="filterProjects('ai')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-ai">AI &amp; ML (<span id="aiCount">9</span>)</button>
                     <button onclick="filterProjects('db')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-db">DB &amp; Ops (<span id="dbCount">3</span>)</button>
                     <button onclick="filterProjects('finance')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-finance">Finance (<span id="financeCount">5</span>)</button>
                     <button onclick="filterProjects('telecom')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-telecom">Telecom (<span id="telecomCount">4</span>)</button>
-                    <button onclick="filterProjects('scraping')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping (<span id="scrapingCount">3</span>)</button>
+                    <button onclick="filterProjects('scraping')" class="filter-btn px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 font-semibold transition" id="btn-scraping">Scraping (<span id="scrapingCount">4</span>)</button>
                 </div>
             </div>
         </div>
@@ -285,8 +285,33 @@
             <span class="text-slate-400 font-mono text-[11px]" id="searchFeedbackCount">0 matching</span>
         </div>
 
-        <!-- Projects Grid (24 Complete Cards) -->
+        <!-- Projects Grid (25 Complete Cards) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+
+            <!-- Spokane Accela Citizen Access (ACA) Permit Scraper & Automation -->
+            <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="scraping cleaning">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800">Web Scraping &amp; Automation</span>
+                        <span class="text-xs text-slate-500">Playwright &amp; Accela ACA</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Spokane Accela Permit Extraction &amp; Google Sheets Automation</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        End-to-end municipal permit extraction pipeline for ~2,400 records. Bypasses Imperva Incapsula WAF, handles ASP.NET WebForms (__VIEWSTATE, __doPostBack pagination), extracts nested JavaScript accordions, dynamically aligns variable schemas, and syncs directly to Google Sheets via gspread.
+                    </p>
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Python Playwright</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Accela Citizen Access</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Imperva Stealth</span>
+                        <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Google Sheets API</span>
+                        <span class="text-[10px] bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded font-bold">~2,400 Records</span>
+                    </div>
+                </div>
+                <a href="projects/spokane_accela_permit_scraper.html" target="_blank" class="w-full text-center py-2.5 px-4 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition shadow-md flex items-center justify-center gap-2">
+                    <span>Launch Permit Scraper Showcase</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
 
             <!-- 1. Google Looker Studio & Google Sheets Real-Time Analytics Hub -->
             <div class="project-card glass-card rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between space-y-5" data-category="telecom">
